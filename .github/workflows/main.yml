@@ -29,12 +29,10 @@ jobs:
 
       - name: Authenticate
         env:
-          DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: |
-          mkdir -p ~/.ssh/
-          echo "$DEPLOY_KEY" > ../private.key
-          sudo chmod 600 ../private.key
-        shell: bash
+          ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+          ssh-add - <<< "${{ secrets.SERVER_SSH_KEY }}"
 
       - name: Install
         run: npm install
@@ -44,10 +42,10 @@ jobs:
 
       - name: Deploy
         env:
-          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
           SERVER_PORT: ${{ secrets.SERVER_PORT }}
           FOLDER: "./dist/ssr"
           SERVER_IP: ${{ secrets.SERVER_IP }}
           USERNAME: ${{ secrets.USERNAME }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
-        run: sh -c "rsync -cr --delete -e 'ssh -i $SSH_KEY_PATH -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+        run: sh -c "rsync -cr --delete -e 'ssh -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
