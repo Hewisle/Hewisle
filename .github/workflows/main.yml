@@ -28,9 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Install
-        run: |
-          sudo apt install rsync openssh-client
-          npm install
+        run: npm install
         
       # Runs a single command using the runners shell
       - name: Build
@@ -45,5 +43,5 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
         run: |
-          echo "DEPLOY_KEY" > $HOME/.ssh/id_ed25519
-          rsync -e -c -r --delete -e 'ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION
+          echo "$DEPLOY_KEY" > "$HOME/.ssh/key"
+          rsync -e -c -r --delete -e 'ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION
