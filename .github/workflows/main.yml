@@ -28,19 +28,22 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Install
-        run: npm install
+        run: |
+          apt install rsync openssh-client
+          npm install
         
       # Runs a single command using the runners shell
       - name: Build
         run: npx quasar build -m ssr
 
       - name: Deploy
-        uses: AEnterprise/rsync-deploy@v1.0
         env:
           DEPLOY_KEY: ${{ secrets.SERVER_SSH_KEY }}
-          ARGS: "-e -c -r --delete"
           SERVER_PORT: ${{ secrets.SERVER_PORT }}
           FOLDER: "./dist/ssr"
           SERVER_IP: ${{ secrets.SERVER_IP }}
           USERNAME: ${{ secrets.USERNAME }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+        run: |
+          echo ${{ secrets.SERVER_SSH_KEY }} > ~/.ssh/id_ed25519
+          rsync -e -c -r --delete -e 'ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION
