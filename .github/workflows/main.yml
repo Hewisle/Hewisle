@@ -17,6 +17,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   Production:
+    environment: Production
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -43,10 +44,10 @@ jobs:
 
       - name: Deploy
         env:
-          SSH_KEY_PATH: ${{ github.workspace }}/../key
+          SSH_KEY_PATH: ${{ github.workspace }}/../private.key
           SERVER_PORT: ${{ secrets.SERVER_PORT }}
           FOLDER: "./dist/ssr"
           SERVER_IP: ${{ secrets.SERVER_IP }}
           USERNAME: ${{ secrets.USERNAME }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
-        run: sh -c "rsync -e -c -r --delete -e 'ssh -i $SSH_KEY_PATH -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
+        run: sh -c "rsync -cr --delete -e 'ssh -i $SSH_KEY_PATH -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
