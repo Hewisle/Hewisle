@@ -45,5 +45,5 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
         run: |
-          echo ${{ secrets.SERVER_SSH_KEY }} > ~/.ssh/id_ed25519
+          echo "DEPLOY_KEY" > $HOME/.ssh/id_ed25519
           rsync -e -c -r --delete -e 'ssh -i $HOME/.ssh/id_ed25519 -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION
