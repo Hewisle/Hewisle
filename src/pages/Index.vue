@@ -1,14 +1,14 @@
 <template>
-  <q-page class="column items-center justify-center">
+  <q-layout class="column items-center justify-center">
     <h1>Portfolio</h1>
     <h2>🚀</h2>
-  </q-page>
+  </q-layout>
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 
 export default defineComponent({
-  name: 'PageIndex',
+  name: 'PageIndex'
 });
 </script>

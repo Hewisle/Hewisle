@@ -17,7 +17,7 @@ const compression = require('compression')
 const ssr = require('quasar-ssr')
 const extension = require('./extension')
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT || 4000
 
 const serve = (path, cache) => express.static(ssr.resolveWWW(path), {
   maxAge: cache ? 1000 * 60 * 60 * 24 * 30 : 0
