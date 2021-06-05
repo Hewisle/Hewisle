@@ -56,12 +56,19 @@ interface ScrollEvent extends Event {
   wheelDelta: number;
   detail: number;
 }
+let scrollDebounce = false;
 
 const scrollHorizontally = (e: ScrollEvent) => {
   if (e.type != 'wheel') return;
-  let delta = (e.deltaY || -e.wheelDelta || e.detail || 1) * 0.75;
-  document.documentElement.scrollLeft += delta;
-  document.body.scrollLeft += delta;
+  if (!scrollDebounce) {
+    scrollDebounce = true;
+    let delta = (e.deltaY || -e.wheelDelta || e.detail || 1) * 1;
+    document.documentElement.scrollLeft += delta;
+    document.body.scrollLeft += delta;
+    setTimeout(function() {
+      scrollDebounce = false;
+    }, 50);
+  }
   e.preventDefault();
 };
 

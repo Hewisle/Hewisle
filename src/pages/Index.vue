@@ -1,7 +1,7 @@
 <template>
   <q-layout class="column items-center justify-center">
     <h1>Portfolio</h1>
-    <h2>🚀</h2>
+    <q-btn to="/scroll" push size="xl">🚀</q-btn>
   </q-layout>
 </template>
 
