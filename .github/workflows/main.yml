@@ -34,11 +34,11 @@ jobs:
           ssh-agent -a $SSH_AUTH_SOCK > /dev/null
           ssh-add - <<< "${{ secrets.SERVER_SSH_KEY }}"
 
-      - name: Package cache
+      - name: Package get cache directory
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
         
-      - name: Package install
+      - name: Package get cache
         uses: actions/cache@v2
         id: yarn-cache
         with:
