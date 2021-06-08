@@ -6,7 +6,8 @@ const routes: RouteConfig[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/scroll', component: () => import('src/pages/Scroll.vue') }
+      { path: '/scroll', component: () => import('src/pages/Scroll.vue') },
+      { path: '/space', component: () => import('src/pages/Space.vue') },
     ]
   },
 
