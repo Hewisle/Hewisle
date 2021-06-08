@@ -78,7 +78,7 @@ module.exports = configure(function (ctx) {
     devServer: {
       https: false,
       port: 8080,
-      open: true // opens browser window automatically
+      open: false // opens browser window automatically
     },
 
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -109,7 +109,7 @@ module.exports = configure(function (ctx) {
 
     // https://v1.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: true
+      pwa: ctx.prod
     },
 
     // https://v1.quasar.dev/quasar-cli/developing-pwa/configuring-pwa

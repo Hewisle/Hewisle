@@ -11,6 +11,7 @@
  * development server, but such updates are costly since the dev-server needs a reboot.
  */
 
+
 module.exports.extendApp = function ({ app, ssr }) {
   /*
      Extend the parts of the express app that you
@@ -18,4 +19,28 @@ module.exports.extendApp = function ({ app, ssr }) {
 
      Example: app.use(), app.get() etc
   */
+
+  const http = require('http').createServer(app)
+  const io = require('socket.io')(http, {
+    cors: {
+      origin: "http://localhost:8080"
+    },
+    transports: ['websocket'],
+    // path: '/itsi-v2/'
+  })
+
+  //Whenever someone connects this gets executed
+  io.on('connection', function (socket) {
+    console.log('A user connected');
+
+    //Whenever someone disconnects this piece of code executed
+    socket.on('disconnect', function () {
+      console.log('A user disconnected');
+    });
+  });
+  try {
+    http.listen(4001)
+  } catch {
+    console.warn("IN USE")
+  }
 }
