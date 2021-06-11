@@ -5,3 +5,7 @@ declare namespace NodeJS {
     VUE_ROUTER_BASE: string | undefined;
   }
 }
+
+declare module '*.png';
+declare module '*.jpg';
+declare module '*.svg';
