@@ -1,5 +1,5 @@
 <template>
-  <q-layout class="q-pa-xl" style="min-height: 1px">
+  <q-layout class="q-pa-xl" style="min-height: 1px" id="scroll-x">
     <div class="row">
       <h2 class="q-mt-none">Titel leerdoel</h2>
     </div>
@@ -49,37 +49,31 @@
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
+import Scrollbar from 'smooth-scrollbar';
+import OverscrollPlugin, { Data2d } from 'smooth-scrollbar/plugins/overscroll';
 import gsap from 'gsap';
 
-interface ScrollEvent extends Event {
-  deltaY: number;
-  wheelDelta: number;
-  detail: number;
-}
-let scrollDebounce = false;
-
-const scrollHorizontally = (e: ScrollEvent) => {
-  if (e.type != 'wheel') return;
-  if (!scrollDebounce) {
-    scrollDebounce = true;
-    let delta = (e.deltaY || -e.wheelDelta || e.detail || 1) * 1;
-    document.documentElement.scrollLeft += delta;
-    document.body.scrollLeft += delta;
-    setTimeout(function() {
-      scrollDebounce = false;
-    }, 50);
+class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
+  static pluginName = 'horizontalScroll';
+  transformDelta(delta: Data2d, fromEvent: Event) {
+    if (!/wheel/.test(fromEvent.type)) return delta;
+    const { x, y } = delta;
+    return {
+      y: 0,
+      x: Math.abs(x) > Math.abs(y) ? x : y
+    };
   }
-  e.preventDefault();
-};
+}
 
 export default defineComponent({
   mounted() {
-    document.addEventListener('wheel', scrollHorizontally as EventListener, {
-      passive: false
-    });
-  },
-  onBeforeUnmount() {
-    document.removeEventListener('wheel', scrollHorizontally as EventListener);
+    Scrollbar.use(HorizontalScrollPlugin, OverscrollPlugin);
+    const scrollbar = Scrollbar.init(
+      document.querySelector('#scroll-x') as HTMLElement,
+      {}
+    );
+    scrollbar.track.xAxis.element.remove();
+    scrollbar.track.yAxis.element.remove();
   }
 });
 </script>
@@ -87,5 +81,8 @@ export default defineComponent({
 <style lang="scss" scoped>
 .q-img {
   margin-bottom: 16px;
+}
+#scroll-x {
+  overflow: hidden;
 }
 </style>
