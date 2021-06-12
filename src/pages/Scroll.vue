@@ -50,12 +50,12 @@
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
 import Scrollbar from 'smooth-scrollbar';
-import OverscrollPlugin, { Data2d } from 'smooth-scrollbar/plugins/overscroll';
+import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 import gsap from 'gsap';
 
 class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
   static pluginName = 'horizontalScroll';
-  transformDelta(delta: Data2d, fromEvent: Event) {
+  transformDelta(delta: { x: number; y: number }, fromEvent: Event) {
     if (!/wheel/.test(fromEvent.type)) return delta;
     const { x, y } = delta;
     return {
