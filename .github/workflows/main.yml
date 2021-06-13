@@ -61,4 +61,13 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: sh -c "rsync -cr --delete -e 'ssh -o StrictHostKeyChecking=no -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
+          SSH_ARGS: -o StrictHostKeyChecking=no
+        run: sh -c "rsync -cr --delete --exclude=/node_modules -e 'ssh -p $SERVER_PORT' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
+      - name: Remote package install
+        env:
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          USERNAME: ${{ secrets.USERNAME }}
+          SSH_ARGS: -o StrictHostKeyChecking=no
+        run: sh -c "ssh $USERNAME@$SERVER_IP -p $SERVER_PORT 'cd $SERVER_DESTINATION; yarn install'"
