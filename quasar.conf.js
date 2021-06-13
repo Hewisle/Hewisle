@@ -122,8 +122,8 @@ module.exports = configure(function (ctx) {
         description: 'Portfolio in space',
         display: 'standalone',
         orientation: 'portrait',
-        background_color: '#ffffff',
-        theme_color: '#027be3',
+        background_color: '#2f1b3f',
+        theme_color: '#2f1b3f',
         icons: [
           {
             src: 'icons/icon-128x128.png',
