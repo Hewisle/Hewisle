@@ -40,40 +40,69 @@ export default defineComponent({});
   overflow: hidden;
   height: 100%;
   width: 100%;
+  max-width: 1400px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 .planet {
   display: block;
-  max-width: 30%;
+  max-width: 40%;
   position: absolute;
-  transition: transform 0.5s;
+  transition: all 0.5s;
   &:hover {
     transform: scale(1.02);
   }
 
   &--ruben {
-    width: 25%;
+    width: 26%;
     height: 40%;
     left: 15%;
     top: 5%;
   }
   &--dylan {
-    width: 22%;
+    width: 25%;
     height: 35%;
     right: 15%;
     top: 10%;
   }
   &--bianca {
-    width: 28%;
+    width: 27%;
     height: 43%;
     left: 10%;
     bottom: 2%;
   }
   &--anna {
-    width: 30%;
+    width: 28%;
     height: 45%;
     right: 5%;
     bottom: 0%;
   }
+
+  @media screen and (max-width: $breakpoint-sm-max) {
+    &--ruben {
+      width: 30%;
+      left: 7%;
+      top: 7%;
+    }
+    &--dylan {
+      width: 29%;
+      right: 10%;
+      top: 0%;
+    }
+    &--bianca {
+      left: 10%;
+      bottom: 20%;
+      height: 30%;
+      width: 33%;
+    }
+    &--anna {
+      width: 32%;
+      right: 15%;
+      bottom: 5%;
+      max-height: 30%;
+    }
+  }
+
   .q-img {
     width: 100%;
     height: 100%;
