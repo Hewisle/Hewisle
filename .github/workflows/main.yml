@@ -55,17 +55,18 @@ jobs:
 
       - name: Deploy
         env:
-          SERVER_PORT: ${{ secrets.SERVER_PORT }}
-          FOLDER: "./dist/ssr"
-          SERVER_IP: ${{ secrets.SERVER_IP }}
           USERNAME: ${{ secrets.USERNAME }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
+          FOLDER: "./dist/ssr"
         run: sh -c "rsync -cr --delete --exclude=/node_modules -e 'ssh -p $SERVER_PORT -o StrictHostKeyChecking=no' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
       - name: Remote package install
         env:
-          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-          SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
-          SERVER_IP: ${{ secrets.SERVER_IP }}
           USERNAME: ${{ secrets.USERNAME }}
+          SERVER_IP: ${{ secrets.SERVER_IP }}
+          SERVER_PORT: ${{ secrets.SERVER_PORT }}
+          SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
+          SSH_AUTH_SOCK: /tmp/ssh_agent.sock
         run: sh -c "ssh $USERNAME@$SERVER_IP -p $SERVER_PORT -o StrictHostKeyChecking=no 'cd $SERVER_DESTINATION; yarn install'"
