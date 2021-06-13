@@ -69,4 +69,5 @@ jobs:
           SERVER_PORT: ${{ secrets.SERVER_PORT }}
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-        run: sh -c "ssh $USERNAME@$SERVER_IP -p $SERVER_PORT -o StrictHostKeyChecking=no 'cd $SERVER_DESTINATION; yarn install'"
+          FOLDER: "ssr"
+        run: sh -c "ssh $USERNAME@$SERVER_IP -p $SERVER_PORT -o StrictHostKeyChecking=no 'cd $SERVER_DESTINATION/$FOLDER; yarn install'"
