@@ -6,6 +6,7 @@ import { defineComponent } from '@vue/composition-api';
 import Lottie from 'lottie-web';
 
 export default defineComponent({
+  name: 'Lottie',
   props: {
     customStyle: {
       type: Object

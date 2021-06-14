@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 270 128">
+  <path class="fill-primary-dark" d="M265 80s-50 48-127 48C62 128 12 80 12 80s50-30 126-30c77 0 127 30 127 30z" fill="#303BCE"/>
+  <path class="fill-primary" d="M263 66c7 4 7 12 0 16-22 11-70 31-124 31-55 0-103-20-125-31-7-4-7-12 0-16 22-11 70-31 125-31 54 0 102 20 124 31z" fill="#3A47FF"/>
+  <path d="M196 50c0 18-26 20-57 20-32 0-58-2-58-20 0-19 13-50 58-50 44 0 57 31 57 50z" fill="#C4C4C4" fill-opacity=".8"/>
+  <path class="stroke-primary-dark" d="M222 86a12 12 0 000-25c-7 0-12 6-12 13 0 6 5 12 12 12zM139 100c6 0 12-5 12-11 0-7-6-12-12-12-7 0-13 5-13 12 0 6 6 11 13 11zM55 84c6 0 12-5 12-11 0-7-6-12-12-12s-12 5-12 12c0 6 6 11 12 11z" fill="#fff" stroke="#303BCE" stroke-width="6"/>
+</svg>

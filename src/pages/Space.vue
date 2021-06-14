@@ -2,13 +2,13 @@
   <q-page>
     <div class="space">
       <a href="/scroll" class="planet planet--ruben" title="Ruben" alt="Ruben">
-        <q-img contain :src="require('../assets/planeet_ruben.svg')" />
+        <q-img contain :src="require('../assets/planet/ruben.svg')" />
       </a>
       <a href="/scroll" class="planet planet--anna" title="Anna" alt="Anna">
-        <q-img contain :src="require('../assets/planeet_anna.svg')" />
+        <q-img contain :src="require('../assets/planet/anna.svg')" />
       </a>
       <a href="/scroll" class="planet planet--dylan" title="Dylan" alt="Dylan">
-        <q-img contain :src="require('../assets/planeet_dylan.svg')" />
+        <q-img contain :src="require('../assets/planet/dylan.svg')" />
       </a>
       <a
         href="/scroll"
@@ -16,7 +16,7 @@
         title="Bianca"
         alt="Bianca"
       >
-        <q-img contain :src="require('../assets/planeet_bianca.svg')" />
+        <q-img contain :src="require('../assets/planet/bianca.svg')" />
       </a>
     </div>
   </q-page>

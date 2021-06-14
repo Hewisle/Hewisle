@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 283 109">
+  <path class="fill-primary-dark" d="M0 12.5556C0 12.5556 74.3333 30.0557 101 41.0557C108 50.2224 128.2 53.3557 133 20.5557C139 -20.4443 0 12.5556 0 12.5556Z" fill="#303BCE"/>
+  <ellipse class="fill-primary" cx="151.5" cy="54" rx="131.5" ry="38" fill="#3A47FF"/>
+  <path class="fill-primary-dark" d="M0 95.5001C0 95.5001 74.3333 77.9999 101 66.9999C108 57.8333 128.2 54.7 133 87.5C139 128.5 0 95.5001 0 95.5001Z" fill="#303BCE"/>
+  <circle class="stroke-primary-dark" cx="208.247" cy="54.3762" r="19.1882" fill="white" stroke="#303BCE" stroke-width="6"/>
+</svg>
