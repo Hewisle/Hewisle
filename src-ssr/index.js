@@ -23,12 +23,17 @@ const serve = (path, cache) => express.static(ssr.resolveWWW(path), {
   maxAge: cache ? 1000 * 60 * 60 * 24 * 30 : 0
 })
 
+// sekuritie
+app.disable('x-powered-by');
+
 // gzip
 app.use(compression({ threshold: 0 }))
 
 // serve this with no cache, if built with PWA:
 if (ssr.settings.pwa) {
-  app.use(ssr.resolveUrl('/service-worker.js'), serve('service-worker.js'))
+  app.use(ssr.resolveUrl('/service-worker.js'), express.static(ssr.resolveWWW('service-worker.js'), {
+    setHeaders: (res) => res.set("Cache-Control", "no-cache")
+  }))
 }
 
 // serve "www" folder
