@@ -12,13 +12,55 @@
 // to match your app's branding.
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
-$primary   : #1976D2;
-$secondary : #26A69A;
-$accent    : #9C27B0;
+$yellow: #ffbe0b;
+$blue: #3a47ff;
+$blue-10: #303bce;
+$light-blue: #07cafc;
+$light-blue-10: #0eaed7;
+$teal: #03cea4;
+$teal-10: #08a988;
+$green: #50b600;
+$green-10: #4b9b0d;
+$light-green: #93cf01;
+$light-green-10: #82b012;
+$amber: #ffa10b;
+$amber-10: #d78a11;
+$deep-orange: #fb6a07;
+$deep-orange-10: #c83112;
+$purple: #c500ff;
+$purple-10: #a00ecb;
+$deep-purple: #8338ec;
+$deep-purple-10: #6a2bc2;
 
-$dark      : #1D1D1D;
+$primary: #1976d2;
+$secondary: #26a69a;
+$accent: #9c27b0;
 
-$positive  : #21BA45;
-$negative  : #C10015;
-$info      : #31CCEC;
-$warning   : #F2C037;
+$dark: #1d1d1d;
+
+$positive: $light-green;
+$negative: $deep-orange-10;
+$info: $light-blue;
+$warning: $yellow;
+
+:root {
+  --yellow: #{$yellow};
+  --blue: #{$blue};
+  --blue-10: #{$blue-10};
+  --light-blue: #{$light-blue};
+  --light-blue-10: #{$light-blue-10};
+  --teal: #{$teal};
+  --teal-10: #{$teal-10};
+  --green: #{$green};
+  --green-10: #{$green-10};
+  --light-green: #{$light-green};
+  --light-green-10: #{$light-green-10};
+  --amber: #{$amber};
+  --amber-10: #{$amber-10};
+  --deep-orange: #{$deep-orange};
+  --deep-orange-10: #{$deep-orange-10};
+  --purple: #{$purple};
+  --purple-10: #{$purple-10};
+  --deep-purple: #{$deep-purple};
+  --deep-purple-10: #{$deep-purple-10};
+}
