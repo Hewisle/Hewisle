@@ -26,6 +26,13 @@
     /* Safari, Android, iOS */ url('./fonts/Cairo-700.svg#Cairo') format('svg'); /* Legacy iOS */
 }
 
+@font-face {
+  font-family: 'Alien';
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Alien.ttf') format('truetype');
+}
+
 html,
 body {
   height: 100%;
@@ -33,5 +40,4 @@ body {
 body {
   font-family: 'Cairo';
   color: white;
-  overflow: hidden;
 }
