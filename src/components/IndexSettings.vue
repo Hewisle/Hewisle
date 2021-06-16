@@ -28,7 +28,8 @@
                 >
                   <q-carousel-slide
                     v-for="spaceship in spaceships"
-                    @click.stop="changeSpaceshipColor"
+                    @click="changeSpaceshipColor"
+                    @keypress="changeSpaceshipColor"
                     role="button"
                     tabindex="0"
                     :name="spaceship"
@@ -39,9 +40,7 @@
                       require(`!!raw-loader!../assets/spaceship/${spaceship}.svg`)
                         .default
                     "
-                  >
-                    Test
-                  </q-carousel-slide>
+                  />
                 </q-carousel>
               </div>
               <div class="col text-center">
@@ -73,8 +72,9 @@
             class="col col-auto q-mb-lg"
             style="width: 55%; max-width: 256px;"
           >
+            <!-- <q-btn to="/space" push color="yellow" class="text-black q-my-lg"> -->
             <q-btn
-              :to="name && '/space'"
+              @click="spaceshipLeaveAnimation"
               push
               color="yellow"
               class="text-black q-my-lg"
@@ -91,6 +91,10 @@
 import { defineComponent, ref } from '@vue/composition-api';
 import { QCarousel } from 'quasar';
 
+import gsap, { Power4 } from 'gsap';
+// import { useRouter } from 'vue-router'
+import getAbsolutePosition from '../utils/GetAbsolutePosition';
+
 const SPACESHIPS = ['rocky', 'its_a_trap', 'always_been', 'nyan_cat'];
 const COLORS = [
   'blue',
@@ -106,11 +110,14 @@ const COLORS = [
 
 export default defineComponent({
   name: 'IndexSettings',
-  setup() {
+  setup(props, { emit }) {
     // Register local navigation functions
     const selectSpaceship = ref<QCarousel>();
     const nextSpaceship = () => selectSpaceship.value?.next();
     const previousSpaceship = () => selectSpaceship.value?.previous();
+    
+    // const router = useRouter()
+    console.warn(props)
 
     // Set default properties
     // TODO: move to $store
@@ -142,6 +149,33 @@ export default defineComponent({
       else if (e.code === 'ArrowDown') changeSpaceshipColor(false);
     };
 
+    // Animate spaceship before page leave
+    const spaceshipLeaveAnimation = () => {
+      const spaceshipSVG: HTMLElement | null = document.querySelector(
+        '.q-carousel svg'
+      );
+      if (spaceshipSVG) {
+        const from = getAbsolutePosition(spaceshipSVG);
+        const clone = spaceshipSVG.cloneNode(true) as HTMLElement;
+        spaceshipSVG.style.display = 'none';
+        clone.style.position = 'absolute';
+        gsap.set(clone, from);
+        document.body.appendChild(clone);
+        const timeline = gsap.timeline();
+        timeline.fromTo(clone, from, {
+          top: '-=200',
+          left: '+=200',
+          ease: Power4.easeOut,
+          duration: 2
+        });
+        emit('start');
+        timeline.to(clone, {
+          left: '25%',
+          top: '75%'
+        })
+      }
+    };
+
     return {
       selectSpaceship,
       nextSpaceship,
@@ -152,6 +186,7 @@ export default defineComponent({
       spaceship,
       spaceshipColors,
       spaceshipColor,
+      spaceshipLeaveAnimation,
       // TODO: move to $store
       name: ''
     };
