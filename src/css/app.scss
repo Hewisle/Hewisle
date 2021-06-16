@@ -85,11 +85,19 @@ h1 {
   transform: translate3d(-100%, 0, 0);
 }
 
-.q-transition--ease-out-back-enter-active {
-  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+.q-transition--ease-out-back-enter-active,
+.q-transition--ease-out-back-leave-active {
+  transition: all .6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  position: absolute;
 }
 .q-transition--ease-out-back-enter {
   transform: translate3d(-100%, 0, 0);
+}
+.q-transition--ease-out-back-enter-to {
+  transform: translate3d(0%, 0, 0);
+}
+.q-transition--ease-out-back-leave {
+  transform: translate3d(0%, 0, 0);
 }
 .q-transition--ease-out-back-leave-to {
   transform: translate3d(100%, 0, 0);
