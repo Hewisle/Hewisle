@@ -33,6 +33,13 @@
   src: url('./fonts/Alien.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Spaceranger';
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/Spaceranger.ttf') format('truetype');
+}
+
 html,
 body {
   height: 100%;
@@ -40,4 +47,50 @@ body {
 body {
   font-family: 'Cairo';
   color: white;
+}
+
+h1 {
+  font-size: 6rem;
+  font-family: 'Spaceranger';
+}
+
+.q-btn.q-btn--push {
+  font-weight: bold;
+  font-size: 2.25rem;
+  text-align: center;
+  max-height: 68px;
+  min-width: 256px;
+
+  .q-btn__wrapper {
+    min-height: auto;
+    padding: 0;
+  }
+}
+
+.q-transition--ease-in-back-enter-active,
+.q-transition--ease-in-back-leave-active{
+  transition: all .6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  position: absolute;
+}
+.q-transition--ease-in-back-enter {
+  transform: translate3d(100%, 0, 0);
+}
+.q-transition--ease-in-back-enter-to {
+  transform: translate3d(0%, 0, 0);
+}
+.q-transition--ease-in-back-leave {
+  transform: translate3d(0%, 0, 0);
+}
+.q-transition--ease-in-back-leave-to {
+  transform: translate3d(-100%, 0, 0);
+}
+
+.q-transition--ease-out-back-enter-active {
+  transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.q-transition--ease-out-back-enter {
+  transform: translate3d(-100%, 0, 0);
+}
+.q-transition--ease-out-back-leave-to {
+  transform: translate3d(100%, 0, 0);
 }

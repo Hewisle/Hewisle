@@ -1,28 +1,50 @@
 <template>
-  <q-card class="intro bg-transparent q-pa-lg">
+  <div class="intro">
     <q-card-section>
-      Welkom op de portfoliowebsite van
-      <strong>Anna Sivera van der Sluijs</strong>,
-      <strong>Bianca van der Heide</strong>, <strong>Dylan Lemmers</strong> en
-      <strong>Ruben de Wit</strong>. Maak een ruimtereis langs onze planeten en
-      bekijk verschillende projecten.
+      Welkom op de portfoliowebsite van Anna Sivera van der Sluijs, Bianca van
+      der Heide, Dylan Lemmers en Ruben de Wit. Maak een ruimtereis langs onze
+      planeten en bekijk verschillende projecten.
       <br />
       <br />
-      Maar eerst: maak je eigen, unieke ruimteschip om door onze website te
-      navigeren. Klik of gebruik je pijltjes toetsen om door kleuren en vormen
-      te bladeren. Kies vervolgens een buitenaards leuke naam en begin je
-      avontuur.
-      <br />
-      <br />
-      Door je muis te bewegen of door de pijltjes toetsen te gebruiken, kan je
-      je ruimteschip op de pagina verplaatsen en langs onze planeten reizen.
-      Klik op een planeet om te landen. Op elke persoonlijke planeet zijn drie
-      verschillende projecten te bekijken. Veel plezier en pas op voor eventuele
-      medereizigers.
-    </q-card-section>
-  </q-card>
-</template>
 
+      Maar eerst: maak je eigen, unieke ruimteschip om door onze website te
+      navigeren.
+      <ol>
+        <li>
+          Gebruik de pijltjes(toetsen) om door vormen te bladeren.
+        </li>
+        <li>
+          Klik op het ruimteschip om van kleur te veranderen.
+        </li>
+        <li>
+          Kies vervolgens een buitenaards leuke naam.
+        </li>
+        <li>
+          Begin je avontuur.
+        </li>
+      </ol>
+      <br />
+
+      <strong> Besturing</strong>
+      <ul>
+        <li>
+          Door je muis te bewegen of door de pijltjes toetsen te gebruiken, kun
+          je je ruimteschip op de pagina verplaatsen en langs onze planeten
+          reizen.
+        </li>
+        <li>
+          Klik op een planeet om te landen.
+        </li>
+        <li>
+          Op elke persoonlijke planeet zijn drie verschillende projecten te
+          bekijken.
+        </li>
+      </ul>
+      <br />
+      Veel plezier en pas op voor eventuele medereizigers.
+    </q-card-section>
+  </div>
+</template>
 
 <style lang="scss" scoped>
 @keyframes float-in {
@@ -40,7 +62,12 @@
   opacity: 0;
   transform: translateY(-10%);
   animation: float-in 1s forwards;
-  font-size: 1.21rem;
-  max-width: 680px;
+  font-size: 1.2rem;
+  // max-width: 700px;
+
+  ul,
+  ol {
+    margin: 0;
+  }
 }
 </style>

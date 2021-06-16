@@ -2,70 +2,82 @@
   <div class="settings">
     <div class="settings--wrapper">
       <q-card class="fit">
-        <div class="column items-center justify-between full-height">
-          <div class="col col-auto full-width align-center">
-            <div class="row items-center q-my-xl">
+        <div class="column items-center justify-around full-height">
+          <div class="col col-5 col-auto full-width align-center">
+            <div class="row items-center full-height">
               <div class="col text-center">
                 <q-btn
                   flat
                   round
+                  size="xl"
                   icon="chevron_left"
                   @click="previousSpaceship"
                 />
               </div>
-              <div class="col">
+              <div class="col col-4 full-height">
                 <q-carousel
                   v-model="spaceship"
                   keep-alive
                   infinite
                   animated
                   swipeable
-                  transition-next="slide-left"
-                  transition-prev="slide-right"
+                  transition-next="ease-in-back"
+                  transition-prev="ease-out-back"
                   class="bg-transparent"
                   ref="selectSpaceship"
                 >
                   <q-carousel-slide
                     v-for="spaceship in spaceships"
-                    @click="changeSpaceshipColor"
+                    @click.stop="changeSpaceshipColor"
                     role="button"
                     tabindex="0"
                     :name="spaceship"
                     :key="spaceship"
                     :title="spaceship"
+                    :class="`svg-${spaceshipColor}`"
+                    v-html="
+                      require(`!!raw-loader!../assets/spaceship/${spaceship}.svg`)
+                        .default
+                    "
                   >
-                    <div
-                      class="spaceship full-width"
-                      :class="`svg-${spaceshipColor}`"
-                      v-html="
-                        require(`!!raw-loader!../assets/spaceship/${spaceship}.svg`)
-                          .default
-                      "
-                    />
+                    Test
                   </q-carousel-slide>
                 </q-carousel>
               </div>
               <div class="col text-center">
-                <q-btn flat round icon="chevron_right" @click="nextSpaceship" />
+                <q-btn
+                  size="xl"
+                  flat
+                  round
+                  icon="chevron_right"
+                  @click="nextSpaceship"
+                />
+              </div>
+            </div>
+            <div class="row items-center justify-center q-mt-lg">
+              <div class="col" style="max-width: 256px;">
+                <q-input
+                  color="white"
+                  v-model="name"
+                  outlined
+                  dark
+                  label="Naam"
+                  style=""
+                  input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
+                  lazy-rules
+                />
               </div>
             </div>
           </div>
-          <div class="col col-auto q-mb-lg" style="width: 55%">
-            <q-input
-              color="white"
-              v-model="name"
-              outlined
-              dark
-              label="Naam"
-              input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt"
-              lazy-rules
-            />
+          <div
+            class="col col-auto q-mb-lg"
+            style="width: 55%; max-width: 256px;"
+          >
             <q-btn
               :to="name && '/space'"
               push
-              size="lg"
               color="yellow"
-              class="text-black q-my-lg full-width"
+              class="text-black q-my-lg"
             >
               Start
             </q-btn>
@@ -156,35 +168,36 @@ export default defineComponent({
 <style lang="scss" scoped>
 @keyframes slide-open {
   0% {
-    transform: translateX(-100%);
+    transform: translateX(-5%);
+    opacity: 0;
   }
   100% {
     transform: translateX(0%);
+    opacity: 1;
   }
 }
 .settings {
-  position: relative;
-  width: 0px;
+  max-width: 700px;
+  width: 100%;
+  height: 100%;
   &--wrapper {
-    width: 375px;
-    height: 75%;
-    top: 12.5%;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-    position: absolute;
+    position: relative;
   }
   .q-card {
     position: absolute;
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
     background: rgba(0, 0, 0, 0.25);
-    transform: translate(-100%);
-    animation: slide-open 1s forwards;
+    transform: translate(-200%);
+    animation: slide-open 0.75s forwards;
     animation-delay: 0.75s;
 
     .q-carousel {
-      height: 146px;
+      height: 100%;
 
       &__slide {
+        // height: 100%;
         display: flex;
         align-items: center;
       }
@@ -199,12 +212,15 @@ $colors: 'blue', 'light-blue', 'teal', 'green', 'light-green', 'amber',
 @each $color in $colors {
   .svg-#{$color} {
     .fill-primary-dark {
+      transition: fill 0.25s ease;
       fill: var(--#{$color}-10) !important;
     }
     .stroke-primary-dark {
+      transition: stroke 0.25s ease;
       stroke: var(--#{$color}-10) !important;
     }
     .fill-primary {
+      transition: fill 0.25s ease;
       fill: var(--#{$color}) !important;
     }
   }
