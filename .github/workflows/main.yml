@@ -70,4 +70,4 @@ jobs:
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           FOLDER: "ssr"
-        run: sh -c "ssh $USERNAME@$SERVER_IP -p $SERVER_PORT -o StrictHostKeyChecking=no 'cd $SERVER_DESTINATION/$FOLDER; yarn install vuex@4; yarn install --production'"
+        run: sh -c "ssh $USERNAME@$SERVER_IP -p $SERVER_PORT -o StrictHostKeyChecking=no 'cd $SERVER_DESTINATION/$FOLDER; yarn install --production; yarn add vuex@4'"
