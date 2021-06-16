@@ -48,10 +48,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, onMounted} from 'vue';
 import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
-import gsap from 'gsap';
+// import gsap from 'gsap';
 
 class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
   static pluginName = 'horizontalScroll';
@@ -66,15 +66,17 @@ class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
 }
 
 export default defineComponent({
-  mounted() {
-    Scrollbar.use(HorizontalScrollPlugin, OverscrollPlugin);
-    const scrollbar = Scrollbar.init(
-      document.querySelector('#scroll-x') as HTMLElement,
-      {}
-    );
-    scrollbar.track.xAxis.element.remove();
-    scrollbar.track.yAxis.element.remove();
-  }
+  setup () {
+    onMounted(() => {
+      Scrollbar.use(HorizontalScrollPlugin, OverscrollPlugin);
+      const scrollbar = Scrollbar.init(
+        document.querySelector('#scroll-x') as HTMLElement,
+        {}
+      );
+      scrollbar.track.xAxis.element.remove();
+      scrollbar.track.yAxis.element.remove();
+    })
+  },
 });
 </script>
 

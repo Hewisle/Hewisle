@@ -17,7 +17,6 @@
               <div class="col col-4 full-height">
                 <q-carousel
                   v-model="spaceship"
-                  keep-alive
                   infinite
                   animated
                   swipeable
@@ -37,9 +36,7 @@
                     :title="spaceship"
                     :class="`svg-${spaceshipColor}`"
                     v-html="
-                      require(`!!raw-loader!../assets/spaceship/${spaceship}.svg`)
-                        .default
-                    "
+                      require(`!!../assets/spaceship/${spaceship}.svg?raw`)"
                   />
                 </q-carousel>
               </div>
@@ -88,7 +85,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, ref } from 'vue';
 import { QCarousel } from 'quasar';
 
 import gsap, { Power4 } from 'gsap';
@@ -117,7 +114,6 @@ export default defineComponent({
     const previousSpaceship = () => selectSpaceship.value?.previous();
     
     // const router = useRouter()
-    console.warn(props)
 
     // Set default properties
     // TODO: move to $store

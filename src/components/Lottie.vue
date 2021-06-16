@@ -2,7 +2,7 @@
   <div ref="container" :style="style"></div>
 </template>
 <script>
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent } from 'vue';
 import Lottie from 'lottie-web';
 
 export default defineComponent({

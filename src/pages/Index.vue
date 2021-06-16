@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, ref } from 'vue';
 import IndexIntro from 'src/components/IndexIntro.vue';
 import IndexSettings from 'src/components/IndexSettings.vue';
 
@@ -21,8 +21,9 @@ export default defineComponent({
   components: { IndexIntro, IndexSettings },
   name: 'PageIndex',
   setup: () => {
+    const leave = ref(false)
     return {
-      leave: false
+      leave
     }
   }
 });
