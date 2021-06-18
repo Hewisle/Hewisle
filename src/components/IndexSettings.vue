@@ -34,9 +34,10 @@
                     :name="spaceship"
                     :key="spaceship"
                     :title="spaceship"
-                    :class="`svg-${spaceshipColor}`"
+                    :class="`spaceship svg-${spaceshipColor}`"
                     v-html="
-                      require(`!!../assets/spaceship/${spaceship}.svg?raw`)"
+                      require(`!!../assets/spaceship/${spaceship}.svg?raw`)
+                    "
                   />
                 </q-carousel>
               </div>
@@ -51,7 +52,7 @@
               </div>
             </div>
             <div class="row items-center justify-center q-mt-lg">
-              <div class="col" style="max-width: 256px;">
+              <div class="col" style="max-width: 256px">
                 <q-input
                   color="white"
                   v-model="name"
@@ -67,7 +68,7 @@
           </div>
           <div
             class="col col-auto q-mb-lg"
-            style="width: 55%; max-width: 256px;"
+            style="width: 55%; max-width: 256px"
           >
             <!-- <q-btn to="/space" push color="yellow" class="text-black q-my-lg"> -->
             <q-btn
@@ -89,7 +90,7 @@ import { defineComponent, ref } from 'vue';
 import { QCarousel } from 'quasar';
 
 import gsap, { Power4 } from 'gsap';
-// import { useRouter } from 'vue-router'
+import { useRouter } from 'vue-router';
 import getAbsolutePosition from '../utils/GetAbsolutePosition';
 
 const SPACESHIPS = ['rocky', 'its_a_trap', 'always_been', 'nyan_cat'];
@@ -102,8 +103,12 @@ const COLORS = [
   'amber',
   'deep-orange',
   'purple',
-  'deep-purple'
+  'deep-purple',
 ];
+
+interface CloneElement extends HTMLElement {
+  getElementById: (el: string) => HTMLElement;
+}
 
 export default defineComponent({
   name: 'IndexSettings',
@@ -112,8 +117,8 @@ export default defineComponent({
     const selectSpaceship = ref<QCarousel>();
     const nextSpaceship = () => selectSpaceship.value?.next();
     const previousSpaceship = () => selectSpaceship.value?.previous();
-    
-    // const router = useRouter()
+
+    const router = useRouter();
 
     // Set default properties
     // TODO: move to $store
@@ -147,28 +152,52 @@ export default defineComponent({
 
     // Animate spaceship before page leave
     const spaceshipLeaveAnimation = () => {
-      const spaceshipSVG: HTMLElement | null = document.querySelector(
-        '.q-carousel svg'
-      );
+      const spaceshipSVG: HTMLElement | null =
+        document.querySelector('.q-carousel svg');
       if (spaceshipSVG) {
         const from = getAbsolutePosition(spaceshipSVG);
-        const clone = spaceshipSVG.cloneNode(true) as HTMLElement;
+        const clone = spaceshipSVG.cloneNode(true) as CloneElement;
+        const fire = clone.getElementById('spaceship-fire');
+
         spaceshipSVG.style.display = 'none';
         clone.style.position = 'absolute';
+        clone.classList.add('spaceship-clone')
         gsap.set(clone, from);
-        document.body.appendChild(clone);
-        const timeline = gsap.timeline();
-        timeline.fromTo(clone, from, {
-          top: '-=200',
-          left: '+=200',
-          ease: Power4.easeOut,
-          duration: 2
+        gsap.set(fire, {
+          height: '-50%',
+          display: 'block',
+          transformOrigin: 'left bottom',
+          scale: 0.5,
         });
-        emit('start');
-        timeline.to(clone, {
-          left: '25%',
-          top: '75%'
-        })
+        document.body.appendChild(clone);
+        gsap
+          .fromTo(clone, from, {
+            top: '-=200',
+            left: '+=200',
+            ease: Power4.easeIn,
+            duration: 2,
+          })
+        gsap.to(fire, {
+          scale: 1,
+        });
+        gsap.to(clone, {
+          left: window.innerWidth * 0.45,
+          top: window.innerHeight * 0.75,
+          duration: 3,
+          delay: 2,
+        });
+        gsap.to(fire, {
+          scale: 0.5,
+          yPercent: -50,
+          xPercent: 50,
+          delay: 3,
+        });
+        setTimeout(() => {
+            emit('start');
+        }, 200);
+        setTimeout(() => {
+          void router.push('/space');
+        }, 2500);
       }
     };
 
@@ -184,7 +213,7 @@ export default defineComponent({
       spaceshipColor,
       spaceshipLeaveAnimation,
       // TODO: move to $store
-      name: ''
+      name: ref(''),
     };
   },
   mounted() {
@@ -192,7 +221,7 @@ export default defineComponent({
   },
   onBeforeUnmount() {
     document.removeEventListener('keyup', this.keySelectSpaceship);
-  }
+  },
 });
 </script>
 
@@ -228,9 +257,9 @@ export default defineComponent({
       height: 100%;
 
       &__slide {
-        // height: 100%;
         display: flex;
         align-items: center;
+        cursor: pointer;
       }
     }
   }

@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page class="overflow-hidden">
     <div class="space">
       <a href="/scroll" class="planet planet--ruben" title="Ruben" alt="Ruben">
         <q-img fit="contain" :src="require('../assets/planet/ruben.svg')" />
@@ -35,14 +35,22 @@ export default defineComponent({});
     transform: rotate(360deg);
   }
 }
+@keyframes enter {
+  from {
+    transform: scale(.2) translateX(50%) translateY(-100%);
+  }
+  to {
+    transform: translateX(-50%)
+  }
+}
 .space {
   position: absolute;
   overflow: hidden;
   height: 100%;
   width: 100%;
-  max-width: 1400px;
+  max-width: 1920px;
   left: 50%;
-  transform: translateX(-50%);
+  animation: enter 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 .planet {
   display: block;

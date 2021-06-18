@@ -1,9 +1,11 @@
 <template>
-  <q-layout>
+  <q-layout class="layout-wrapper">
     <div class="background"></div>
-    <q-page-container>
-      <router-view />
-    </q-page-container>
+    <q-scroll-area>
+      <q-page-container>
+        <router-view />
+      </q-page-container>
+    </q-scroll-area>
   </q-layout>
 </template>
 
@@ -11,7 +13,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'MainLayout'
+  name: 'MainLayout',
 });
 </script>
 <style lang="scss" scoped>
@@ -28,5 +30,9 @@ export default defineComponent({
 }
 .q-page-container::v-deep() .q-page {
   transition: min-height 0.5s ease 0s;
+}
+.layout-wrapper,
+.q-scrollarea {
+  height: 100%;
 }
 </style>

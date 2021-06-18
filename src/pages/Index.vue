@@ -6,14 +6,14 @@
         <index-intro />
       </div>
       <div class="col q-mx-lg">
-        <index-settings @start="leave = true"/>
+        <index-settings @start="leave = true" />
       </div>
     </div>
   </q-layout>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, onMounted } from 'vue';
 import IndexIntro from 'src/components/IndexIntro.vue';
 import IndexSettings from 'src/components/IndexSettings.vue';
 
@@ -21,11 +21,19 @@ export default defineComponent({
   components: { IndexIntro, IndexSettings },
   name: 'PageIndex',
   setup: () => {
-    const leave = ref(false)
+    const leave = ref(false);
+
+    // Destroy lost spaceships
+    onMounted(() => {
+      const spaceships = document.getElementsByClassName('spaceship-clone');
+      if (spaceships.length) {
+        Array.from(spaceships).forEach((ship) => ship.remove());
+      }
+    });
     return {
-      leave
-    }
-  }
+      leave,
+    };
+  },
 });
 </script>
 <style lang="scss">
@@ -35,5 +43,6 @@ export default defineComponent({
 }
 .index-leave {
   transform: rotateZ(12deg) translate(-160px, 100%);
+  overflow: hidden;
 }
 </style>
