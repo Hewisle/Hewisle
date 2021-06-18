@@ -154,7 +154,7 @@ export default defineComponent({
 
         spaceshipSVG.style.display = 'none';
         clone.style.position = 'absolute';
-        clone.classList.add('spaceship-clone');
+        clone.classList.add('spaceship-clone', `svg-${spaceshipColor.value}`);
         gsap.set(clone, from);
         gsap.set(fire, {
           height: '-50%',
