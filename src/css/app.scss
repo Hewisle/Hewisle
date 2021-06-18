@@ -59,6 +59,11 @@ body {
 h1 {
   font-size: 6rem;
   font-family: 'Spaceranger';
+
+  
+  @media screen and (max-width: $breakpoint-sm-max) {
+    font-size: 3.75rem;
+  }
 }
 
 .q-btn.q-btn--push {

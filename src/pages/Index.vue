@@ -1,12 +1,14 @@
 <template>
   <q-layout class="index column items-center" :class="leave && 'index-leave'">
     <h1>Portfolio</h1>
-    <div class="row q-mb-xl" syle="width: 80%">
-      <div class="col q-mx-lg">
-        <index-intro />
-      </div>
-      <div class="col q-mx-lg">
-        <index-settings @start="leave = true" />
+    <div class="q-pa-lg">
+      <div class="row q-col-gutter-xl">
+        <div class="col col-12 col-md-6">
+          <index-intro />
+        </div>
+        <div class="col col-12 col-md-6" style="height: 580px">
+          <index-settings @start="leave = true" />
+        </div>
       </div>
     </div>
   </q-layout>

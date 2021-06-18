@@ -1,88 +1,81 @@
 <template>
-  <div class="settings">
-    <div class="settings--wrapper">
-      <q-card class="fit">
-        <div class="column items-center justify-around full-height">
-          <div class="col col-5 col-auto full-width align-center">
-            <div class="row items-center full-height">
-              <div class="col text-center">
-                <q-btn
-                  flat
-                  round
-                  size="xl"
-                  icon="chevron_left"
-                  @click="previousSpaceship"
-                />
-              </div>
-              <div class="col col-4 full-height">
-                <q-carousel
-                  v-model="spaceship"
-                  infinite
-                  animated
-                  swipeable
-                  transition-next="ease-in-back"
-                  transition-prev="ease-out-back"
-                  class="bg-transparent"
-                  ref="selectSpaceship"
-                >
-                  <q-carousel-slide
-                    v-for="spaceship in spaceships"
-                    @click="changeSpaceshipColor"
-                    @keypress="changeSpaceshipColor"
-                    role="button"
-                    tabindex="0"
-                    :name="spaceship"
-                    :key="spaceship"
-                    :title="spaceship"
-                    :class="`spaceship svg-${spaceshipColor}`"
-                    v-html="
-                      require(`!!../assets/spaceship/${spaceship}.svg?raw`)
-                    "
-                  />
-                </q-carousel>
-              </div>
-              <div class="col text-center">
-                <q-btn
-                  size="xl"
-                  flat
-                  round
-                  icon="chevron_right"
-                  @click="nextSpaceship"
-                />
-              </div>
-            </div>
-            <div class="row items-center justify-center q-mt-lg">
-              <div class="col" style="max-width: 256px">
-                <q-input
-                  color="white"
-                  v-model="name"
-                  outlined
-                  dark
-                  label="Naam"
-                  style=""
-                  input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
-                  lazy-rules
-                />
-              </div>
-            </div>
-          </div>
-          <div
-            class="col col-auto q-mb-lg"
-            style="width: 55%; max-width: 256px"
-          >
-            <!-- <q-btn to="/space" push color="yellow" class="text-black q-my-lg"> -->
+  <div class="settings--wrapper">
+    <q-card class="fit">
+      <div class="row items-center justify-around full-height">
+        <div class="row col-12 items-center q-pt-xl" style="max-width: 700px; height: 240px;">
+          <div class="col text-center">
             <q-btn
-              @click="spaceshipLeaveAnimation"
-              push
-              color="yellow"
-              class="text-black q-my-lg"
+              flat
+              round
+              size="xl"
+              icon="chevron_left"
+              @click="previousSpaceship"
+            />
+          </div>
+          <div class="col col-4">
+            <q-carousel
+              v-model="spaceship"
+              infinite
+              animated
+              swipeable
+              transition-next="ease-in-back"
+              transition-prev="ease-out-back"
+              class="bg-transparent"
+              ref="selectSpaceship"
             >
-              Start
-            </q-btn>
+              <q-carousel-slide
+                v-for="spaceship in spaceships"
+                @click="changeSpaceshipColor"
+                @keypress="changeSpaceshipColor"
+                role="button"
+                tabindex="0"
+                :name="spaceship"
+                :key="spaceship"
+                :title="spaceship"
+                :class="`spaceship svg-${spaceshipColor}`"
+                v-html="require(`!!../assets/spaceship/${spaceship}.svg?raw`)"
+              />
+            </q-carousel>
+          </div>
+          <div class="col text-center">
+            <q-btn
+              size="xl"
+              flat
+              round
+              icon="chevron_right"
+              @click="nextSpaceship"
+            />
           </div>
         </div>
-      </q-card>
-    </div>
+        <div
+          class="col col-12 items-center justify-center q-mt-lg"
+          :class="$q.screen.lt.md && 'order-first'"
+          style="max-width: 256px"
+        >
+          <q-input
+            color="white"
+            v-model="name"
+            outlined
+            dark
+            label="Naam"
+            style=""
+            input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
+            lazy-rules
+          />
+        </div>
+        <div class="row col col-12 q-mb-lg justify-center">
+          <q-btn
+            @click="spaceshipLeaveAnimation"
+            push
+            color="yellow"
+            class="text-black q-my-lg"
+          style="max-width: 256px"
+          >
+            Start
+          </q-btn>
+        </div>
+      </div>
+    </q-card>
   </div>
 </template>
 <script lang="ts">
@@ -161,7 +154,7 @@ export default defineComponent({
 
         spaceshipSVG.style.display = 'none';
         clone.style.position = 'absolute';
-        clone.classList.add('spaceship-clone')
+        clone.classList.add('spaceship-clone');
         gsap.set(clone, from);
         gsap.set(fire, {
           height: '-50%',
@@ -170,13 +163,12 @@ export default defineComponent({
           scale: 0.5,
         });
         document.body.appendChild(clone);
-        gsap
-          .fromTo(clone, from, {
-            top: '-=200',
-            left: '+=200',
-            ease: Power4.easeIn,
-            duration: 2,
-          })
+        gsap.fromTo(clone, from, {
+          top: '-=200',
+          left: '+=200',
+          ease: Power4.easeIn,
+          duration: 2,
+        });
         gsap.to(fire, {
           scale: 1,
         });
@@ -193,7 +185,7 @@ export default defineComponent({
           delay: 3,
         });
         setTimeout(() => {
-            emit('start');
+          emit('start');
         }, 200);
         setTimeout(() => {
           void router.push('/space');
@@ -237,29 +229,27 @@ export default defineComponent({
   }
 }
 .settings {
-  max-width: 700px;
-  width: 100%;
-  height: 100%;
   &--wrapper {
     width: 100%;
     height: 100%;
     overflow: hidden;
     position: relative;
-  }
-  .q-card {
-    position: absolute;
-    background: rgba(0, 0, 0, 0.25);
-    transform: translate(-200%);
-    animation: slide-open 0.75s forwards;
-    animation-delay: 0.75s;
 
-    .q-carousel {
-      height: 100%;
+    .q-card {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.25);
+      transform: translate(-200%);
+      animation: slide-open 0.75s forwards;
+      animation-delay: 0.75s;
 
-      &__slide {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
+      .q-carousel {
+        height: 240px;
+
+        &__slide {
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
       }
     }
   }
