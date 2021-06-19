@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 259.5 228.7">
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 259.5 228.7">
   <g transform="translate(-9)">
     <path class="fill-primary-dark" d="M265 80s-50 48-127 48C62 128 12 80 12 80s50-30 126-30c77 0 127 30 127 30z" fill="#303bce" />
     <path class="fill-primary" d="M263 66c7 4 7 12 0 16-22 11-70 31-124 31-55 0-103-20-125-31-7-4-7-12 0-16 22-11 70-31 125-31 54 0 102 20 124 31z" fill="#3a47ff" />

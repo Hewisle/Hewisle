@@ -6,7 +6,7 @@
         <div class="col col-12 col-md-6">
           <index-intro />
         </div>
-        <div class="col col-12 col-md-6" style="height: 580px">
+        <div class="col col-12 col-md-6 settings">
           <index-settings @start="leave = true" />
         </div>
       </div>
@@ -38,6 +38,16 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss" scoped>
+.settings {
+  height: 580px;
+
+  @media screen and (max-width: $breakpoint-sm-max) {
+    height: 420px;
+    padding-top: 0
+  }
+}
+</style>
 <style lang="scss">
 .index {
   transform-origin: left center;

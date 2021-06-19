@@ -1,10 +1,10 @@
 <template>
   <div class="settings--wrapper">
     <q-card class="fit">
-      <div class="row items-center justify-around full-height">
+      <div class="column items-center q-pa-lg justify-around full-height">
         <div
-          class="row col-12 items-center q-pt-xl"
-          style="max-width: 700px; height: 240px"
+          class="row col items-center full-width"
+          style="max-width: 700px"
         >
           <div class="col text-center">
             <q-btn
@@ -15,7 +15,7 @@
               @click="previousSpaceship"
             />
           </div>
-          <div class="col col-4">
+          <div class="col col-4" style="height: 100%">
             <q-carousel
               v-model="spaceship"
               infinite
@@ -51,28 +51,28 @@
           </div>
         </div>
         <div
-          class="col col-12 items-center justify-center q-mt-lg"
+          class="row col col-auto items-center justify-center full-width q-pb-lg"
           :class="$q.screen.lt.md && 'order-first'"
-          style="max-width: 256px"
         >
-          <q-input
-            color="white"
-            v-model="name"
-            outlined
-            dark
-            label="Naam"
-            input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
-            lazy-rules
-            v-intersection="isInputInView"
-          />
+          <div class="col" style="max-width: 256px">
+            <q-input
+              color="white"
+              v-model="name"
+              outlined
+              dark
+              label="Naam"
+              input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
+              lazy-rules
+              v-intersection="isInputInView"
+            />
+          </div>
         </div>
-        <div class="row col col-12 q-mb-lg justify-center">
+        <div class="row col col-auto justify-center full-width">
           <q-btn
             @click="spaceshipLeaveAnimation"
             push
             color="yellow"
-            class="text-black q-my-lg"
-            style="max-width: 256px"
+            class="text-black"
           >
             Start
           </q-btn>
@@ -129,6 +129,7 @@ export default defineComponent({
       else if (e.code === 'ArrowRight') nextSpaceship();
       else if (e.code === 'ArrowUp') changeSpaceshipColor();
       else if (e.code === 'ArrowDown') changeSpaceshipColor(false);
+      else if (e.code === 'Space') setInterval(nextSpaceship, 1000);
     };
 
     // Scroll to input field when active and not visible
@@ -245,12 +246,15 @@ export default defineComponent({
       animation-delay: 0.75s;
 
       .q-carousel {
-        height: 240px;
-
+        height: 100%;
         &__slide {
           display: flex;
-          align-items: center;
+          justify-content: center;
           cursor: pointer;
+
+          &::v-deep() svg {
+            height: 100%;
+          }
         }
       }
     }

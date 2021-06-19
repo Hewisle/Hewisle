@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 268.4 278.9">
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 268.4 278.9">
   <g transform="rotate(-45 213 51)">
     <path class="fill-primary-dark" d="M0 13s74 17 101 28c7 9 27 12 32-20 6-41-133-8-133-8z" fill="#303bce"/>
     <ellipse class="fill-primary" cx="151.5" cy="54" rx="131.5" ry="38" fill="#3a47ff"/>

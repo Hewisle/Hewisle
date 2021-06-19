@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 252 260">
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 252 260">
   <g transform="rotate(-45 185 24)">
     <path class="fill-primary" fill-rule="evenodd" clip-rule="evenodd" d="M185 87l65-33-65-32H15v65h170z" fill="#3a47ff"/>
     <path class="fill-primary" fill="#3a47ff" d="M15 0h69v109H15z"/>
