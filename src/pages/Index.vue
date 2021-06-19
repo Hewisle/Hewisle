@@ -1,7 +1,7 @@
 <template>
   <q-layout class="index column items-center" :class="leave && 'index-leave'">
     <h1>Portfolio</h1>
-    <div class="q-pa-lg">
+    <div class="q-px-lg q-pb-lg" style="width: 100vw;max-width: 1920px;">
       <div class="row q-col-gutter-xl">
         <div class="col col-12 col-md-6">
           <index-intro />
@@ -40,10 +40,14 @@ export default defineComponent({
 </script>
 <style lang="scss" scoped>
 .settings {
-  height: 580px;
+  overflow: clip;
+  height: auto;
 
+  @media screen and (max-width: $breakpoint-md-max) {
+    height: 580px;
+  }
   @media screen and (max-width: $breakpoint-sm-max) {
-    height: 420px;
+    height: 500px;
     padding-top: 0
   }
 }

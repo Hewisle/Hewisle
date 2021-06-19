@@ -1,96 +1,109 @@
 <template>
-  <div class="settings--wrapper">
-    <q-card class="fit">
-      <div class="column items-center q-pa-lg justify-around full-height">
-        <div
-          class="row col items-center full-width"
-          style="max-width: 700px"
-        >
-          <div class="col text-center">
-            <q-btn
-              flat
-              round
-              size="xl"
-              icon="chevron_left"
-              @click="previousSpaceship"
-            />
-          </div>
-          <div class="col col-4" style="height: 100%">
-            <q-carousel
-              v-model="spaceship"
-              infinite
-              animated
-              swipeable
-              transition-next="ease-in-back"
-              transition-prev="ease-out-back"
-              class="bg-transparent"
-              ref="selectSpaceship"
-            >
-              <q-carousel-slide
-                v-for="spaceship in spaceships"
-                @click="changeSpaceshipColor"
-                @keypress="changeSpaceshipColor"
-                role="button"
-                tabindex="0"
-                :name="spaceship"
-                :key="spaceship"
-                :title="spaceship"
-                :class="`spaceship svg-${spaceshipColor}`"
-                v-html="require(`!!../assets/spaceship/${spaceship}.svg?raw`)"
-              />
-            </q-carousel>
-          </div>
-          <div class="col text-center">
-            <q-btn
-              size="xl"
-              flat
-              round
-              icon="chevron_right"
-              @click="nextSpaceship"
-            />
-          </div>
-        </div>
-        <div
-          class="row col col-auto items-center justify-center full-width q-pb-lg"
-          :class="$q.screen.lt.md && 'order-first'"
-        >
-          <div class="col" style="max-width: 256px">
-            <q-input
-              color="white"
-              v-model="name"
-              outlined
-              dark
-              label="Naam"
-              input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
-              lazy-rules
-              v-intersection="isInputInView"
-            />
-          </div>
-        </div>
-        <div class="row col col-auto justify-center full-width">
+  <q-card class="fit">
+    <div class="column items-center q-pa-lg justify-around full-height">
+      <div class="lt-md col-1 row full-width justify-end order-first" style="max-width: 256px">
+        <div class="col col-auto">
           <q-btn
-            @click="spaceshipLeaveAnimation"
-            push
-            color="yellow"
-            class="text-black"
-          >
-            Start
-          </q-btn>
+            icon="help"
+            class="q-pa-none"
+            flat 
+            @click="openHelpDialog"
+          ></q-btn>
         </div>
       </div>
-    </q-card>
-  </div>
+      <div class="row col-6 items-center full-width spaceship-row">
+        <div class="col col-auto text-center">
+          <q-btn
+            flat
+            round
+            size="xl"
+            icon="chevron_left"
+            @click="previousSpaceship"
+          />
+        </div>
+        <div class="col full-height">
+          <q-carousel
+            v-model="spaceship"
+            infinite
+            animated
+            swipeable
+            transition-next="ease-in-back"
+            transition-prev="ease-out-back"
+            class="bg-transparent"
+            ref="selectSpaceship"
+          >
+            <q-carousel-slide
+              v-for="spaceship in spaceships"
+              @click="changeSpaceshipColor"
+              @keypress="changeSpaceshipColor"
+              role="button"
+              tabindex="0"
+              :name="spaceship"
+              :key="spaceship"
+              :title="spaceship"
+              :class="`spaceship svg-${spaceshipColor}`"
+              v-html="require(`!!../assets/spaceship/${spaceship}.svg?raw`)"
+            />
+          </q-carousel>
+        </div>
+        <div class="col col-auto text-center">
+          <q-btn
+            size="xl"
+            flat
+            round
+            icon="chevron_right"
+            @click="nextSpaceship"
+          />
+        </div>
+      </div>
+      <div
+        class="
+          row
+          col col-3 col-md-4
+          items-center
+          justify-center
+          full-width
+          q-pb-lg
+        "
+        :class="$q.screen.lt.md && 'order-first'"
+      >
+        <div class="col" style="max-width: 256px">
+          <q-input
+            color="white"
+            v-model="name"
+            outlined
+            dark
+            label="Naam"
+            input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
+            lazy-rules
+            v-intersection="isInputInView"
+          />
+        </div>
+      </div>
+      <div class="row col col-auto col-md-2 justify-center full-width">
+        <q-btn
+          @click="spaceshipLeaveAnimation"
+          push
+          color="yellow"
+          class="text-black"
+        >
+          Start
+        </q-btn>
+      </div>
+    </div>
+  </q-card>
 </template>
 <script lang="ts">
 import { defineComponent, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from '../store';
 
-import { QCarousel } from 'quasar';
+import { QCarousel, useQuasar } from 'quasar';
 import gsap, { Power4 } from 'gsap';
 import getAbsolutePosition from '../utils/GetAbsolutePosition';
 
 import { TYPES } from '../constants/spaceship';
+import HelpDialog from './HelpDialog.vue';
 
 interface CloneElement extends HTMLElement {
   getElementById: (el: string) => HTMLElement;
@@ -106,6 +119,7 @@ export default defineComponent({
 
     const router = useRouter();
     const store = useStore();
+    const $q = useQuasar();
 
     const name = computed({
       get: () => store.state.spaceship.name,
@@ -197,6 +211,21 @@ export default defineComponent({
       }
     };
 
+    const openHelpDialog = () => {
+      $q.dialog({
+        component: HelpDialog,
+      });
+      // .onOk(() => {
+      //   console.log('OK');
+      // })
+      // .onCancel(() => {
+      //   console.log('Cancel');
+      // })
+      // .onDismiss(() => {
+      //   console.log('Called on OK or Cancel');
+      // });
+    };
+
     return {
       selectSpaceship,
       nextSpaceship,
@@ -209,6 +238,7 @@ export default defineComponent({
       name,
       spaceship,
       spaceshipColor,
+      openHelpDialog,
     };
   },
   mounted() {
@@ -231,31 +261,30 @@ export default defineComponent({
     opacity: 1;
   }
 }
-.settings {
-  &--wrapper {
-    width: 100%;
+.q-card {
+  background: rgba(0, 0, 0, 0.25);
+  transform: translate(-200%);
+  animation: slide-open 0.75s forwards;
+  animation-delay: 0.75s;
+
+  .spaceship-row {
+    max-width: 700px;
+
+    @media screen and (min-width: $breakpoint-md-min) {
+      margin-bottom: -64px;
+    }
+  }
+
+  .q-carousel {
     height: 100%;
-    overflow: hidden;
-    position: relative;
-
-    .q-card {
+    &__slide {
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
       position: absolute;
-      background: rgba(0, 0, 0, 0.25);
-      transform: translate(-200%);
-      animation: slide-open 0.75s forwards;
-      animation-delay: 0.75s;
 
-      .q-carousel {
+      &::v-deep() svg {
         height: 100%;
-        &__slide {
-          display: flex;
-          justify-content: center;
-          cursor: pointer;
-
-          &::v-deep() svg {
-            height: 100%;
-          }
-        }
       }
     }
   }

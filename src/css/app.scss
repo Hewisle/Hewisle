@@ -57,10 +57,16 @@ body {
 
 h1 {
   font-size: 6rem;
+  font-size: clamp(3rem, 8vw, 6rem);
   font-family: 'Spaceranger';
+  margin: 3.75rem;
 
   @media screen and (max-width: $breakpoint-sm-max) {
     font-size: 3.75rem;
+    font-size: clamp(3rem, 9vw, 6rem);
+    line-height: 3.75rem;
+    margin: 1rem;
+    margin: clamp(1rem, 6vw, 3.75rem);
   }
 }
 
@@ -68,6 +74,7 @@ h1 {
   font-weight: bold;
   font-size: 2.25rem;
   text-align: center;
+  min-height: 68px;
   max-height: 68px;
   max-width: 256px;
   width: 100%;
