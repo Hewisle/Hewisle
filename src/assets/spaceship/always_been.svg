@@ -1,5 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 279 94">
-  <path class="fill-primary-dark" d="M131 47c0 13-16 24-36 24S59 47 59 47s16-25 36-25 36 11 36 25z" fill="#303BCE"/>
-  <path class="fill-primary" d="M125 94c83 0 151-47 151-47S208 0 125 0A323 323 0 004 21c65 0 117 12 117 26S69 73 4 73H0c27 13 73 21 125 21z" fill-rule="evenodd" clip-rule="evenodd" fill="#3A47FF"/>
-  <circle class="stroke-primary-dark" cx="178.2" cy="48.1" r="19.2" fill="#fff" stroke="#303BCE" stroke-width="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" viewBox="0 0 269.1 276.2">
+  <g transform="rotate(-45 216 32)">
+    <path class="fill-primary-dark" d="M131 47c0 13-16 24-36 24S59 47 59 47s16-25 36-25 36 11 36 25z" fill="#303bce"/>
+    <path class="fill-primary" d="M125 94c83 0 151-47 151-47S208 0 125 0A323 323 0 004 21c65 0 117 12 117 26S69 73 4 73H0c27 13 73 21 125 21z" fill-rule="evenodd" clip-rule="evenodd" fill="#3a47ff" />
+    <circle class="stroke-primary-dark" cx="178.2" cy="48.1" r="19.2" fill="#fff" stroke="#303bce" stroke-width="6"/>
+  </g>
+  <g transform="translate(0 15)">
+    <g id="spaceship-fire" display="none">
+      <path d="M27 187a28 28 0 0139 41l-29 33s0-10 2-15l7-13s-22 6-29 10l-14 9 6-21 11-16-8 4H0l25-29z" fill="#ffa10b" />
+      <path d="M32 186c8-6 21-6 31 3 8 8 11 19 7 28a15 15 0 01-3 5l-21 24s-2-7 0-10l5-11s-17 3-23 6c-7 2-11 7-11 7l3-18 9-12-7 3-10-1 18-23z" fill="#ffbe0b" />
+    </g>
+  </g>
 </svg>
