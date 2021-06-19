@@ -2,7 +2,10 @@
   <div class="settings--wrapper">
     <q-card class="fit">
       <div class="row items-center justify-around full-height">
-        <div class="row col-12 items-center q-pt-xl" style="max-width: 700px; height: 240px;">
+        <div
+          class="row col-12 items-center q-pt-xl"
+          style="max-width: 700px; height: 240px"
+        >
           <div class="col text-center">
             <q-btn
               flat
@@ -58,9 +61,9 @@
             outlined
             dark
             label="Naam"
-            style=""
             input-style="font-family: 'Alien';letter-spacing: 4px;font-size: 14pt; "
             lazy-rules
+            v-intersection="isInputInView"
           />
         </div>
         <div class="row col col-12 q-mb-lg justify-center">
@@ -69,7 +72,7 @@
             push
             color="yellow"
             class="text-black q-my-lg"
-          style="max-width: 256px"
+            style="max-width: 256px"
           >
             Start
           </q-btn>
@@ -79,25 +82,15 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import { QCarousel } from 'quasar';
-
-import gsap, { Power4 } from 'gsap';
+import { defineComponent, ref, computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useStore } from '../store';
+
+import { QCarousel } from 'quasar';
+import gsap, { Power4 } from 'gsap';
 import getAbsolutePosition from '../utils/GetAbsolutePosition';
 
-const SPACESHIPS = ['rocky', 'its_a_trap', 'always_been', 'nyan_cat'];
-const COLORS = [
-  'blue',
-  'light-blue',
-  'teal',
-  'green',
-  'light-green',
-  'amber',
-  'deep-orange',
-  'purple',
-  'deep-purple',
-];
+import { TYPES } from '../constants/spaceship';
 
 interface CloneElement extends HTMLElement {
   getElementById: (el: string) => HTMLElement;
@@ -112,26 +105,21 @@ export default defineComponent({
     const previousSpaceship = () => selectSpaceship.value?.previous();
 
     const router = useRouter();
+    const store = useStore();
 
-    // Set default properties
-    // TODO: move to $store
-    const spaceships = SPACESHIPS;
-    const spaceship = ref(SPACESHIPS[0]);
-    const spaceshipColors = COLORS;
-    const spaceshipColor = ref(COLORS[0]);
+    const name = computed({
+      get: () => store.state.spaceship.name,
+      set: (name) => store.commit('spaceship/setName', name),
+    });
+    const spaceship = computed({
+      get: () => store.state.spaceship.type,
+      set: (type) => store.commit('spaceship/setType', type),
+    });
+    const spaceshipColor = computed(() => store.state.spaceship.color);
 
     // Navigate through spaceship colors
     const changeSpaceshipColor = (next = true) => {
-      const currentColorIndex = spaceshipColors.indexOf(spaceshipColor.value);
-      if (!next && currentColorIndex <= 0) {
-        spaceshipColor.value = spaceshipColors[spaceshipColors.length - 1];
-      } else if (!next) {
-        spaceshipColor.value = spaceshipColors[currentColorIndex - 1];
-      } else if (currentColorIndex === spaceshipColors.length - 1) {
-        spaceshipColor.value = spaceshipColors[0];
-      } else {
-        spaceshipColor.value = spaceshipColors[currentColorIndex + 1];
-      }
+      void store.dispatch('spaceship/changeColor', next);
     };
 
     // Listen globally for <-, ->, /\, \/ key navigation
@@ -141,6 +129,21 @@ export default defineComponent({
       else if (e.code === 'ArrowRight') nextSpaceship();
       else if (e.code === 'ArrowUp') changeSpaceshipColor();
       else if (e.code === 'ArrowDown') changeSpaceshipColor(false);
+    };
+
+    // Scroll to input field when active and not visible
+    const isInputInView = ({
+      isIntersecting: visible,
+      target,
+    }: IntersectionObserverEntry) => {
+      if (!visible && document.activeElement) {
+        const [input] = Array.from(target.getElementsByTagName('INPUT'));
+        if (document.activeElement === input) {
+          setTimeout(() => {
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 100);
+        }
+      }
     };
 
     // Animate spaceship before page leave
@@ -199,13 +202,12 @@ export default defineComponent({
       previousSpaceship,
       keySelectSpaceship,
       changeSpaceshipColor,
-      spaceships,
-      spaceship,
-      spaceshipColors,
-      spaceshipColor,
       spaceshipLeaveAnimation,
-      // TODO: move to $store
-      name: ref(''),
+      isInputInView,
+      spaceships: TYPES,
+      name,
+      spaceship,
+      spaceshipColor,
     };
   },
   mounted() {
