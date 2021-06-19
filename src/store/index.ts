@@ -5,6 +5,7 @@ import {
   Store as VuexStore,
   useStore as vuexUseStore,
 } from 'vuex'
+import { Cookies, LooseDictionary } from 'quasar'
 
 import spaceship, { SpaceshipModel } from './spaceship'
 
@@ -22,13 +23,19 @@ declare module '@vue/runtime-core' {
 // provide typings for `useStore` helper
 export const storeKey: InjectionKey<VuexStore<StoreModel>> = Symbol('vuex-key')
 
-export default store(function (/* { ssrContext } */) {
+export default store(function ({ ssrContext } ) {
   const Store = createStore<StoreModel>({
     modules: {
       spaceship
     },
     strict: !!process.env.DEBUGGING
   })
+
+  const cookies = process.env.SERVER
+    ? Cookies.parseSSR(ssrContext as LooseDictionary)
+    : Cookies
+
+  void Store.dispatch('spaceship/initialize', cookies)
 
   return Store;
 })

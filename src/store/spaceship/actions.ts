@@ -1,8 +1,14 @@
 import { ActionTree } from 'vuex';
 import { StateModel, StoreModel } from './state';
 import { COLORS } from 'src/constants/spaceship';
+import { Cookies } from 'quasar';
 
 const actions: ActionTree<StateModel, StoreModel> = {
+  initialize({ commit }, Cookies: Cookies) {
+    if (Cookies.has('spaceship')) {
+      commit('readCookie', Cookies.get('spaceship'))
+    }
+  },
   changeColor({ commit, state }, next = true) {
     const currentColorIndex = COLORS.indexOf(state.color);
     if (!next && currentColorIndex <= 0) {
