@@ -44,7 +44,7 @@ import { defineComponent, ref, onMounted } from 'vue';
 import { QScrollArea } from 'quasar';
 import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
-
+import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
 
 export default defineComponent({
   name: 'space',
@@ -52,16 +52,17 @@ export default defineComponent({
     const spaceArea = ref<QScrollArea>();
     const spaceReady = ref<boolean | undefined>(true);
     onMounted(() => {
-      Scrollbar.use(OverscrollPlugin);
+      Scrollbar.use(OverscrollPlugin, LimitScrollspeedPlugin);
       const scrollbar = Scrollbar.init(
-        document.querySelector('#space') as HTMLElement,
-        { damping: 0.02 }
+        document.querySelector('#space') as HTMLElement
       );
       scrollbar.track.xAxis.element.remove();
       scrollbar.track.yAxis.element.remove();
-      console.warn({ scrollbar });
+
+      // Next tick
       setTimeout(() => {
         scrollbar.update();
+        // Scroll to bottom
         scrollbar.scrollTo(0, scrollbar.size.content.height, 3000, {});
       }, 0);
     });
@@ -83,25 +84,16 @@ export default defineComponent({
   }
 }
 @keyframes enter {
-  from {
-    transform: scale(0.2) translateX(50%) translateY(-200%);
-  }
   to {
     transform: translateX(-50%);
   }
 }
 @keyframes float-in-left {
-  from {
-    transform: translateX(0%);
-  }
   to {
     transform: translateX(-50%);
   }
 }
 @keyframes float-in-right {
-  from {
-    transform: translateY(-50%) translateX(-50%) scale(0.5);
-  }
   to {
     transform: translateX(50%) scale(1);
   }
@@ -110,6 +102,7 @@ export default defineComponent({
   position: absolute;
   left: 50%;
   max-width: 1920px;
+  transform: scale(0.2) translateX(50%) translateY(-200%);
   animation: enter 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   height: 100vh;
 
@@ -198,8 +191,7 @@ export default defineComponent({
       left: unset;
       width: 32%;
       left: 69%;
-      bottom: -20%;
-      max-height: 30%;
+      bottom: -40%;
       transform: translateY(-50%) translateX(-50%) scale(0.5);
       animation: float-in-right 5s ease forwards;
       &:hover {
