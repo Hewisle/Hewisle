@@ -63,10 +63,22 @@ h1 {
 
   @media screen and (max-width: $breakpoint-sm-max) {
     font-size: 3.75rem;
-    font-size: clamp(3rem, 9vw, 6rem);
+    font-size: clamp(3rem, 9vw, 3.75rem);
     line-height: 3.75rem;
     margin: 1rem;
     margin: clamp(1rem, 6vw, 3.75rem);
+  }
+}
+
+h2 {
+  font-size: 3.75rem;
+  font-size: clamp(3rem, 8vw, 3.75rem);
+  font-family: 'Spaceranger';
+  margin: 3.75rem;
+
+  @media screen and (max-width: $breakpoint-sm-max) {
+    font-size: clamp(2.25rem, 6vw, 3.75rem);
+    line-height: 3.75rem;
   }
 }
 

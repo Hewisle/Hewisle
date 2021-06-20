@@ -215,15 +215,6 @@ export default defineComponent({
       $q.dialog({
         component: HelpDialog,
       });
-      // .onOk(() => {
-      //   console.log('OK');
-      // })
-      // .onCancel(() => {
-      //   console.log('Cancel');
-      // })
-      // .onDismiss(() => {
-      //   console.log('Called on OK or Cancel');
-      // });
     };
 
     return {

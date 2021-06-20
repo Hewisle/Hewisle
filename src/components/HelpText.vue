@@ -8,7 +8,8 @@
   </span>
   <template v-if="$q.screen.gt.sm && intro">Maar eerst: m</template>
   <span v-if="$q.screen.gt.sm || !intro">
-  <template v-if="!$q.screen.gt.sm && !intro">M</template>aak je eigen, unieke ruimteschip om door onze website te navigeren.
+    <template v-if="!$q.screen.gt.sm && !intro">M</template>aak je eigen, unieke
+    ruimteschip om door onze website te navigeren.
     <ol>
       <li>Gebruik de pijltjes(toetsen) om door vormen te bladeren.</li>
       <li>Klik op het ruimteschip om van kleur te veranderen.</li>
