@@ -19,7 +19,7 @@ module.exports = configure(function (ctx) {
           enabled: ctx.dev,
           files: './src/**/*.{ts,tsx,js,jsx,vue}',
         },
-      }
+      },
     },
 
     // https://v2.quasar.dev/quasar-cli/prefetch-feature
@@ -28,14 +28,10 @@ module.exports = configure(function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
-    boot: [
-      'axios',
-    ],
+    boot: ['axios'],
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
-    css: [
-      'app.scss'
-    ],
+    css: ['app.scss'],
 
     // https://github.com/quasarframework/quasar/tree/dev/extras
     extras: [
@@ -76,24 +72,24 @@ module.exports = configure(function (ctx) {
       chainWebpack(/* chain */) {
         //
       },
-      extendWebpack(cfg, { isServer, isClient }) {
+      extendWebpack(cfg /*, { isServer, isClient } */) {
         cfg.module.rules.push({
           oneOf: [
             {
               resourceQuery: /raw/,
               type: 'asset/source',
-              exclude: /(node_modules|quasar)/
+              exclude: /(node_modules|quasar)/,
             },
-          ]
-        })
-      }
+          ],
+        });
+      },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
     devServer: {
       https: false,
       port: 8080,
-      open: false // opens browser window automatically
+      open: false, // opens browser window automatically
     },
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -111,7 +107,7 @@ module.exports = configure(function (ctx) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['Cookies', 'Dialog']
+      plugins: ['Cookies', 'Dialog'],
     },
 
     // animations: 'all', // --- includes all animations
@@ -128,7 +124,7 @@ module.exports = configure(function (ctx) {
       prodPort: 4000, // The default port that the production server should use
       // (gets superseded if process.env.PORT is specified at runtime)
 
-      maxAge: 1000 * 60 * 60 * 24 * 30,
+      maxAge: 1000 * 60 * 60 * 24,
       // Tell browser when a file from the server should expire from cache (in ms)
 
       chainWebpackWebserver(/* chain */) {
@@ -138,8 +134,8 @@ module.exports = configure(function (ctx) {
       middlewares: [
         ctx.prod ? 'compression' : '',
         ctx.prod ? 'websocket' : '',
-        'render' // keep this as last one
-      ]
+        'render', // keep this as last one
+      ],
     },
 
     // https://v2.quasar.dev/quasar-cli/developing-pwa/configuring-pwa
@@ -147,7 +143,7 @@ module.exports = configure(function (ctx) {
       workboxPluginMode: 'GenerateSW', // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {
         skipWaiting: true,
-        clientsClaim: true
+        clientsClaim: true,
       }, // only for GenerateSW
 
       // for the custom service worker ONLY (/src-pwa/custom-service-worker.[js|ts])
@@ -168,25 +164,25 @@ module.exports = configure(function (ctx) {
           {
             src: 'icons/icon-16x16.png',
             sizes: '16x16',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-32x32.png',
             sizes: '32x32',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-192x192.png',
             sizes: '192x192',
-            type: 'image/png'
+            type: 'image/png',
           },
           {
             src: 'icons/icon-512x512.png',
             sizes: '512x512',
-            type: 'image/png'
-          }
-        ]
-      }
+            type: 'image/png',
+          },
+        ],
+      },
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/developing-cordova-apps/configuring-cordova
@@ -196,7 +192,7 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/developing-capacitor-apps/configuring-capacitor
     capacitor: {
-      hideSplashscreen: true
+      hideSplashscreen: true,
     },
 
     // Full list of options: https://v2.quasar.dev/quasar-cli/developing-electron-apps/configuring-electron
@@ -205,13 +201,11 @@ module.exports = configure(function (ctx) {
 
       packager: {
         // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
-
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
         // osxSign: '',
         // protocol: 'myapp://path',
-
         // Windows only
         // win32metadata: { ... }
       },
@@ -219,7 +213,7 @@ module.exports = configure(function (ctx) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'hewisle'
+        appId: 'hewisle',
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
@@ -233,6 +227,6 @@ module.exports = configure(function (ctx) {
         // do something with the Electron main process Webpack cfg
         // extendWebpackPreload also available besides this chainWebpackPreload
       },
-    }
-  }
+    },
+  };
 });
