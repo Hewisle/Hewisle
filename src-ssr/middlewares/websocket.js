@@ -7,7 +7,7 @@ export default ssrMiddleware(({ app }) => {
       origin: "*"
     },
     transports: ['websocket'],
-    // path: '/itsi-v2/'
+    path: '/itsi-v2/'
   })
 
   //Whenever someone connects this gets executed
