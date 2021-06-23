@@ -29,10 +29,7 @@
             :title="nameCaptialize"
             :alt="nameCaptialize"
           >
-            <q-img
-              fit="contain"
-              :src="require(`../assets/planet/${name}.svg`)"
-            />
+            <planet :config="globalConfig[name]" :name="name" />
           </a>
         </div>
         <div class="col-2">
@@ -52,15 +49,72 @@
     </div>
   </q-page>
 </template>
-<script>
+<script lang="ts">
 import { defineComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
+import Planet from '../components/Planet.vue';
+
+interface GlobalConfig {
+  [index: string]: {
+    [index: string]: {
+      play: string[];
+      href: string;
+    };
+  };
+}
 
 export default defineComponent({
+  components: {
+    Planet,
+  },
   setup() {
-    const {
-      params: { name },
-    } = useRoute();
+    const globalConfig: GlobalConfig = {
+      anna: {
+        boven: { play: ['Giraf 1 Outlines', 'Giraf 2 Outlines'], href: '' },
+        links: {
+          play: ['Bloem 1 Outlines', 'Bloem 2 Outlines', 'Bloem 3 Outlines'],
+          href: '',
+        },
+        rechts: { play: ['Satelliet Outlines'], href: '' },
+      },
+      dylan: {
+        onder: {
+          play: ['Ikeabord 3 Outlines', 'Ikeabord 4 Outlines'],
+          href: '',
+        },
+        links: { play: ['Cola Outlines'], href: '' },
+        rechts: { play: ['Hans Outlines'], href: '' },
+      },
+      ruben: {
+        onder: { play: [], href: '' },
+        links: {
+          play: [
+            'Blok 1',
+            'Blok 2',
+            'Blok 3',
+            'Blok 4',
+            'Blok 5',
+            'Blok 6',
+            'Blok 7',
+            'Blok 8',
+            'Blok 9',
+            'Blok 10',
+            'Blok 11',
+            'Blok 12',
+            'Blok 13',
+            'Blok 14',
+            'Blok 15',
+            'Blok 16',
+            'Vergrootglas 1 Outlines',
+            'Vergrootglas 2 Outlines',
+          ],
+          href: '',
+        },
+        rechts: { play: [], href: '' },
+      },
+    };
+    const name = useRoute().params.name as string;
+
     const nameCaptialize = computed(() => {
       if (!name) return '';
       const value = name.toString();
@@ -70,6 +124,7 @@ export default defineComponent({
     return {
       name,
       nameCaptialize,
+      globalConfig,
     };
   },
 });

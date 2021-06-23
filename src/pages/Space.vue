@@ -207,9 +207,3 @@ export default defineComponent({
   }
 }
 </style>
-<style lang="scss">
-.no-touchy {
-  pointer-events: none;
-  touch-action: none;
-}
-</style>

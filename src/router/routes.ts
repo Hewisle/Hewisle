@@ -10,7 +10,6 @@ const routes: RouteRecordRaw[] = [
       { path: '/space', component: () => import('src/pages/Space.vue') },
       { path: '/space/:name(anna|ruben|bianca|dylan)', component: () => import('src/pages/World.vue') },
       { path: '/space/:name(anna|ruben|bianca|dylan)/:country(north-east|north-west|south)', component: () => import('src/pages/Country.vue') },
-      { path: '/lottie', component: () => import('src/pages/Lottie.vue') },
       { path: '/lottie-anna', component: () => import('src/pages/LottieAnna.vue') },
     ],
   },

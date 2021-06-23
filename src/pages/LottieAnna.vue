@@ -1,22 +1,23 @@
 <template>
-  <div class="fullscreen">
-    <Lottie :animationData="lottie"/>
-  </div>
+  <lottie-planet :config="config" name="anna" style="height: 100vh; width: 100vw;"/>
 </template>
-
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
-import Lottie from 'src/components/Lottie.vue';
-import lottieJSON from '../assets/planet/anna-animated.json'
+import { defineComponent } from 'vue';
+import LottiePlanet from 'src/components/Planet.vue';
 
 export default defineComponent({
-  components: { Lottie },
-  name: 'PageLottieAnna',
+  components: {
+    LottiePlanet,
+  },
   setup() {
-    const lottie = ref(lottieJSON)
-    return {
-      lottie
-    }
-  }
+    const config = {
+      boven: { play: ['Giraf 1 Outlines', 'Giraf 2 Outlines'] },
+      links: {
+        play: ['Bloem 1 Outlines', 'Bloem 2 Outlines', 'Bloem 3 Outlines'],
+      },
+      rechts: { play: ['Satelliet Outlines'] },
+    };
+    return { config };
+  },
 });
 </script>
