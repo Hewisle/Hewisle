@@ -14,7 +14,7 @@
 </template>
 <script lang="ts">
 import { defineComponent } from 'vue';
-import LottiePlanet from 'src/components/Planet.vue';
+import LottiePlanet from 'src/components/Country.vue';
 
 export default defineComponent({
   components: {
