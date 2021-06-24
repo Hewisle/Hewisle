@@ -24,11 +24,17 @@ export default defineComponent({
     name: {
       type: String,
     },
+    autoplay: {
+      type: Boolean,
+    },
+    space: {
+      type: String
+    }
   },
   setup(props) {
     const name = props.name as string;
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const lottieJSON = require(`../assets/planet/${name}.json`) as unknown;
+    const lottieJSON = require(`../assets/${props.space || 'planet'}/${name}.json`) as unknown;
     const lottie = ref(lottieJSON);
     const multiLayer = ref(PlanetLayers);
 
@@ -52,8 +58,10 @@ export default defineComponent({
         });
       };
 
-      for (const [, anim] of layerAnims) {
-        anim.stop();
+      if (!props.autoplay) {
+        for (const [, anim] of layerAnims) {
+          anim.stop();
+        }
       }
 
       for (const [name, layer] of layerRefs) {
@@ -81,7 +89,7 @@ export default defineComponent({
         }
       }
 
-      if (process.env.DEV) console.warn(layerAnims, layerRefs)
+      if (process.env.DEV) console.warn(layerAnims, layerRefs);
     });
 
     return {
