@@ -1,12 +1,15 @@
 <template>
   <q-card class="fit">
     <div class="column items-center q-pa-lg justify-around full-height">
-      <div class="lt-md col-1 row full-width justify-end order-first" style="max-width: 256px">
+      <div
+        class="lt-md col-1 row full-width justify-end order-first"
+        style="max-width: 256px"
+      >
         <div class="col col-auto">
           <q-btn
             icon="help"
             class="q-pa-none"
-            flat 
+            flat
             @click="openHelpDialog"
           ></q-btn>
         </div>
@@ -182,17 +185,23 @@ export default defineComponent({
         });
         document.body.appendChild(clone);
         gsap.fromTo(clone, from, {
-          top: '-=200',
-          left: '+=200',
+          x: '+=200',
+          y: '-=200',
           ease: Power4.easeIn,
           duration: 2,
+          width: '200px',
+          height: '200px',
         });
         gsap.to(fire, {
           scale: 1,
         });
         gsap.to(clone, {
-          left: window.innerWidth * 0.45,
-          top: window.innerHeight * 0.75,
+          x: window.innerWidth * 0.45,
+          y: window.innerHeight * 0.75,
+          yPercent: -50,
+          xPercent: -50,
+          left: 0,
+          top: 0,
           duration: 3,
           delay: 2,
         });
@@ -263,6 +272,7 @@ export default defineComponent({
 
     @media screen and (min-width: $breakpoint-md-min) {
       margin-bottom: -64px;
+      margin-top: 64px;
     }
   }
 
@@ -282,6 +292,10 @@ export default defineComponent({
 }
 </style>
 <style lang="scss">
+.spaceship-clone {
+  pointer-events: none;
+}
+
 $colors: 'blue', 'light-blue', 'teal', 'green', 'light-green', 'amber',
   'deep-orange', 'purple', 'deep-purple';
 
