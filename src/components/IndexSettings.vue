@@ -21,6 +21,7 @@
             round
             size="xl"
             icon="chevron_left"
+            color="yellow"
             @click="previousSpaceship"
           />
         </div>
@@ -56,6 +57,7 @@
             round
             icon="chevron_right"
             @click="nextSpaceship"
+            color="yellow"
           />
         </div>
       </div>

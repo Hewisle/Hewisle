@@ -5,35 +5,21 @@ const UpdateFavicon = (timeout = 1000, el: CloneElement | null = null) => {
     ) as HTMLLinkElement;
     const svg =
       el || (document.querySelector('.q-carousel svg') as CloneElement);
-    const colors1 = svg.getElementsByClassName('fill-primary-dark');
-    const colors2 = svg.getElementsByClassName('fill-primary');
-    const colors3 = svg.getElementsByClassName('stroke-primary-dark');
+    const fills = svg.querySelectorAll('[class^="fill-primary"]');
+    // const stroke = svg.getElementsByClassName('stroke-primary-dark');
 
-    for (const color of colors1) {
-      const fill = window.getComputedStyle(color).getPropertyValue('fill');
-      color.setAttribute('fill', fill);
-    }
-    for (const color of colors2) {
-      const fill = window.getComputedStyle(color).getPropertyValue('fill');
-      color.setAttribute('fill', fill);
-    }
-    for (const color of colors3) {
-      const stroke = window
-        .getComputedStyle(color)
-        .getPropertyValue('fill');
-      color.setAttribute('stroke', stroke);
+    for (const el of fills) {
+      const value = window.getComputedStyle(el).getPropertyValue('fill');
+      el.setAttribute('fill', value);
     }
     const clone = svg.cloneNode(true) as CloneElement;
     const fire = clone.getElementById('spaceship-fire')
     clone.setAttribute('style', '');
 
     fire.setAttribute('display', 'block')
-    const href =
-      'data:image/svg+xml;base64,' +
-      btoa(new XMLSerializer().serializeToString(clone));
-    console.warn({ href });
+    const SVGEncoded = btoa(new XMLSerializer().serializeToString(clone));
 
-    favicon.href = href;
+    favicon.href = 'data:image/svg+xml;base64,' + SVGEncoded;
   }, timeout);
 };
 

@@ -1,8 +1,11 @@
 <template>
   <span v-if="intro">
-    Welkom op de portfoliowebsite van Anna Sivera van der Sluijs, Bianca van der
-    Heide, Dylan Lemmers en Ruben de Wit. Maak een ruimtereis langs onze
-    planeten en bekijk verschillende projecten.
+    Welkom op de portfoliowebsite van
+    <strong>Anna Sivera van der Sluijs</strong>,
+    <strong>Bianca van der Heide</strong>, 
+    <strong>Dylan Lemmers</strong> en
+    <strong>Ruben de Wit</strong>. Maak een ruimtereis langs onze planeten en
+    bekijk verschillende projecten.
     <br />
     <br />
   </span>
