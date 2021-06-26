@@ -1,33 +1,12 @@
 <template>
   <div id="space" ref="spaceArea">
     <div class="space-wrapper">
-      <a
-        href="space/ruben"
-        class="planet planet--ruben"
-        title="Ruben"
-        alt="Ruben"
-      >
-        <q-img fit="contain" :src="require('../assets/planet/ruben.svg')" />
-      </a>
-      <a href="space/anna" class="planet planet--anna" title="Anna" alt="Anna">
-        <q-img fit="contain" :src="require('../assets/planet/anna.svg')" />
-      </a>
-      <a
-        href="space/dylan"
-        class="planet planet--dylan"
-        title="Dylan"
-        alt="Dylan"
-      >
-        <q-img fit="contain" :src="require('../assets/planet/dylan.svg')" />
-      </a>
-      <a
-        href="space/bianca"
-        class="planet planet--bianca"
-        title="Bianca"
-        alt="Bianca"
-      >
-        <q-img fit="contain" :src="require('../assets/planet/bianca.svg')" />
-      </a>
+      <planet-space
+        v-for="name of ['ruben', 'anna', 'dylan', 'bianca']"
+        :class="`planet planet--${name}`"
+        :key="name"
+        :name="name"
+      />
       <div class="launch-pad"></div>
     </div>
   </div>
@@ -43,10 +22,13 @@ import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
 import createSpareShip from '../utils/CreateSpareShip';
 
+import PlanetSpace from './PlanetSpace.vue';
+
 Scrollbar.use(OverscrollPlugin, LimitScrollspeedPlugin);
 
 export default defineComponent({
   name: 'space',
+  components: {  PlanetSpace },
   setup() {
     const spaceArea = ref<QScrollArea>();
     const position = ref({ x: 0, y: 0 });
@@ -64,7 +46,7 @@ export default defineComponent({
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
       ) as HTMLCollectionOf<CloneElement>;
-      let timeout = 2500
+      let timeout = 2500;
 
       position.value = {
         x: window.innerWidth * 0.45,
@@ -86,7 +68,7 @@ export default defineComponent({
 
       if (!spaceship) {
         spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
-        timeout = 500
+        timeout = 500;
       }
 
       window.addEventListener('mousemove', (e) => {
@@ -201,6 +183,7 @@ export default defineComponent({
   max-width: 40%;
   position: absolute;
   transition: all 0.5s;
+  text-decoration: none;
 
   &:hover {
     transform: scale(1.02);
@@ -274,7 +257,7 @@ export default defineComponent({
     }
   }
 
-  .q-img {
+  &::v-deep() .q-img {
     width: 100%;
     height: 100%;
     animation: rotate 180s linear infinite;
