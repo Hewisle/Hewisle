@@ -11,7 +11,7 @@ export default defineComponent({
     onMounted(() => {
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
-      ) as HTMLCollectionOf<SVGElement>;
+      ) as HTMLCollectionOf<CloneElement>;
       if (spaceship) updateFavicon(50, spaceship);
     });
   },

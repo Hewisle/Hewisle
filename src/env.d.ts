@@ -16,3 +16,7 @@ declare module 'smooth-scrollbar/dist/plugins/overscroll';
 declare module '*.png';
 declare module '*.jpg';
 declare module '*.svg';
+
+interface CloneElement extends SVGElement {
+  getElementById: (el: string) => HTMLElement;
+}

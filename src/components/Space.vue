@@ -41,24 +41,17 @@ import gsap from 'gsap';
 import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
+import createSpareShip from '../utils/CreateSpareShip';
 
-interface CloneElement extends SVGElement {
-  getElementById: (el: string) => HTMLElement;
-}
+Scrollbar.use(OverscrollPlugin, LimitScrollspeedPlugin);
 
 export default defineComponent({
   name: 'space',
   setup() {
-    const rad = ref(0);
     const spaceArea = ref<QScrollArea>();
-    const position = ref({
-      x: 0,
-      y: 0,
-    });
-    const mouse = ref({
-      x: 0,
-      y: 0,
-    });
+    const position = ref({ x: 0, y: 0 });
+    const mouse = ref({ x: 0, y: 0 });
+
     const store = useStore();
 
     const spaceshipType = computed({
@@ -66,17 +59,18 @@ export default defineComponent({
       set: (type) => store.commit('spaceship/setType', type),
     });
     const spaceshipColor = computed(() => store.state.spaceship.color);
+
     onMounted(() => {
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
       ) as HTMLCollectionOf<CloneElement>;
+      let timeout = 2500
 
       position.value = {
         x: window.innerWidth * 0.45,
         y: window.innerHeight * 0.75,
       };
 
-      Scrollbar.use(OverscrollPlugin, LimitScrollspeedPlugin);
       const scrollbar = Scrollbar.init(
         document.querySelector('#space') as HTMLElement
       );
@@ -91,30 +85,8 @@ export default defineComponent({
       }, 0);
 
       if (!spaceship) {
-        const template = document.createElement('template');
-        const rawSVG =
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
-          require(`!!../assets/spaceship/${spaceshipType.value}.svg?raw`) as string;
-        template.innerHTML = rawSVG;
-        spaceship = template.content.firstChild as CloneElement;
-        spaceship.style.position = 'absolute';
-        spaceship.classList.add(
-          'spaceship-clone',
-          `svg-${spaceshipColor.value}`
-        );
-
-        document.body.appendChild(spaceship);
-        gsap.set(spaceship, {
-          x: window.innerWidth * 0.45,
-          y: window.innerHeight * 0.75,
-          left: 0,
-          top: 0,
-
-          width: '200px',
-          height: '200px',
-          yPercent: -50,
-          xPercent: -50,
-        });
+        spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
+        timeout = 500
       }
 
       window.addEventListener('mousemove', (e) => {
@@ -161,7 +133,7 @@ export default defineComponent({
           ySet(position.value.y);
         });
 
-        gsap.set(spaceshipFire, {
+        gsap.to(spaceshipFire, {
           height: '-50%',
           display: 'block',
           scale: 0.5,
@@ -169,13 +141,10 @@ export default defineComponent({
           yPercent: -12.5,
           xPercent: 12.5,
         });
-      }, 2500);
+      }, timeout);
     });
 
-    return {
-      spaceArea,
-      rad,
-    };
+    return { spaceArea };
   },
 });
 </script>

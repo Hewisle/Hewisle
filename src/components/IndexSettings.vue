@@ -85,7 +85,8 @@
       </div>
       <div class="row col col-auto col-md-2 justify-center full-width">
         <q-btn
-          @click="spaceshipLeaveAnimation"
+          to="/space"
+          @click.prevent="spaceshipLeaveAnimation"
           push
           color="yellow"
           class="text-black"
@@ -109,16 +110,12 @@ import UpdateFavicon from '../utils/UpdateFavicon';
 import { TYPES } from '../constants/spaceship';
 import HelpDialog from './HelpDialog.vue';
 
-interface CloneElement extends SVGElement {
-  getElementById: (el: string) => HTMLElement;
-}
-
 export default defineComponent({
   name: 'IndexSettings',
   setup(props, { emit }) {
     // Register local navigation functions
     const selectSpaceship = ref<QCarousel>();
-    const updateFavicon = UpdateFavicon
+    const updateFavicon = UpdateFavicon;
 
     const router = useRouter();
     const store = useStore();
@@ -134,6 +131,7 @@ export default defineComponent({
     });
     const spaceshipColor = computed(() => store.state.spaceship.color);
 
+    // Navigate through spaceship types
     const nextSpaceship = () => {
       selectSpaceship.value?.next();
       updateFavicon();
@@ -214,6 +212,7 @@ export default defineComponent({
           left: 0,
           top: 0,
           duration: 3,
+
           delay: 2,
         });
         gsap.to(fire, {
