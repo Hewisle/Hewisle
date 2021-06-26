@@ -10,12 +10,13 @@ import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 // import gsap from 'gsap';
 
-const BREAKPOINT = 1023
+const BREAKPOINT = 1023;
 
 class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
   static pluginName = 'horizontalScroll';
   transformDelta(delta: { x: number; y: number }, fromEvent: Event) {
-    if (!/wheel/.test(fromEvent.type) || window.innerWidth < BREAKPOINT) return delta;
+    if (!/wheel/.test(fromEvent.type) || window.innerWidth < BREAKPOINT)
+      return delta;
     const { x, y } = delta;
     return {
       y: 0,
@@ -44,6 +45,10 @@ export default defineComponent({
   overflow: clip;
   max-width: 100vw;
   padding: 0 3rem 3rem 3rem;
+
+  @media screen and (max-width: $breakpoint-sm-max) {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+  }
 
   &::v-deep() .scroll-content {
     height: 100%;
