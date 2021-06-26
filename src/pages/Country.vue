@@ -14,15 +14,12 @@
   <div class="custom-background--bottom" :class="`${color}-variant`"></div>
   <div class="column no-wrap">
     <header class="col col-1"></header>
-    <horizontal-scroll
-      :class="`${color}-variant`"
-      class="col col-9"
-    >
+    <horizontal-scroll :class="`${color}-variant`" class="col col-9">
       <div class="horizontal-row">
         <component :is="content" />
       </div>
     </horizontal-scroll>
-    <div class="col col-2 absolute full-width" >
+    <div class="col col-2 absolute full-width animated-bottom">
       <country
         class="fit"
         space="country"
@@ -43,6 +40,7 @@ const COUNTRIES: { [index: string]: string } = {
   'south-east': 'se',
   'south-west': 'sw',
   'north-east': 'ne',
+  north: 'north',
 };
 export default {
   components: { HorizontalScroll, Country },
@@ -77,7 +75,8 @@ $COLUMN_GAP: 200px;
   top: 50vh;
   height: 50vh;
 }
-.custom-background, .custom-background--bottom {
+.custom-background,
+.custom-background--bottom {
   position: absolute;
   left: 0;
   right: 0;
@@ -145,6 +144,11 @@ $COLUMN_GAP: 200px;
       }
     }
   }
+}
+
+.animated-bottom {
+  bottom: 0;
+  backdrop-filter: blur(6px);
 }
 .red-variant {
   fill: $red-transparent;
