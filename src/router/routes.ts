@@ -6,7 +6,6 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/scroll', component: () => import('src/pages/Scroll.vue') },
       { path: '/space', component: () => import('src/pages/Space.vue') },
       { path: '/space/:name(anna|ruben|bianca|dylan)', component: () => import('src/pages/World.vue') },
       { path: '/space/:name(anna|ruben|bianca|dylan)/:country(north|north-east|north-west|south|south-east|south-west)', component: () => import('src/pages/Country.vue') },

@@ -1,0 +1,8 @@
+@mixin content {
+  font-size: 1.2rem;
+  @media screen and (max-width: 1023px) {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+  line-height: 2.34rem;
+}

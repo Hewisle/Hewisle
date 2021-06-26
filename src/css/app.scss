@@ -1,4 +1,6 @@
 // app global css in SCSS form
+@import './mixins';
+
 @font-face {
   font-family: 'Cairo';
   font-style: normal;
@@ -78,6 +80,10 @@ h2 {
     font-size: clamp(2.25rem, 6vw, 3.75rem);
     line-height: 3.75rem;
   }
+}
+
+p {
+  @include content;
 }
 
 .q-btn.q-btn--push {

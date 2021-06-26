@@ -11,24 +11,24 @@
       d="M102 45L0 46v236h723V101c-26-13-87-26-172-35-119-14-280-21-449-21z"
     />
   </svg>
+  <div class="custom-background--bottom" :class="`${color}-variant`"></div>
   <div class="column no-wrap">
     <header class="col col-1"></header>
     <horizontal-scroll
       :class="`${color}-variant`"
-      class="col"
-      style="padding-top: 0"
+      class="col col-9"
     >
       <div class="horizontal-row">
         <component :is="content" />
       </div>
     </horizontal-scroll>
-    <div class="col col-2" :class="`${color}-variant`">
-      <!-- <country
+    <div class="col col-2 absolute full-width" >
+      <country
         class="fit"
         space="country"
         :name="`${name}-${countryCode}`"
         autoplay
-      /> -->
+      />
     </div>
   </div>
 </template>
@@ -69,14 +69,19 @@ export default {
 <style lang="scss" scoped>
 $COLUMN_WIDTH: 500px;
 $COLUMN_GAP: 200px;
-
 .custom-background {
-  position: absolute;
   top: 0;
+  height: 100%;
+}
+.custom-background--bottom {
+  top: 50vh;
+  height: 50vh;
+}
+.custom-background, .custom-background--bottom {
+  position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 100%;
   width: 100%;
   z-index: -1;
 }
@@ -88,13 +93,16 @@ $COLUMN_GAP: 200px;
 }
 .horizontal-row {
   flex-wrap: nowrap;
-  column-width: $COLUMN_WIDTH;
-  column-gap: $COLUMN_GAP;
 
   color: black;
   height: 100%;
-  padding: 0 2rem;
-  margin-right: 192px;
+
+  @media screen and (min-width: $breakpoint-md-min) {
+    column-width: $COLUMN_WIDTH;
+    column-gap: $COLUMN_GAP;
+    padding: 0 2rem;
+    margin-right: 192px;
+  }
 
   &::v-deep() {
     h2 {
@@ -105,10 +113,6 @@ $COLUMN_GAP: 200px;
     figure,
     iframe {
       break-before: column;
-    }
-    p {
-      font-size: 1.25rem;
-      line-height: 2.24rem;
     }
 
     iframe {

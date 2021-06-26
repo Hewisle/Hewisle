@@ -1,5 +1,5 @@
 <template>
-  <q-layout class="q-pa-xl" style="min-height: 1px" id="scroll-x">
+  <q-layout style="min-height: 1px" id="scroll-x">
     <slot />
   </q-layout>
 </template>
@@ -10,10 +10,12 @@ import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 // import gsap from 'gsap';
 
+const BREAKPOINT = 1023
+
 class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
   static pluginName = 'horizontalScroll';
   transformDelta(delta: { x: number; y: number }, fromEvent: Event) {
-    if (!/wheel/.test(fromEvent.type)) return delta;
+    if (!/wheel/.test(fromEvent.type) || window.innerWidth < BREAKPOINT) return delta;
     const { x, y } = delta;
     return {
       y: 0,
@@ -39,8 +41,9 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 #scroll-x {
-  overflow: hidden;
+  overflow: clip;
   max-width: 100vw;
+  padding: 0 3rem 3rem 3rem;
 
   &::v-deep() .scroll-content {
     height: 100%;

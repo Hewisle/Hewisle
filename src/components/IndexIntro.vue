@@ -15,6 +15,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import '../css/mixins';
 @keyframes float-in {
   0% {
     opacity: 0;
@@ -26,11 +27,10 @@ export default defineComponent({
   }
 }
 .intro {
-  line-height: 37.5px;
   opacity: 0;
   transform: translateY(-10%);
   animation: float-in 1s forwards;
-  font-size: 1.2rem;
+  @include content;
 
   ul,
   ol {
