@@ -10,17 +10,22 @@ export default defineComponent({
   setup(props) {
     const country = ref();
 
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const animationData = require(`../assets/${props.space || 'planet'}/${
-      props.name as string
-    }.json`) as unknown;
+    let animationData: unknown;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      animationData = require(`../assets/${props.space || 'planet'}/${
+        props.name as string
+      }.json`) as unknown;
+    } catch {}
 
     onMounted(() => {
-      Lottie.loadAnimation({
-        container: country.value as HTMLElement,
-        renderer: 'svg',
-        animationData,
-      });
+      if (animationData) {
+        Lottie.loadAnimation({
+          container: country.value as HTMLElement,
+          renderer: 'svg',
+          animationData,
+        });
+      }
     });
 
     return { country };

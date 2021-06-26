@@ -1,6 +1,6 @@
 <template>
   <section class="planet-lottie">
-    <PlanetLayers ref="multiLayer" :animationData="lottie" />
+    <PlanetLayers ref="multiLayer" :animationData="lottie" v-if="lottie" />
   </section>
 </template>
 
@@ -28,13 +28,18 @@ export default defineComponent({
       type: Boolean,
     },
     space: {
-      type: String
-    }
+      type: String,
+    },
   },
   setup(props) {
     const name = props.name as string;
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const lottieJSON = require(`../assets/${props.space || 'planet'}/${name}.json`) as unknown;
+    let lottieJSON: unknown;
+    try {
+      // eslint-disable-next-line @typescript-eslint/no-var-requires
+      lottieJSON = require(`../assets/${
+        props.space || 'planet'
+      }/${name}.json`) as unknown;
+    } catch {}
     const lottie = ref(lottieJSON);
     const multiLayer = ref(PlanetLayers);
 
