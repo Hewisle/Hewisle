@@ -120,12 +120,15 @@ $COLUMN_GAP: 200px;
       border-radius: 6px;
     }
 
+    figure {
+      max-width: $COLUMN_WIDTH;
+    }
+
     figure,
     iframe {
       position: relative;
       margin: 1rem 0;
       max-height: 100%;
-      max-width: $COLUMN_WIDTH;
 
       .q-img {
         border-radius: 6px;
