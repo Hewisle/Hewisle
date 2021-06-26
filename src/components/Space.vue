@@ -42,6 +42,10 @@ import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
 
+interface CloneElement extends SVGElement {
+  getElementById: (el: string) => HTMLElement;
+}
+
 export default defineComponent({
   name: 'space',
   setup() {
@@ -65,7 +69,7 @@ export default defineComponent({
     onMounted(() => {
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
-      ) as HTMLCollectionOf<SVGElement>;
+      ) as HTMLCollectionOf<CloneElement>;
 
       position.value = {
         x: window.innerWidth * 0.45,
@@ -87,13 +91,12 @@ export default defineComponent({
       }, 0);
 
       if (!spaceship) {
-        // const spaceshipType =
         const template = document.createElement('template');
         const rawSVG =
           // eslint-disable-next-line @typescript-eslint/no-var-requires
           require(`!!../assets/spaceship/${spaceshipType.value}.svg?raw`) as string;
         template.innerHTML = rawSVG;
-        spaceship = template.content.firstChild as SVGElement;
+        spaceship = template.content.firstChild as CloneElement;
         spaceship.style.position = 'absolute';
         spaceship.classList.add(
           'spaceship-clone',
@@ -113,23 +116,25 @@ export default defineComponent({
           xPercent: -50,
         });
       }
+
       window.addEventListener('mousemove', (e) => {
         mouse.value.x = e.x;
         mouse.value.y = e.y;
       });
 
-      // After mobile is scrolled
       setTimeout(() => {
-        var xSet = gsap.quickSetter(spaceship, 'x', 'px');
-        var ySet = gsap.quickSetter(spaceship, 'y', 'px');
-        const ROT_OFFSET = spaceshipType.value === 'its_a_trap' ? -22.5 : 45;
-        const ROT_MAX = -22.5
-        gsap.ticker.add((time, deltaTime) => {
-          var speed = 0.01;
+        const spaceshipFire = spaceship.getElementById('spaceship-fire');
+        const xSet = gsap.quickSetter(spaceship, 'x', 'px');
+        const ySet = gsap.quickSetter(spaceship, 'y', 'px');
 
-          var fpms = 60 / 1000;
-          var delta = deltaTime * fpms;
-          var dt = 1.0 - Math.pow(1.0 - speed, delta);
+        const ROT_OFFSET = spaceshipType.value === 'its_a_trap' ? 0 : 45;
+        const ROT_MAX = -45;
+        const FPMS = 60 / 1000;
+        const SPEED = 0.01;
+
+        gsap.ticker.add((time, deltaTime) => {
+          var delta = deltaTime * FPMS;
+          var dt = 1.0 - Math.pow(1.0 - SPEED, delta);
 
           if (mouse.value.x || mouse.value.y) {
             position.value.x += (mouse.value.x - position.value.x) * dt;
@@ -138,15 +143,31 @@ export default defineComponent({
             const dx = mouse.value.x - position.value.x;
             const dy = mouse.value.y - position.value.y;
 
+            if (Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
+
+            const destX = Math.min(Math.abs(dx) / 1000, 1);
+
             const rad = Math.atan2(dy, dx);
-            const rotation = ROT_MAX * Math.sin(2 * rad);
+            const rotation = ROT_MAX * Math.sin(2 * rad) * destX;
 
             gsap.to(spaceship, {
-              rotation: `${rotation - ROT_OFFSET}_short`,
+              rotation: rotation - ROT_OFFSET,
+            });
+            gsap.to(spaceshipFire, {
+              scale: Math.max(0, Math.min(-dy / 300, 0.7)),
             });
           }
           xSet(position.value.x);
           ySet(position.value.y);
+        });
+
+        gsap.set(spaceshipFire, {
+          height: '-50%',
+          display: 'block',
+          scale: 0.5,
+          transformOrigin: 'top right',
+          yPercent: -12.5,
+          xPercent: 12.5,
         });
       }, 2500);
     });

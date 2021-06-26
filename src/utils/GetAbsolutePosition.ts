@@ -1,4 +1,4 @@
-const getAbsolutePosition = (el: HTMLElement) => {
+const getAbsolutePosition = (el: HTMLElement | SVGElement) => {
   const root = document.documentElement;
   const body = document.body;
   const { top, left, height, width } = el.getBoundingClientRect();

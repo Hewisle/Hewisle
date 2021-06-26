@@ -99,25 +99,68 @@ h2 {
 .q-transition--ease-out-back-leave-active,
 .q-transition--ease-in-back-enter-active,
 .q-transition--ease-in-back-leave-active {
-  transition: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  transition: transform 0.8s cubic-bezier(0.68, -0.6, 0.32, 1.6),
+    opacity 0.7s cubic-bezier(0.85, 0, 0.15, 1);
   position: absolute;
+
+  & > * {
+    transition: transform .7s ease;
+  }
 }
 .q-transition--ease-in-back-enter-from,
 .q-transition--ease-out-back-leave-to {
   transform: translate3d(100%, 0, 0);
+  opacity: 0;
+
+  & > * {
+    transform: scale(0);
+  }
 }
 .q-transition--ease-in-back-enter-to,
 .q-transition--ease-in-back-leave-from,
 .q-transition--ease-out-back-enter-to,
 .q-transition--ease-out-back-leave-from {
   transform: translate3d(0%, 0, 0);
+  opacity: 1;
+
+  & > * {
+    transform: scale(1);
+  }
 }
 .q-transition--ease-in-back-leave-to,
 .q-transition--ease-out-back-enter-from {
   transform: translate3d(-100%, 0, 0);
+  opacity: 0;
+  & > * {
+    transform: scale(0);
+  }
 }
 
 .no-touchy {
   pointer-events: none;
   touch-action: none;
+}
+
+.spaceship-clone {
+  pointer-events: none;
+}
+
+$colors: 'blue', 'light-blue', 'teal', 'green', 'light-green', 'amber',
+  'deep-orange', 'purple', 'deep-purple';
+
+@each $color in $colors {
+  .svg-#{$color} {
+    .fill-primary-dark {
+      transition: fill 0.25s ease;
+      fill: var(--#{$color}-10) !important;
+    }
+    .stroke-primary-dark {
+      transition: stroke 0.25s ease;
+      stroke: var(--#{$color}-10) !important;
+    }
+    .fill-primary {
+      transition: fill 0.25s ease;
+      fill: var(--#{$color}) !important;
+    }
+  }
 }

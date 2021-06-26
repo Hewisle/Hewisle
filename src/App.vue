@@ -2,9 +2,18 @@
   <router-view />
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted } from 'vue';
+import updateFavicon from './utils/UpdateFavicon';
 
 export default defineComponent({
-  name: 'App'
-})
+  name: 'App',
+  setup() {
+    onMounted(() => {
+      let [spaceship] = document.getElementsByClassName(
+        'spaceship-clone'
+      ) as HTMLCollectionOf<SVGElement>;
+      if (spaceship) updateFavicon(50, spaceship);
+    });
+  },
+});
 </script>

@@ -97,18 +97,19 @@
   </q-card>
 </template>
 <script lang="ts">
-import { defineComponent, ref, computed } from 'vue';
+import { defineComponent, ref, computed, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStore } from '../store';
 
 import { QCarousel, useQuasar } from 'quasar';
 import gsap, { Power4 } from 'gsap';
 import getAbsolutePosition from '../utils/GetAbsolutePosition';
+import UpdateFavicon from '../utils/UpdateFavicon';
 
 import { TYPES } from '../constants/spaceship';
 import HelpDialog from './HelpDialog.vue';
 
-interface CloneElement extends HTMLElement {
+interface CloneElement extends SVGElement {
   getElementById: (el: string) => HTMLElement;
 }
 
@@ -117,8 +118,7 @@ export default defineComponent({
   setup(props, { emit }) {
     // Register local navigation functions
     const selectSpaceship = ref<QCarousel>();
-    const nextSpaceship = () => selectSpaceship.value?.next();
-    const previousSpaceship = () => selectSpaceship.value?.previous();
+    const updateFavicon = UpdateFavicon
 
     const router = useRouter();
     const store = useStore();
@@ -134,9 +134,19 @@ export default defineComponent({
     });
     const spaceshipColor = computed(() => store.state.spaceship.color);
 
+    const nextSpaceship = () => {
+      selectSpaceship.value?.next();
+      updateFavicon();
+    };
+    const previousSpaceship = () => {
+      selectSpaceship.value?.previous();
+      updateFavicon();
+    };
+
     // Navigate through spaceship colors
     const changeSpaceshipColor = (next = true) => {
       void store.dispatch('spaceship/changeColor', next);
+      updateFavicon(100);
     };
 
     // Listen globally for <-, ->, /\, \/ key navigation
@@ -166,21 +176,22 @@ export default defineComponent({
 
     // Animate spaceship before page leave
     const spaceshipLeaveAnimation = () => {
-      const spaceshipSVG: HTMLElement | null =
+      const spaceshipSVG: SVGElement | null =
         document.querySelector('.q-carousel svg');
       if (spaceshipSVG) {
         const from = getAbsolutePosition(spaceshipSVG);
         const clone = spaceshipSVG.cloneNode(true) as CloneElement;
         const fire = clone.getElementById('spaceship-fire');
 
+        fire.setAttribute('display', 'block');
+        updateFavicon(1, clone);
         spaceshipSVG.style.display = 'none';
         clone.style.position = 'absolute';
         clone.classList.add('spaceship-clone', `svg-${spaceshipColor.value}`);
         gsap.set(clone, from);
         gsap.set(fire, {
           height: '-50%',
-          display: 'block',
-          transformOrigin: 'left bottom',
+          transformOrigin: 'top right',
           scale: 0.5,
         });
         document.body.appendChild(clone);
@@ -207,8 +218,9 @@ export default defineComponent({
         });
         gsap.to(fire, {
           scale: 0.5,
-          yPercent: -50,
-          xPercent: 50,
+          yPercent: -12.5,
+          xPercent: 12.5,
+
           delay: 3,
         });
         setTimeout(() => {
@@ -226,6 +238,10 @@ export default defineComponent({
       });
     };
 
+    onMounted(() => {
+      document.addEventListener('keyup', keySelectSpaceship);
+    });
+
     return {
       selectSpaceship,
       nextSpaceship,
@@ -240,9 +256,6 @@ export default defineComponent({
       spaceshipColor,
       openHelpDialog,
     };
-  },
-  mounted() {
-    document.addEventListener('keyup', this.keySelectSpaceship);
   },
   onBeforeUnmount() {
     document.removeEventListener('keyup', this.keySelectSpaceship);
@@ -287,31 +300,6 @@ export default defineComponent({
       &::v-deep() svg {
         height: 100%;
       }
-    }
-  }
-}
-</style>
-<style lang="scss">
-.spaceship-clone {
-  pointer-events: none;
-}
-
-$colors: 'blue', 'light-blue', 'teal', 'green', 'light-green', 'amber',
-  'deep-orange', 'purple', 'deep-purple';
-
-@each $color in $colors {
-  .svg-#{$color} {
-    .fill-primary-dark {
-      transition: fill 0.25s ease;
-      fill: var(--#{$color}-10) !important;
-    }
-    .stroke-primary-dark {
-      transition: stroke 0.25s ease;
-      stroke: var(--#{$color}-10) !important;
-    }
-    .fill-primary {
-      transition: fill 0.25s ease;
-      fill: var(--#{$color}) !important;
     }
   }
 }

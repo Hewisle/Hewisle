@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid meet" viewBox="0 0 259.5 228.7">
-  <g transform="translate(-9)">
-    <path class="fill-primary-dark" d="M265 80s-50 48-127 48C62 128 12 80 12 80s50-30 126-30c77 0 127 30 127 30z" fill="#303bce" />
-    <path class="fill-primary" d="M263 66c7 4 7 12 0 16-22 11-70 31-124 31-55 0-103-20-125-31-7-4-7-12 0-16 22-11 70-31 125-31 54 0 102 20 124 31z" fill="#3a47ff" />
-    <path d="M196 50c0 18-26 20-57 20-32 0-58-2-58-20 0-19 13-50 58-50 44 0 57 31 57 50z" fill="#c4c4c4" fill-opacity=".8" />
-    <path class="stroke-primary-dark" d="M222 86a13 13 0 000-25c-7 0-12 6-12 13 0 6 5 12 12 12zm-83 14c6 0 12-5 12-11 0-7-6-12-12-12-7 0-13 5-13 12 0 6 6 11 13 11zM55 84c6 0 12-5 12-11 0-7-6-12-12-12s-12 5-12 12c0 6 6 11 12 11z" fill="#fff" stroke="#303bce" stroke-width="6" />
-  </g>
   <g transform="rotate(-45 42 90)">
     <g id="spaceship-fire" display="none">
       <path d="M27 187a28 28 0 0139 41l-29 33s0-10 2-15l7-13s-22 6-29 10l-14 9 6-21 11-16-8 4H0l25-29z" fill="#ffa10b" />
       <path d="M32 186c8-6 21-6 31 3 8 8 11 19 7 28a15 15 0 01-3 5l-21 24s-2-7 0-10l5-11s-17 3-23 6c-7 2-11 7-11 7l3-18 9-12-7 3-10-1 18-23z" fill="#ffbe0b" />
     </g>
+  </g>
+  <g transform="translate(-9)">
+    <path class="fill-primary-dark" d="M265 80s-50 48-127 48C62 128 12 80 12 80s50-30 126-30c77 0 127 30 127 30z" fill="#303bce" />
+    <path class="fill-primary" d="M263 66c7 4 7 12 0 16-22 11-70 31-124 31-55 0-103-20-125-31-7-4-7-12 0-16 22-11 70-31 125-31 54 0 102 20 124 31z" fill="#3a47ff" />
+    <path d="M196 50c0 18-26 20-57 20-32 0-58-2-58-20 0-19 13-50 58-50 44 0 57 31 57 50z" fill="#c4c4c4" fill-opacity=".8" />
+    <path class="stroke-primary-dark" d="M222 86a13 13 0 000-25c-7 0-12 6-12 13 0 6 5 12 12 12zm-83 14c6 0 12-5 12-11 0-7-6-12-12-12-7 0-13 5-13 12 0 6 6 11 13 11zM55 84c6 0 12-5 12-11 0-7-6-12-12-12s-12 5-12 12c0 6 6 11 12 11z" fill="#fff" stroke="#303bce" stroke-width="6" />
   </g>
 </svg>
