@@ -85,7 +85,7 @@
   </p>
 
   <figure>
-    <q-img src="../../assets/content/dylan-Mindmap.png" fit="contain" />
+    <q-img src="../../assets/content/dylan-mindmap.png" fit="contain" />
   </figure>
 
   <p>
