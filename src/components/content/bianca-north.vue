@@ -27,7 +27,10 @@
     vrij snel voor elke doelgroep eisen op kunnen stellen.
   </p>
   <figure>
-    <q-img src="../../assets/content/bianca-blok1.1-inspiratie.png" alt="Inspiratie" />
+    <q-img
+      src="../../assets/content/bianca-blok1.1-inspiratie.png"
+      alt="Inspiratie"
+    />
     <q-chip
       >Inspiratie afbeeldingen en eisen. Dit heb ik voor elke doelgroep op deze
       manier gedaan.</q-chip
@@ -126,9 +129,9 @@
       src="../../assets/content/bianca-blok1.19-eind-volwassenen.jpg"
       alt="Het eindontwerp voor de doelgroep volwassenen 18 t/m 74 jaar."
     />
-    <q-chip
-      >Het eindontwerp voor de doelgroep volwassenen 18 t/m 74 jaar</q-chip
-    >
+    <q-chip>
+      Het eindontwerp voor de doelgroep volwassenen 18 t/m 74 jaar
+    </q-chip>
   </figure>
   <p>
     De vierde en laatste lay-out is gefocust op de tekst en de leesbaarheid

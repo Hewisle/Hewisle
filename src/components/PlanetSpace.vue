@@ -7,17 +7,20 @@
     @mouseleave="nameTag = false"
   >
     <planet-chip :visible="nameTag">
-      <strong>Planeet {{ nameCaptialize }}</strong>
+      <strong>{{ nameCaptialize }}</strong>
     </planet-chip>
-    <q-img fit="contain" :src="require(`../assets/planet/${name}.svg`)" />
+    <div class="planet--img-wrapper" :data-planet="name">
+      <lottie :animationData="require(`../assets/planet/${name}.json`)" />
+    </div>
   </a>
 </template>
 <script>
 import { computed, defineComponent, ref } from 'vue';
+import Lottie from './Lottie.vue';
 import PlanetChip from './PlanetChip.vue';
 export default defineComponent({
   name: 'PlanetSpace',
-  components: { PlanetChip },
+  components: { PlanetChip, Lottie },
   props: {
     name: {
       type: String,

@@ -7,8 +7,7 @@
       <div class="row justify-center q-mx-xl">
         <p style="max-width: 560px">
           Bekijk deze planeet van alle kanten en kies een land uit om naartoe te
-          reizen. Er is genoeg te zien. Sleep de raket omhoog om van deze
-          planeet te vertrekken.
+          reizen. Er is genoeg te zien. 
         </p>
       </div>
       <div class="row planet-wrapper items-center full-width">

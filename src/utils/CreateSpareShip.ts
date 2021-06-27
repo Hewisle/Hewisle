@@ -16,7 +16,7 @@ const CreateSpareShip = (type: string, color: string) => {
   document.body.appendChild(spaceship);
   gsap.set(spaceship, {
     x: window.innerWidth * 0.45,
-    y: window.innerHeight * 0.75,
+    y: window.innerHeight,
     left: 0,
     top: 0,
 
@@ -25,6 +25,10 @@ const CreateSpareShip = (type: string, color: string) => {
     yPercent: -50,
     xPercent: -50,
   });
+  gsap.to(spaceship,{
+    y: window.innerHeight * 0.75,
+    duration: 1
+  })
   return spaceship
 }
 

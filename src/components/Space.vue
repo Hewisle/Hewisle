@@ -3,9 +3,10 @@
     <div class="space-wrapper">
       <planet-space
         v-for="name of ['ruben', 'anna', 'dylan', 'bianca']"
-        :class="`planet planet--${name}`"
+        :class="[`planet planet--${name}`, 'original']"
         :key="name"
         :name="name"
+        @click="onPlanetClick(name)"
       />
       <div class="launch-pad"></div>
     </div>
@@ -13,9 +14,9 @@
 </template>
 <script lang="ts">
 import { defineComponent, ref, onMounted, computed } from 'vue';
-import { QScrollArea } from 'quasar';
 import { useStore } from '../store';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
+import CustomEase from '../utils/CustomEase';
 
 import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
@@ -23,16 +24,20 @@ import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
 import createSpareShip from '../utils/CreateSpareShip';
 
 import PlanetSpace from './PlanetSpace.vue';
+import getAbsolutePosition from 'src/utils/GetAbsolutePosition';
 
 Scrollbar.use(OverscrollPlugin, LimitScrollspeedPlugin);
+gsap.registerPlugin(CustomEase);
 
 export default defineComponent({
   name: 'space',
-  components: {  PlanetSpace },
+  components: { PlanetSpace },
   setup() {
-    const spaceArea = ref<QScrollArea>();
+    const spaceArea = ref<HTMLElement>();
     const position = ref({ x: 0, y: 0 });
     const mouse = ref({ x: 0, y: 0 });
+    const lock = ref(false);
+    const trackMouseRef = ref();
 
     const store = useStore();
 
@@ -42,16 +47,39 @@ export default defineComponent({
     });
     const spaceshipColor = computed(() => store.state.spaceship.color);
 
+    const rotateInfinite = (el: Element) =>
+      gsap.to(el, { rotation: 360, duration: 180, repeat: -1, ease: 'linear' });
+
     onMounted(() => {
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
       ) as HTMLCollectionOf<CloneElement>;
+      let planetWrappers = document.getElementsByClassName(
+        'planet--img-wrapper'
+      ) as HTMLCollectionOf<HTMLElement>;
       let timeout = 2500;
 
       position.value = {
         x: window.innerWidth * 0.45,
         y: window.innerHeight * 0.75,
       };
+
+      gsap.fromTo(
+        spaceArea.value as HTMLElement,
+        {
+          scale: 0.2,
+          xPercent: 50,
+          yPercent: -200,
+        },
+        {
+          scale: 1,
+          xPercent: -50,
+          yPercent: 0,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          ease: CustomEase.create('easeOutBack ', '0.34, 1.56, 0.64, 1'),
+          duration: 3,
+        }
+      );
 
       const scrollbar = Scrollbar.init(
         document.querySelector('#space') as HTMLElement
@@ -64,56 +92,62 @@ export default defineComponent({
         scrollbar.update();
         // Scroll to bottom
         scrollbar.scrollTo(0, scrollbar.size.content.height, 3000, {});
+        // Rotate wrapper
+        for (const wrapper of planetWrappers) rotateInfinite(wrapper);
       }, 0);
 
       if (!spaceship) {
         spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
-        timeout = 500;
+        timeout = 1000;
       }
 
       window.addEventListener('mousemove', (e) => {
+        if (lock.value) return;
         mouse.value.x = e.x;
         mouse.value.y = e.y;
       });
 
+      const xSet = gsap.quickSetter(spaceship, 'x', 'px');
+      const ySet = gsap.quickSetter(spaceship, 'y', 'px');
+
+      const ROT_OFFSET = spaceshipType.value === 'its_a_trap' ? 0 : 45;
+      const ROT_MAX = -45;
+      const FPMS = 60 / 1000;
+      const SPEED = 0.01;
+
+      const spaceshipFire = spaceship.getElementById('spaceship-fire');
+
+      trackMouseRef.value = (time: number, deltaTime: number) => {
+        var delta = deltaTime * FPMS;
+        var dt = 1.0 - Math.pow(1.0 - SPEED, delta);
+
+        if (mouse.value.x || mouse.value.y) {
+          position.value.x += (mouse.value.x - position.value.x) * dt;
+          position.value.y += (mouse.value.y - position.value.y) * dt;
+
+          const dx = mouse.value.x - position.value.x;
+          const dy = mouse.value.y - position.value.y;
+
+          if (Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
+
+          const destX = Math.min(Math.abs(dx) / 1000, 1);
+
+          const rad = Math.atan2(dy, dx);
+          const rotation = ROT_MAX * Math.sin(2 * rad) * destX;
+
+          gsap.to(spaceship, {
+            rotation: rotation - ROT_OFFSET,
+          });
+          gsap.to(spaceshipFire, {
+            scale: Math.max(0, Math.min(-dy / 300, 0.7)),
+          });
+        }
+        xSet(position.value.x);
+        ySet(position.value.y);
+      };
+
       setTimeout(() => {
-        const spaceshipFire = spaceship.getElementById('spaceship-fire');
-        const xSet = gsap.quickSetter(spaceship, 'x', 'px');
-        const ySet = gsap.quickSetter(spaceship, 'y', 'px');
-
-        const ROT_OFFSET = spaceshipType.value === 'its_a_trap' ? 0 : 45;
-        const ROT_MAX = -45;
-        const FPMS = 60 / 1000;
-        const SPEED = 0.01;
-
-        gsap.ticker.add((time, deltaTime) => {
-          var delta = deltaTime * FPMS;
-          var dt = 1.0 - Math.pow(1.0 - SPEED, delta);
-
-          if (mouse.value.x || mouse.value.y) {
-            position.value.x += (mouse.value.x - position.value.x) * dt;
-            position.value.y += (mouse.value.y - position.value.y) * dt;
-
-            const dx = mouse.value.x - position.value.x;
-            const dy = mouse.value.y - position.value.y;
-
-            if (Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
-
-            const destX = Math.min(Math.abs(dx) / 1000, 1);
-
-            const rad = Math.atan2(dy, dx);
-            const rotation = ROT_MAX * Math.sin(2 * rad) * destX;
-
-            gsap.to(spaceship, {
-              rotation: rotation - ROT_OFFSET,
-            });
-            gsap.to(spaceshipFire, {
-              scale: Math.max(0, Math.min(-dy / 300, 0.7)),
-            });
-          }
-          xSet(position.value.x);
-          ySet(position.value.y);
-        });
+        gsap.ticker.add(trackMouseRef.value);
 
         gsap.to(spaceshipFire, {
           height: '-50%',
@@ -126,7 +160,55 @@ export default defineComponent({
       }, timeout);
     });
 
-    return { spaceArea };
+    const onPlanetClick = (name: string) => {
+      lock.value = true;
+
+      const space = spaceArea.value as HTMLElement;
+      const [planet] = space.getElementsByClassName(
+        `planet--${name}`
+      ) as HTMLCollectionOf<HTMLElement>;
+      const clone = planet.cloneNode(true);
+      const meta = getAbsolutePosition(planet);
+
+      (clone as HTMLElement).classList.remove('original');
+      gsap.set(planet, { scale: 1.05 });
+      gsap.set(clone, meta);
+      document.body.appendChild(clone);
+
+      const [wrapper] = (clone as HTMLElement).getElementsByClassName(
+        'planet--img-wrapper'
+      ) as HTMLCollectionOf<HTMLElement>;
+
+      rotateInfinite(wrapper);
+      planet.style.opacity = '0';
+      planet.style.display = 'none';
+      planet.classList.add('no-touchy');
+      gsap.to(clone, {
+        left: window.innerWidth / 2 - meta.width / 2,
+        top: window.innerHeight / 2 - meta.height / 2,
+        duration: 2,
+        delay: .25
+      });
+      gsap.set(clone, {
+        left: '50%',
+        top: '50%',
+        xPercent: -50,
+        yPercent: -50,
+        delay: 2.5,
+      });
+      gsap.to(spaceArea.value as HTMLElement, {
+        scale: 0.9,
+      });
+      gsap.to(spaceArea.value as HTMLElement, {
+        xPercent: 25,
+        yPercent: name === 'ruben' ? -100 : 200,
+        duration: 4,
+        rotate: 45,
+        delay: .125
+      });
+    };
+
+    return { spaceArea, onPlanetClick };
   },
 });
 </script>
@@ -158,8 +240,6 @@ export default defineComponent({
   position: absolute;
   left: 50%;
   max-width: 1920px;
-  transform: scale(0.2) translateX(50%) translateY(-200%);
-  animation: enter 3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   height: 100vh;
 
   .space-wrapper {
@@ -182,11 +262,13 @@ export default defineComponent({
   display: block;
   max-width: 40%;
   position: absolute;
-  transition: all 0.5s;
   text-decoration: none;
 
-  &:hover {
-    transform: scale(1.02);
+  &.original {
+    transition: transform 0.5s;
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &--ruben {
@@ -257,10 +339,15 @@ export default defineComponent({
     }
   }
 
-  &::v-deep() .q-img {
-    width: 100%;
-    height: 100%;
-    animation: rotate 180s linear infinite;
+  &::v-deep() {
+    .planet--img-wrapper,
+    .lottie {
+      width: 100%;
+      height: 100%;
+    }
+    .lottie svg {
+      transform: scale(1.1) !important
+    }
   }
 }
 </style>

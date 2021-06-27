@@ -11,7 +11,7 @@
             class="q-pa-none"
             flat
             @click="openHelpDialog"
-          ></q-btn>
+          />
         </div>
       </div>
       <div class="row col-6 items-center full-width spaceship-row">
