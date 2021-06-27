@@ -40,7 +40,9 @@ const COUNTRIES: { [index: string]: string } = {
   'south-east': 'se',
   'south-west': 'sw',
   'north-east': 'ne',
+  'north-west': 'nw',
   north: 'north',
+  south: 'south',
 };
 export default {
   components: { HorizontalScroll, Country },
