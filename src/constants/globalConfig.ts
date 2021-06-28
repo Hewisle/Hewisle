@@ -16,8 +16,12 @@ export const CONFIG = {
     rechts: { play: ['Hans Outlines'], href: '' },
   },
   ruben: {
-    onder: { play: [], href: '' },
-    links: {
+    onder: {
+      play: [
+        'Regenboog 2 Outlines'
+      ], href: ''
+    },
+    rechts: {
       play: [
         'Blok 1',
         'Blok 2',
@@ -35,11 +39,13 @@ export const CONFIG = {
         'Blok 14',
         'Blok 15',
         'Blok 16',
-        'Vergrootglas 1 Outlines',
-        'Vergrootglas 2 Outlines',
       ],
       href: '',
     },
-    rechts: { play: [], href: '' },
+    links: {
+      play: [
+        'Vergrootglas 1 Outlines',
+        'Vergrootglas 2 Outlines',], href: ''
+    },
   },
 }
