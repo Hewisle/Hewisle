@@ -15,6 +15,7 @@
 <script lang="ts">
 import { defineComponent, ref, onMounted, computed } from 'vue';
 import { useStore } from '../store';
+import { useRouter } from 'vue-router';
 import { gsap } from 'gsap';
 import CustomEase from '../utils/CustomEase';
 
@@ -40,6 +41,7 @@ export default defineComponent({
     const trackMouseRef = ref();
 
     const store = useStore();
+    const router = useRouter();
 
     const spaceshipType = computed({
       get: () => store.state.spaceship.type,
@@ -167,6 +169,9 @@ export default defineComponent({
       const [planet] = space.getElementsByClassName(
         `planet--${name}`
       ) as HTMLCollectionOf<HTMLElement>;
+      const [stars] = document.getElementsByClassName(
+        'background--stars'
+      ) as HTMLCollectionOf<HTMLElement>;
       const clone = planet.cloneNode(true);
       const meta = getAbsolutePosition(planet);
 
@@ -185,27 +190,37 @@ export default defineComponent({
       planet.classList.add('no-touchy');
       gsap.to(clone, {
         left: window.innerWidth / 2 - meta.width / 2,
-        top: window.innerHeight / 2 - meta.height / 2,
-        duration: 2,
-        delay: .25
+        top: window.innerHeight + meta.height / 2,
+        duration: 3,
+        delay: 0.25,
       });
-      gsap.set(clone, {
-        left: '50%',
-        top: '50%',
-        xPercent: -50,
-        yPercent: -50,
-        delay: 2.5,
+      gsap.to(stars, {
+        scale: 0.9,
+        rotate: 12.5,
+        duration: 2.5,
+        yPercent: -10,
       });
       gsap.to(spaceArea.value as HTMLElement, {
         scale: 0.9,
       });
       gsap.to(spaceArea.value as HTMLElement, {
-        xPercent: 25,
+        xPercent: name === 'dylan' ? -100 : 25,
         yPercent: name === 'ruben' ? -100 : 200,
         duration: 4,
         rotate: 45,
-        delay: .125
+        delay: 0.125,
       });
+      gsap.to(stars, {
+        scale: 1.2,
+        rotate: -3,
+        duration: 2.5,
+        yPercent: -20,
+        delay: 2.5,
+      });
+
+      setTimeout(() => {
+        void router.push(`/space/${name}`);
+      }, 1500);
     };
 
     return { spaceArea, onPlanetClick };
@@ -346,7 +361,7 @@ export default defineComponent({
       height: 100%;
     }
     .lottie svg {
-      transform: scale(1.1) !important
+      transform: scale(1.2) !important;
     }
   }
 }
