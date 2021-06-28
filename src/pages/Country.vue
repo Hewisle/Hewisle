@@ -44,14 +44,22 @@ const COUNTRIES: { [index: string]: string } = {
   north: 'north',
   south: 'south',
 };
+
+const COLORS: { [index: string]: string } = {
+  'anna': 'red',
+  'dylan': 'yellow',
+  'bianca': 'cyan',
+  'ruben': 'orange',
+};
+
 export default {
   components: { HorizontalScroll, Country },
   setup() {
-    const color = 'orange';
     const route = useRoute();
 
     const { name, country } = route.params;
     const countryCode: string = COUNTRIES[country as string];
+    const color: string = COLORS[name as string];
 
     let content: unknown;
     if (name && countryCode) {
