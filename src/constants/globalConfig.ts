@@ -7,6 +7,20 @@ export const CONFIG = {
     },
     rechts: { play: ['Satelliet Outlines'], href: '' },
   },
+  bianca: {
+    boven: {
+      play: [],
+      href: '',
+    },
+    rechts: {
+      play: ['vis 1 Outlines', 'vis 2 Outlines', 'vis 3 Outlines'],
+      href: '',
+    },
+    links: {
+      play: ['Beer 1 Outlines', 'Beer 2 Outlines', 'Beer 3 Outlines'],
+      href: '',
+    },
+  },
   dylan: {
     onder: {
       play: ['Ikeabord 3 Outlines', 'Ikeabord 4 Outlines'],
