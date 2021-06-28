@@ -14,10 +14,11 @@ export default defineComponent({
   setup(props) {
     const lottieRef = ref<HTMLElement>();
     onMounted(() => {
-      let animationData = props.animationData as AnimationData;
-      animationData.layers = animationData.layers.filter(
-        ({ nm }) => !nm.includes('land')
-      );
+      const data = props.animationData as AnimationData;
+      const animationData = {
+        ...data,
+        layers: data.layers.filter(({ nm }) => !nm.includes('land')),
+      };
       if (lottieRef.value) {
         Lottie.loadAnimation({
           container: lottieRef.value,
