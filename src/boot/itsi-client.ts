@@ -15,11 +15,13 @@ export default boot(({ store, app }/* { app, router, ... } */) => {
       ticket: (store as Store<StoreModel>).state.spaceship.token
     }
   });
-  socket.on('connect', () => {
-    console.log(socket.connected, socket.id);
-
-    console.log(socket)
-  });
+  if (process.env.DEV) {
+    socket.on('connect', () => {
+      console.log(socket.connected, socket.id);
+  
+      console.log(socket)
+    });
+  }
 
   const updateItsiMeta = (position: string) => socket.emit('position', position)
 
