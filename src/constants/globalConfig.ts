@@ -1,16 +1,16 @@
 export const CONFIG = {
   anna: {
-    boven: { play: ['Giraf 1 Outlines', 'Giraf 2 Outlines'], href: '' },
+    boven: { play: ['Giraf 1 Outlines', 'Giraf 2 Outlines'], href: '/space/anna/north' },
     links: {
       play: ['Bloem 1 Outlines', 'Bloem 2 Outlines', 'Bloem 3 Outlines'],
-      href: '',
+      href: '/space/anna/south-west',
     },
-    rechts: { play: ['Satelliet Outlines'], href: '' },
+    rechts: { play: ['Satelliet Outlines'], href: '/space/anna/south-east' },
   },
   bianca: {
     boven: {
       play: [],
-      href: '',
+      href: '/space/bianca/north',
     },
     rechts: {
       play: ['vis 1 Outlines', 'vis 2 Outlines', 'vis 3 Outlines'],
@@ -18,16 +18,16 @@ export const CONFIG = {
     },
     links: {
       play: ['Beer 1 Outlines', 'Beer 2 Outlines', 'Beer 3 Outlines'],
-      href: '',
+      href: '/space/bianca/south-west',
     },
   },
   dylan: {
     onder: {
       play: ['Ikeabord 3 Outlines', 'Ikeabord 4 Outlines'],
-      href: '',
+      href: '/space/dylan/south',
     },
-    links: { play: ['Cola Outlines'], href: '' },
-    rechts: { play: ['Hans Outlines'], href: '' },
+    links: { play: ['Cola Outlines'], href: '/space/dylan/north-west' },
+    rechts: { play: ['Hans Outlines'], href: '/space/dylan/north-east' },
   },
   ruben: {
     onder: {
@@ -54,7 +54,7 @@ export const CONFIG = {
         'Blok 15',
         'Blok 16',
       ],
-      href: '',
+      href: '/space/ruben/north-east',
     },
     links: {
       play: [
