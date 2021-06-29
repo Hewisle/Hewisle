@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-
 import { boot } from 'quasar/wrappers'
 import { config } from 'dotenv'
 import { sign, verify } from 'jsonwebtoken'
