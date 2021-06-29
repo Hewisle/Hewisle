@@ -130,7 +130,7 @@ module.exports = configure(function (ctx) {
 
     // https://v2.quasar.dev/quasar-cli/developing-ssr/configuring-ssr
     ssr: {
-      pwa: ctx.prod,
+      pwa: false,
 
       // manualStoreHydration: true,
       // manualPostHydrationTrigger: true,
