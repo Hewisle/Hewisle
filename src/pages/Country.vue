@@ -75,8 +75,8 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$COLUMN_WIDTH: 500px;
-$COLUMN_GAP: 200px;
+$COLUMN_WIDTH: 560px;
+$COLUMN_GAP: 100px;
 .custom-background {
   top: 0;
   height: 100%;
@@ -109,6 +109,7 @@ $COLUMN_GAP: 200px;
   @media screen and (min-width: $breakpoint-md-min) {
     column-width: $COLUMN_WIDTH;
     column-gap: $COLUMN_GAP;
+    width: $COLUMN_WIDTH;
     padding: 0 2rem;
     margin-right: 192px;
   }
