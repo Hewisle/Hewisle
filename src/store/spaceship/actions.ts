@@ -20,6 +20,9 @@ const actions: ActionTree<StateModel, StoreModel> = {
     } else {
       commit('setColor', COLORS[currentColorIndex + 1])
     }
+  },
+  move({ commit }, position: { x: number, y: number }) {
+    commit('updateItsi', position)
   }
 };
 

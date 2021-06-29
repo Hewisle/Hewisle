@@ -1,6 +1,7 @@
 <template>
   <div id="space" ref="spaceArea">
     <div class="space-wrapper">
+      <visitors />
       <planet-space
         v-for="name of ['ruben', 'anna', 'dylan', 'bianca']"
         :class="[`planet planet--${name}`, 'original']"
@@ -13,7 +14,13 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, onMounted, computed } from 'vue';
+import {
+  defineComponent,
+  ref,
+  onMounted,
+  computed,
+  onBeforeUnmount,
+} from 'vue';
 import { useStore } from '../store';
 import { useRouter } from 'vue-router';
 import { gsap } from 'gsap';
@@ -25,6 +32,7 @@ import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
 import createSpareShip from '../utils/CreateSpareShip';
 
 import PlanetSpace from './PlanetSpace.vue';
+import Visitors from './Visitors.vue';
 import getAbsolutePosition from 'src/utils/GetAbsolutePosition';
 
 Scrollbar.use(OverscrollPlugin, LimitScrollspeedPlugin);
@@ -32,13 +40,15 @@ gsap.registerPlugin(CustomEase);
 
 export default defineComponent({
   name: 'space',
-  components: { PlanetSpace },
+  components: { PlanetSpace, Visitors },
   setup() {
     const spaceArea = ref<HTMLElement>();
     const position = ref({ x: 0, y: 0 });
     const mouse = ref({ x: 0, y: 0 });
     const lock = ref(false);
     const trackMouseRef = ref();
+    const isMoving = ref(false);
+    const multiplayerInterval = ref();
 
     const store = useStore();
     const router = useRouter();
@@ -130,7 +140,10 @@ export default defineComponent({
           const dx = mouse.value.x - position.value.x;
           const dy = mouse.value.y - position.value.y;
 
-          if (Math.abs(dx) < 3 && Math.abs(dy) < 3) return;
+          if (Math.abs(dx) < 3 && Math.abs(dy) < 3) {
+            if (isMoving.value) isMoving.value = false;
+            return;
+          } else if (!isMoving.value) isMoving.value = true;
 
           const destX = Math.min(Math.abs(dx) / 1000, 1);
 
@@ -160,6 +173,20 @@ export default defineComponent({
           xPercent: 12.5,
         });
       }, timeout);
+
+      multiplayerInterval.value = setInterval(() => {
+        if (isMoving.value) {
+          const { x, y } = position.value;
+          const xPercent = Math.round((x / window.innerWidth) * 1000) / 1000;
+          const yPercent = Math.round((y / window.innerHeight) * 1000) / 1000;
+          void store.dispatch('spaceship/move', {
+            x: xPercent,
+            y: yPercent,
+            type: spaceshipType.value,
+            color: spaceshipColor.value,
+          });
+        }
+      }, 750);
     });
 
     const onPlanetClick = (name: string) => {
@@ -222,6 +249,13 @@ export default defineComponent({
         void router.push(`/space/${name}`);
       }, 1500);
     };
+
+    onBeforeUnmount(() => {
+      if (multiplayerInterval.value) {
+        clearInterval(multiplayerInterval.value);
+        multiplayerInterval.value = null;
+      }
+    });
 
     return { spaceArea, onPlanetClick };
   },

@@ -28,7 +28,14 @@ module.exports = configure(function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
-    boot: ['axios'],
+    boot: [
+      'axios',
+      { server: false, path: 'itsi-client' },
+      {
+        client: false,
+        path: 'itsi',
+      },
+    ],
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: ['app.scss'],
@@ -89,7 +96,14 @@ module.exports = configure(function (ctx) {
     devServer: {
       https: false,
       port: 8080,
-      open: false, // opens browser window automatically
+      open: false,
+      // Proxy websocket for local development
+      proxy: {
+        '/itsi-v2': {
+          target: 'ws://localhost:4001',
+          ws: true,
+        },
+      },
     },
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
@@ -134,6 +148,7 @@ module.exports = configure(function (ctx) {
       middlewares: [
         ctx.prod ? 'compression' : '',
         ctx.prod ? 'websocket' : '',
+        // 'websocket',
         'render', // keep this as last one
       ],
     },

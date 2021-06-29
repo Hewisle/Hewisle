@@ -61,7 +61,7 @@ jobs:
           SERVER_DESTINATION: ${{ secrets.SERVER_DESTINATION }}
           SSH_AUTH_SOCK: /tmp/ssh_agent.sock
           FOLDER: "./dist/ssr"
-        run: sh -c "rsync -r --delete --exclude=node_modules -e 'ssh -p $SERVER_PORT -o StrictHostKeyChecking=no' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
+        run: sh -c "rsync -r --delete --exclude=node_modules --exclude=.env -e 'ssh -p $SERVER_PORT -o StrictHostKeyChecking=no' $GITHUB_WORKSPACE/$FOLDER $USERNAME@$SERVER_IP:$SERVER_DESTINATION"
       - name: Remote package install
         env:
           USERNAME: ${{ secrets.USERNAME }}

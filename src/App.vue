@@ -8,11 +8,12 @@ import updateFavicon from './utils/UpdateFavicon';
 export default defineComponent({
   name: 'App',
   setup() {
-    onMounted(() => {
+    onMounted(() => {     
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
       ) as HTMLCollectionOf<CloneElement>;
       if (spaceship) updateFavicon(50, spaceship);
+
     });
   },
 });
