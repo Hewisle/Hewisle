@@ -28,11 +28,16 @@
         />
       </a>
     </header>
-    <horizontal-scroll :class="`${color}-variant`" class="col col-9">
+    <horizontal-scroll class="col col-9 content-area">
       <div class="horizontal-row">
         <component :is="content" />
+        <div class="horizontal-row--end"></div>
       </div>
     </horizontal-scroll>
+    <div
+      class="col col-2 absolute full-width background-helper"
+      :class="`${color}-variant`"
+    ></div>
     <div class="col col-2 absolute full-width animated-bottom">
       <plain-country
         v-if="name == 'bianca' && countryCode == 'east'"
@@ -104,7 +109,7 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$COLUMN_WIDTH: 560px;
+$COLUMN_WIDTH: 564px;
 $COLUMN_GAP: 100px;
 .custom-background {
   top: 0;
@@ -123,11 +128,22 @@ $COLUMN_GAP: 100px;
   width: 100%;
   z-index: -1;
 }
+.background-helper {
+  bottom: 0;
+
+  @media screen and (max-width: $breakpoint-sm-min) {
+    display: none;
+  }
+}
 .column {
   height: 100vh;
 
+  .content-area {
+    top: max(15vh, calc(86px + 2vw));
+  }
   header {
-    position: relative;
+    position: absolute;
+    width: 100%;
     height: max(16vh, calc(86px + 2vw));
 
     .top-planet {
@@ -154,19 +170,39 @@ $COLUMN_GAP: 100px;
     column-width: $COLUMN_WIDTH;
     column-gap: $COLUMN_GAP;
     width: $COLUMN_WIDTH;
-    padding: 0 2rem;
+    padding: 4rem 2rem 0 2rem;
     margin-right: 192px;
+    margin-top: -2rem;
+  }
+
+  &--end {
+    break-before: column;
+    width: $COLUMN_WIDTH;
+    height: 100%;
   }
 
   &::v-deep() {
     h2 {
       position: relative;
       margin: 0;
+      margin-top: -2.7rem;
+      margin-bottom: 0.75rem;
+      @media screen and (max-width: $breakpoint-md-min) {
+        margin-top: 0;
+      }
+    }
+    h3 {
+      position: relative;
+      margin: 0;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
     }
     h3,
     figure,
     iframe {
-      break-before: column;
+      &:not(.no-break) {
+        break-before: column;
+      }
     }
 
     iframe {

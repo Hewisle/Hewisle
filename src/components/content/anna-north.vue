@@ -5,11 +5,11 @@
     gemaakt. Op basis hiervan is ook een website ontworpen en is er een animatie
     gemaakt.
   </p>
-  <figure>
+  <figure class="no-break">
     <q-img src="../../assets/content/anna-g1.png" fit="contain" />
   </figure>
 
-  <h3 class="q-my-lg">De identiteit</h3>
+  <h3>De identiteit</h3>
   <p>
     Onder een corporate identity valt niet alleen de huisstijl en het design
     maar ook de waarden en sfeer van een bedrijf. De waarden hebben invloed op
@@ -40,7 +40,7 @@
     <q-img src="../../assets/content/anna-g15.png" fit="contain" />
   </figure>
 
-  <h3 class="q-my-lg">Het logo</h3>
+  <h3>Het logo</h3>
   <p>
     Het logo is een belangrijk onderdeel van de identiteit. Ik begon met het
     ontwerpen van het logo door te schetsen en verschillende ideeën uit te
@@ -65,7 +65,7 @@
     <q-img src="../../assets/content/anna-g26.png" fit="contain" />
   </figure>
 
-  <h3 class="q-my-lg">Mock-ups</h3>
+  <h3>Mock-ups</h3>
   <p>
     In de mock-ups is te zien hoe de corporate identity wordt gebruikt in
     verschillende situaties en producten. Ik vond dit leuk om te doen omdat ik
@@ -87,7 +87,7 @@
     <q-img src="../../assets/content/anna-g37.png" fit="contain" />
   </figure>
 
-  <h3 class="q-my-lg">De website</h3>
+  <h3>De website</h3>
   <p>
     Op basis van de corporate identity heb ik een mobiele en desktop website
     ontworpen.
@@ -161,7 +161,7 @@
     is, heb ik een submenu toegevoegd aan het menu item.
   </p>
 
-  <h3 class="q-my-lg">De animatie</h3>
+  <h3>De animatie</h3>
   <p>
     Naar aanleiding van de Masterclass Abstractie in Animatie heb ik de
     corporate identity ook toegepast in een animatie. De animatie is
