@@ -39,6 +39,16 @@
   font-display: swap;
   src: url('./fonts/Spaceranger.ttf') format('truetype');
 }
+
+// Stoopid Safari does something weird on desktop with fill-available
+@media not all and (min-resolution: 0.001dpcm) and (min-width:1025px) {
+  @supports (-webkit-appearance: none) and (stroke-color: transparent) {
+    html {
+      height: 100% !important;
+    }
+  }
+}
+
 html {
   height: 100%;
   height: -webkit-fill-available;
@@ -84,8 +94,8 @@ h2 {
 
 h3 {
   font-size: 2.2rem;
-  font-weight: 700;  
-  
+  font-weight: 700;
+
   @media screen and (max-width: $breakpoint-sm-max) {
     font-size: 1.5rem;
   }
@@ -119,7 +129,7 @@ p {
   position: absolute;
 
   & > * {
-    transition: transform .7s ease;
+    transition: transform 0.7s ease;
   }
 }
 .q-transition--ease-in-back-enter-from,
