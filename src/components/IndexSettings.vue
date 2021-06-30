@@ -89,6 +89,7 @@
         <q-btn
           to="/space"
           @click.prevent="spaceshipLeaveAnimation"
+          @mouseenter.once="prefetch"
           push
           color="yellow"
           class="text-black"
@@ -239,6 +240,10 @@ export default defineComponent({
       });
     };
 
+    const prefetch = () => {
+      import(/* webpackChunkName: "space" */ 'src/pages/Space.vue')
+    }
+
     onMounted(() => {
       document.addEventListener('keyup', keySelectSpaceship);
     });
@@ -256,6 +261,7 @@ export default defineComponent({
       spaceship,
       spaceshipColor,
       openHelpDialog,
+      prefetch
     };
   },
   onBeforeUnmount() {

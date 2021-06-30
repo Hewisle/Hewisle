@@ -1,6 +1,6 @@
 <template>
   <div
-    class="planet-layer"
+    :class="['planet-layer', 'planet-layer--' + key.replace(/ /gm, '_')]"
     v-for="[key, layerRef] of layerRefs"
     :ref="layerRef"
     :key="key"
@@ -42,6 +42,7 @@ export default defineComponent({
             container: layer,
             renderer: 'svg',
             animationData: layerData,
+            rendererSettings: props.rendererSettings
           })
         );
       }
@@ -62,6 +63,9 @@ export default defineComponent({
     height: {
       type: Number,
     },
+    rendererSettings: {
+      type: Object
+    }
   },
 });
 </script>

@@ -1,6 +1,6 @@
 <template>
   <q-layout class="index column items-center" :class="leave && 'index-leave'">
-    <h1>Portfolio</h1>
+    <h1>Hewisle</h1>
     <div class="q-px-lg q-pb-lg" style="width: 100vw;max-width: 1920px;">
       <div class="row q-col-gutter-xl">
         <div class="col col-12 col-md-6">

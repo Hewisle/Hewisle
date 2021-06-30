@@ -1,6 +1,17 @@
 <template>
-  <section class="planet-lottie">
-    <PlanetLayers ref="multiLayer" :animationData="lottie" v-if="lottie" />
+  <section :class="['planet-lottie', 'planet-lottie--' + name]">
+    <PlanetLayers
+      ref="multiLayer"
+      :animationData="lottie"
+      v-if="lottie"
+      :rendererSettings="
+        space
+          ? {
+              preserveAspectRatio: 'xMidYMax meet',
+            }
+          : undefined
+      "
+    />
   </section>
 </template>
 
@@ -119,5 +130,45 @@ export default defineComponent({
   position: relative;
   width: 100%;
   height: 100%;
+}
+</style>
+
+<style lang="scss">
+.bianca-east--country svg > g {
+  clip-path: none !important;
+
+  & > g:last-child {
+    transform: scaleX(10) translateX(-30%) !important;
+  }
+}
+.planet-lottie {
+  &--anna-sw .planet-layer--Gras_Outlines {
+    z-index: -1;
+  }
+
+  &--dylan-south .planet-layer--Layer_5_Outlines {
+    svg {
+      transform: scaleX(2) translateX(0%) !important;
+
+      @media screen and (min-width: 186px) {
+        transform: scaleX(4) translateX(0%) !important;
+      }
+    }
+  }
+
+  &--ruben-ne .planet-layer--grond_Outlines,
+  &--ruben-nw .planet-layer--grond_Outlines,
+  &--ruben-south .planet-layer--grond_Outlines,
+  &--dylan-nw .planet-layer--Layer_2_Outlines,
+  &--dylan-ne .planet-layer--lekker_rekken,
+  &--bianca-north .planet-layer--Layer_4_Outlines,
+  &--bianca-sw .planet-layer--Layer_2_Outlines,
+  &--anna-north .planet-layer--Zand_Outlines,
+  &--anna-sw .planet-layer--Gras_Outlines,
+  &--anna-se .planet-layer--Layer_2_Outlines {
+    svg {
+      transform: scaleX(10) translateX(5%) !important;
+    }
+  }
 }
 </style>

@@ -14,7 +14,12 @@
   <div class="custom-background--bottom" :class="`${color}-variant`"></div>
   <div class="column no-wrap">
     <header>
-      <a :href="`/space/${name}`" class="" :title="nameCaptialize" :alt="nameCaptialize">
+      <a
+        :href="`/space/${name}`"
+        class=""
+        :title="nameCaptialize"
+        :alt="nameCaptialize"
+      >
         <q-img
           fit="contain"
           :src="require(`../assets/planet/${name}.svg`)"
@@ -23,16 +28,20 @@
         />
       </a>
     </header>
-    <horizontal-scroll
-      :class="`${color}-variant content-area`"
-      class="col col-9"
-    >
+    <horizontal-scroll :class="`${color}-variant`" class="col col-9">
       <div class="horizontal-row">
         <component :is="content" />
       </div>
     </horizontal-scroll>
     <div class="col col-2 absolute full-width animated-bottom">
+      <plain-country
+        v-if="name == 'bianca' && countryCode == 'east'"
+        class="fit bianca-east--country"
+        space="country"
+        name="bianca-east"
+      />
       <country
+        v-else
         class="fit"
         space="country"
         :name="`${name}-${countryCode}`"
@@ -47,6 +56,7 @@ import { useRoute } from 'vue-router';
 
 import HorizontalScroll from 'src/components/HorizontalScroll.vue';
 import Country from 'src/components/Planet.vue';
+import PlainCountry from 'src/components/Country.vue';
 
 const COUNTRIES: { [index: string]: string } = {
   'south-east': 'se',
@@ -66,7 +76,7 @@ const COLORS: { [index: string]: string } = {
 };
 
 export default {
-  components: { HorizontalScroll, Country },
+  components: { HorizontalScroll, Country, PlainCountry },
   setup() {
     const route = useRoute();
 
@@ -190,13 +200,8 @@ $COLUMN_GAP: 100px;
     }
   }
 }
-.content-area {
-  // top: max(16vh, calc(86px + 2vw));
-}
-
 .animated-bottom {
   bottom: 0;
-  // backdrop-filter: blur(6px);
 }
 .red-variant {
   fill: $red-transparent;

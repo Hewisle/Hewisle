@@ -146,6 +146,10 @@ export default defineComponent({
     height: 100vh;
     width: 100%;
     margin-top: 20vh;
+
+    @media screen and (max-width: $breakpoint-sm-max) {
+      height: 60vh;
+    }
   }
   &-wrapper {
     position: absolute;
@@ -164,6 +168,9 @@ export default defineComponent({
     &::v-deep() .planet-lottie {
       @media screen and (max-width: $breakpoint-md-max) {
         transform: scale(1.5);
+      }
+      @media screen and (max-width: $breakpoint-sm-max) {
+        transform: scale(2);
       }
     }
   }

@@ -33,7 +33,7 @@ export const CONFIG = {
     onder: {
       play: [
         'Regenboog 2 Outlines'
-      ], href: ''
+      ], href: '/space/ruben/south'
     },
     rechts: {
       play: [
@@ -59,7 +59,7 @@ export const CONFIG = {
     links: {
       play: [
         'Vergrootglas 1 Outlines',
-        'Vergrootglas 2 Outlines',], href: ''
+        'Vergrootglas 2 Outlines',], href: '/space/ruben/north-west'
     },
   },
 }
