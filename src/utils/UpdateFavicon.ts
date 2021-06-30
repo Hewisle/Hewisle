@@ -14,7 +14,7 @@ const UpdateFavicon = (timeout = 1000, el: CloneElement | null = null) => {
     }
     const clone = svg.cloneNode(true) as CloneElement;
     // Stoopid Safari is not able to do clone.getElementById
-    const fire = clone.querySelector('spaceship-fire') as HTMLElement
+    const fire = clone.querySelector('#spaceship-fire') as HTMLElement
     clone.setAttribute('style', '');
     fire.setAttribute('display', 'block')
     const SVGEncoded = btoa(new XMLSerializer().serializeToString(clone));

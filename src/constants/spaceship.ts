@@ -1,6 +1,6 @@
-export const TYPES = <const>['rocky', 'its_a_trap', 'always_been', 'nyan_cat'];
+export const TYPES = ['rocky', 'its_a_trap', 'always_been', 'nyan_cat'];
 export type TYPE = typeof TYPES[number]
-export const COLORS = <const>[
+export const COLORS = [
   'blue',
   'light-blue',
   'teal',

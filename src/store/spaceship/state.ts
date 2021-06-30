@@ -1,5 +1,7 @@
 import { TYPES, TYPE, COLORS, COLOR } from 'src/constants/spaceship';
 
+const random = (arr: COLOR[] | TYPE[]) => arr[Math.floor(Math.random() * arr.length)]
+
 export interface StateModel {
   name: string,
   color: COLOR,
@@ -11,8 +13,8 @@ export interface StateModel {
 function state(): StateModel {
   return {
     name: '',
-    color: COLORS[0],
-    type: TYPES[0],
+    color: random(COLORS),
+    type: random(TYPES),
     token: '',
     itsi: null
   }
