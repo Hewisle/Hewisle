@@ -13,14 +13,20 @@
   </svg>
   <div class="custom-background--bottom" :class="`${color}-variant`"></div>
   <div class="column no-wrap">
-    <header class="col col-1">
-      <q-img
-        fit="contain"
-        :src="require(`../assets/planet/${name}.svg`)"
-        class="top-planet"
-      />
+    <header>
+      <a :href="`/space/${name}`" class="" :title="nameCaptialize" :alt="nameCaptialize">
+        <q-img
+          fit="contain"
+          :src="require(`../assets/planet/${name}.svg`)"
+          class="top-planet"
+          position="right"
+        />
+      </a>
     </header>
-    <horizontal-scroll :class="`${color}-variant`" class="col col-9">
+    <horizontal-scroll
+      :class="`${color}-variant content-area`"
+      class="col col-9"
+    >
       <div class="horizontal-row">
         <component :is="content" />
       </div>
@@ -36,7 +42,7 @@
   </div>
 </template>
 <script lang="ts">
-import { defineAsyncComponent } from 'vue';
+import { defineAsyncComponent, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 import HorizontalScroll from 'src/components/HorizontalScroll.vue';
@@ -68,6 +74,12 @@ export default {
     const countryCode: string = COUNTRIES[country as string];
     const color: string = COLORS[name as string];
 
+    const nameCaptialize = computed(() => {
+      if (!name) return '';
+      const value = name.toString();
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    });
+
     let content: unknown;
     if (name && countryCode) {
       content = defineAsyncComponent(() =>
@@ -77,7 +89,7 @@ export default {
       );
     }
 
-    return { color, content, name, countryCode };
+    return { color, content, name, countryCode, nameCaptialize };
   },
 };
 </script>
@@ -103,8 +115,23 @@ $COLUMN_GAP: 100px;
 }
 .column {
   height: 100vh;
+
   header {
-    min-height: max(16vh, calc(86px + 2vw));
+    position: relative;
+    height: max(16vh, calc(86px + 2vw));
+
+    .top-planet {
+      height: 100%;
+      position: absolute;
+      right: 0;
+      transform: translateY(-25%);
+      transform-origin: right;
+      transition: transform 1s;
+
+      &:hover {
+        transform: translateY(-25%) scale(1.2);
+      }
+    }
   }
 }
 .horizontal-row {
@@ -163,16 +190,13 @@ $COLUMN_GAP: 100px;
     }
   }
 }
-.top-planet {
-  width: 260px;
-  position: absolute;
-  right: 0;
-  transform: translateY(-100px);
+.content-area {
+  // top: max(16vh, calc(86px + 2vw));
 }
 
 .animated-bottom {
   bottom: 0;
-  backdrop-filter: blur(6px);
+  // backdrop-filter: blur(6px);
 }
 .red-variant {
   fill: $red-transparent;
