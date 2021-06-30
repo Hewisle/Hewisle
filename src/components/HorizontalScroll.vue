@@ -7,8 +7,6 @@
 <script lang="ts">
 import { defineComponent, onMounted } from 'vue';
 import Scrollbar from 'smooth-scrollbar';
-import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
-// import gsap from 'gsap';
 
 const BREAKPOINT = 1023;
 
@@ -28,7 +26,7 @@ class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
 export default defineComponent({
   setup() {
     onMounted(() => {
-      Scrollbar.use(HorizontalScrollPlugin, OverscrollPlugin);
+      Scrollbar.use(HorizontalScrollPlugin);
       const scrollbar = Scrollbar.init(
         document.querySelector('#scroll-x') as HTMLElement,
         {}
