@@ -24,12 +24,7 @@
           </a>
         </div>
         <div class="col col-8 column absolute full-height planet-col">
-          <a
-            :href="`/space/${name}/north-east`"
-            class="planet planet--main"
-            :alt="nameCaptialize"
-            @click.prevent
-          >
+          <a class="planet planet--main" :alt="nameCaptialize" @click.prevent>
             <planet :config="globalConfig[name]" :name="name" />
           </a>
         </div>
@@ -53,7 +48,7 @@
 <script lang="ts">
 import { defineComponent, computed, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
-import gsap from 'gsap'
+import gsap from 'gsap';
 
 import Planet from '../components/Planet.vue';
 import { CONFIG } from '../constants/globalConfig';
@@ -93,19 +88,24 @@ export default defineComponent({
         opacity: 1,
         yPercent: 0,
         delay: 1.5,
-        duration: 1
+        duration: 1,
       });
       gsap.to(explainer, {
         opacity: 1,
         yPercent: 0,
         delay: 1.5,
-        duration: 1
+        duration: 1,
       });
       gsap.to(wrapper, {
         yPercent: 0,
-        duration: 2.5
+        duration: 2.5,
       });
-      gsap.to(planet, { rotation: 360, duration: 180, repeat: -1, ease: 'linear' })
+      gsap.to(planet, {
+        rotation: 360,
+        duration: 180,
+        repeat: -1,
+        ease: 'linear',
+      });
     });
 
     return {
@@ -117,14 +117,15 @@ export default defineComponent({
 });
 </script>
 <style lang="scss" scoped>
-#welcome, #explainer {
+#welcome,
+#explainer {
   opacity: 0;
   transform: translateY(-50%);
 }
+
 .space {
   position: relative;
   overflow: hidden;
-  height: 100%;
   width: 100vw;
   left: 50%;
   transform: translate(-50%);
@@ -142,7 +143,7 @@ export default defineComponent({
 
   &-wrapper--relative {
     position: relative;
-    height: 125vh;
+    height: 100vh;
     width: 100%;
     margin-top: 20vh;
   }
@@ -158,6 +159,13 @@ export default defineComponent({
   }
   &--side-right {
     transform: translate(50%, 50%);
+  }
+  &--main {
+    &::v-deep() .planet-lottie {
+      @media screen and (max-width: $breakpoint-md-max) {
+        transform: scale(1.5);
+      }
+    }
   }
 
   .q-img {

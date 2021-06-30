@@ -13,7 +13,13 @@
   </svg>
   <div class="custom-background--bottom" :class="`${color}-variant`"></div>
   <div class="column no-wrap">
-    <header class="col col-1"></header>
+    <header class="col col-1">
+      <q-img
+        fit="contain"
+        :src="require(`../assets/planet/${name}.svg`)"
+        class="top-planet"
+      />
+    </header>
     <horizontal-scroll :class="`${color}-variant`" class="col col-9">
       <div class="horizontal-row">
         <component :is="content" />
@@ -42,14 +48,15 @@ const COUNTRIES: { [index: string]: string } = {
   'north-east': 'ne',
   'north-west': 'nw',
   north: 'north',
+  east: 'east',
   south: 'south',
 };
 
 const COLORS: { [index: string]: string } = {
-  'anna': 'red',
-  'dylan': 'yellow',
-  'bianca': 'cyan',
-  'ruben': 'orange',
+  anna: 'red',
+  dylan: 'yellow',
+  bianca: 'cyan',
+  ruben: 'orange',
 };
 
 export default {
@@ -155,6 +162,12 @@ $COLUMN_GAP: 100px;
       }
     }
   }
+}
+.top-planet {
+  width: 260px;
+  position: absolute;
+  right: 0;
+  transform: translateY(-100px);
 }
 
 .animated-bottom {

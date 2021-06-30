@@ -14,7 +14,7 @@ export const CONFIG = {
     },
     rechts: {
       play: ['vis 1 Outlines', 'vis 2 Outlines', 'vis 3 Outlines'],
-      href: '',
+      href: '/space/bianca/east',
     },
     links: {
       play: ['Beer 1 Outlines', 'Beer 2 Outlines', 'Beer 3 Outlines'],

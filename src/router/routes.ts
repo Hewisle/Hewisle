@@ -8,7 +8,7 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/space', component: () => import('src/pages/Space.vue') },
       { path: '/space/:name(anna|ruben|bianca|dylan)', component: () => import('src/pages/World.vue') },
-      { path: '/space/:name(anna|ruben|bianca|dylan)/:country(north|north-east|north-west|south|south-east|south-west)', component: () => import('src/pages/Country.vue') },
+      { path: '/space/:name(anna|ruben|bianca|dylan)/:country(north|north-east|north-west|south|south-east|south-west|east)', component: () => import('src/pages/Country.vue') },
       { path: '/lottie', component: () => import('src/pages/Lottie.vue') },
     ],
   },
