@@ -23,13 +23,19 @@ class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
   }
 }
 
+Scrollbar.use(HorizontalScrollPlugin);
+
 export default defineComponent({
   setup() {
     onMounted(() => {
-      Scrollbar.use(HorizontalScrollPlugin);
       const scrollbar = Scrollbar.init(
         document.querySelector('#scroll-x') as HTMLElement,
-        {}
+        {
+          plugins: {
+            overscroll: false,
+            limitScrollspeed: false,
+          },
+        }
       );
       scrollbar.track.xAxis.element.remove();
       scrollbar.track.yAxis.element.remove();

@@ -2,8 +2,7 @@
   <span v-if="intro">
     Welkom op de portfoliowebsite van
     <strong>Anna Sivera van der Sluijs</strong>,
-    <strong>Bianca van der Heide</strong>, 
-    <strong>Dylan Lemmers</strong> en
+    <strong>Bianca van der Heide</strong>, <strong>Dylan Lemmers</strong> en
     <strong>Ruben de Wit</strong>. Maak een ruimtereis langs onze planeten en
     bekijk verschillende projecten.
     <br />
@@ -24,8 +23,8 @@
     <strong>Besturing</strong>
     <ul>
       <li>
-        Door je muis te bewegen of door de pijltjes toetsen te gebruiken, kun je
-        je ruimteschip op de pagina verplaatsen en langs onze planeten reizen.
+        Door je muis te bewegen kun je je ruimteschip op de pagina verplaatsen
+        en langs onze planeten reizen
       </li>
       <li>Klik op een planeet om te landen.</li>
       <li>

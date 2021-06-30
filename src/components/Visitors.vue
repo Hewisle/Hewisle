@@ -1,6 +1,6 @@
 <template>
   <div class="visitor-container">
-    <Spaceship v-for="ufo in ufos" :key="ufo.public_id" v-bind="ufo" />
+    <Spaceship v-for="ufo in ufos" :key="ufo.id" v-bind="ufo" />
   </div>
 </template>
 <script lang="ts">
@@ -26,7 +26,7 @@ export default defineComponent({
   },
   setup() {
     const $socket = inject('$socket') as Socket;
-    const ufos = ref([]);
+    const ufos = ref<{ id: string }[]>([]);
 
     const store = useStore();
     const id = computed(() => store.getters['spaceship/getId']);

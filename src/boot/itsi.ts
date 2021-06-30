@@ -32,5 +32,5 @@ export default boot(/*async*/({ store, ssrContext }) => {
   }
 
   store.commit('spaceship/setItsiToken', storeTicket)
-  ssrContext?.$q.cookies.set('ticket', storeTicket, { httpOnly: true, secure: true })
+  ssrContext?.$q.cookies.set('ticket', storeTicket, { httpOnly: true, secure: true, path: '/' })
 })
