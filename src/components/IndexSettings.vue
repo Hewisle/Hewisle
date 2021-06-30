@@ -300,6 +300,7 @@ export default defineComponent({
 
       &::v-deep() svg {
         height: 100%;
+        width: 100%;
       }
     }
   }
