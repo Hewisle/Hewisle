@@ -41,7 +41,7 @@
 }
 
 // Stoopid Safari does something weird on desktop with fill-available
-@media not all and (min-resolution: 0.001dpcm) and (min-width:1025px) {
+@media not all and (min-resolution: 0.001dpcm) and (min-width: 1025px) {
   @supports (-webkit-appearance: none) and (stroke-color: transparent) {
     html {
       height: 100% !important;
@@ -175,6 +175,8 @@ $colors: 'blue', 'light-blue', 'teal', 'green', 'light-green', 'amber',
 
 @each $color in $colors {
   .svg-#{$color} {
+    color: var(--#{$color}) !important;
+
     .fill-primary-dark {
       transition: fill 0.25s ease;
       fill: var(--#{$color}-10) !important;

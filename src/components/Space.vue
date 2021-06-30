@@ -30,6 +30,7 @@ import Scrollbar from 'smooth-scrollbar';
 import OverscrollPlugin from 'smooth-scrollbar/dist/plugins/overscroll';
 import LimitScrollspeedPlugin from '../utils/LimitScrollspeed';
 import createSpareShip from '../utils/CreateSpareShip';
+import createNameChip from '../utils/CreateNameChip';
 
 import PlanetSpace from './PlanetSpace.vue';
 import Visitors from './Visitors.vue';
@@ -49,6 +50,7 @@ export default defineComponent({
     const trackMouseRef = ref();
     const isMoving = ref(false);
     const multiplayerInterval = ref();
+    const nameChip = ref();
 
     const store = useStore();
     const router = useRouter();
@@ -58,6 +60,7 @@ export default defineComponent({
       set: (type) => store.commit('spaceship/setType', type),
     });
     const spaceshipColor = computed(() => store.state.spaceship.color);
+    const name = computed(() => store.state.spaceship.name);
 
     const rotateInfinite = (el: Element) =>
       gsap.to(el, { rotation: 360, duration: 180, repeat: -1, ease: 'linear' });
@@ -94,7 +97,10 @@ export default defineComponent({
       );
 
       const scrollbar = Scrollbar.init(
-        document.querySelector('#space') as HTMLElement
+        document.querySelector('#space') as HTMLElement,
+        {plugins: {
+          horizontalScroll: false
+        }}
       );
       scrollbar.track.xAxis.element.remove();
       scrollbar.track.yAxis.element.remove();
@@ -113,14 +119,16 @@ export default defineComponent({
         timeout = 1000;
       }
 
+      nameChip.value = createNameChip(name.value, spaceshipColor.value);
+
       window.addEventListener('mousemove', (e) => {
         if (lock.value) return;
         mouse.value.x = e.x;
         mouse.value.y = e.y;
       });
 
-      const xSet = gsap.quickSetter(spaceship, 'x', 'px');
-      const ySet = gsap.quickSetter(spaceship, 'y', 'px');
+      const xSet = gsap.quickSetter([spaceship, nameChip.value], 'x', 'px');
+      const ySet = gsap.quickSetter([spaceship, nameChip.value], 'y', 'px');
 
       const ROT_OFFSET = spaceshipType.value === 'its_a_trap' ? 0 : 45;
       const ROT_MAX = -45;
@@ -255,6 +263,8 @@ export default defineComponent({
         clearInterval(multiplayerInterval.value);
         multiplayerInterval.value = null;
       }
+      gsap.ticker.remove(trackMouseRef.value);
+      if (nameChip.value) document.body.removeChild(nameChip.value);
     });
 
     return { spaceArea, onPlanetClick };

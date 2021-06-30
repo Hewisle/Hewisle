@@ -6,12 +6,7 @@
         style="max-width: 256px"
       >
         <div class="col col-auto">
-          <q-btn
-            icon="help"
-            class="q-pa-none"
-            flat
-            @click="openHelpDialog"
-          />
+          <q-btn icon="help" class="q-pa-none" flat @click="openHelpDialog" />
         </div>
       </div>
       <div class="row col-6 items-center full-width spaceship-row">
@@ -177,6 +172,8 @@ export default defineComponent({
 
     // Animate spaceship before page leave
     const spaceshipLeaveAnimation = () => {
+      if (!name.value) name.value = 'Obi-Wan';
+
       const spaceshipSVG: SVGElement | null =
         document.querySelector('.q-carousel svg');
       if (spaceshipSVG) {
@@ -241,8 +238,8 @@ export default defineComponent({
     };
 
     const prefetch = () => {
-      import(/* webpackChunkName: "space" */ 'src/pages/Space.vue')
-    }
+      import(/* webpackChunkName: "space" */ 'src/pages/Space.vue');
+    };
 
     onMounted(() => {
       document.addEventListener('keyup', keySelectSpaceship);
@@ -261,7 +258,7 @@ export default defineComponent({
       spaceship,
       spaceshipColor,
       openHelpDialog,
-      prefetch
+      prefetch,
     };
   },
   onBeforeUnmount() {
