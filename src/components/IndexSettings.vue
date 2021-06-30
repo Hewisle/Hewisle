@@ -181,7 +181,7 @@ export default defineComponent({
       if (spaceshipSVG) {
         const from = getAbsolutePosition(spaceshipSVG);
         const clone = spaceshipSVG.cloneNode(true) as CloneElement;
-        const fire = clone.getElementById('spaceship-fire');
+        const fire = clone.querySelector('#spaceship-fire') as HTMLElement;
 
         fire.setAttribute('display', 'block');
         updateFavicon(1, clone);

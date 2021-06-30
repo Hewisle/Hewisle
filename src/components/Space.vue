@@ -127,7 +127,7 @@ export default defineComponent({
       const FPMS = 60 / 1000;
       const SPEED = 0.01;
 
-      const spaceshipFire = spaceship.getElementById('spaceship-fire');
+      const spaceshipFire = spaceship.querySelector('#spaceship-fire');
 
       trackMouseRef.value = (time: number, deltaTime: number) => {
         var delta = deltaTime * FPMS;
