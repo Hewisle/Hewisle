@@ -3,7 +3,8 @@
 
   <p>
     Omdat ik in het vorige blok erg tevreden was met het resultaat van een
-    dashboard in VS Code wilde ik met die kennis een built-in
+    <a href="/space/ruben/north-east">dashboard in VS Code</a> wilde ik met die
+    kennis een built-in
     <strong>
       <abbr title="Application Programming Interface">API</abbr>
       Client</strong

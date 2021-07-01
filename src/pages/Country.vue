@@ -16,7 +16,6 @@
     <header>
       <a
         :href="`/space/${name}`"
-        class=""
         :title="nameCaptialize"
         :alt="nameCaptialize"
       >

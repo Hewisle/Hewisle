@@ -25,6 +25,7 @@
     knie.
   </p>
   <iframe
+    scrolling="no"
     width="560"
     height="315"
     src="https://www.youtube.com/embed/3a9kgUy_Z0o"
@@ -34,7 +35,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/9k63K8aEN_E"
     title="YouTube video player"
@@ -43,7 +45,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/GFHEF0gBYfo"
     title="YouTube video player"
@@ -52,7 +55,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/Noobkv5KjAU"
     title="YouTube video player"
@@ -61,7 +65,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/n3W7Vu-c1AY"
     title="YouTube video player"
@@ -70,7 +75,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/HmCvFPuod0E"
     title="YouTube video player"
@@ -89,11 +95,17 @@
     huisstijl. Dit ging best goed en in ongeveer 2 weken was het herontwerp af.
   </p>
   <figure>
-    <q-img src="bianca-blok3.7-huidig.png" alt="Huidige website" />
+    <q-img
+      src="../../assets/content/bianca-blok3.7-huidig.png"
+      alt="Huidige website"
+    />
     <q-chip>De homepagina van de huidige website</q-chip>
   </figure>
   <figure>
-    <q-img src="bianca-blok3.9-styleguide.png" alt="Styleguide" />
+    <q-img
+      src="../../assets/content/bianca-blok3.9-styleguide.png"
+      alt="Styleguide"
+    />
     <q-chip>Styleguide na veel iteratie</q-chip>
   </figure>
   <p>
@@ -111,7 +123,8 @@
     zijn meerdere interacties te zien) die ik tijdens deze 5 weken heb gemaakt.
   </p>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/bhY49zsUAXQ"
     title="YouTube video player"
@@ -120,7 +133,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/QPNy8KG9EmE"
     title="YouTube video player"
@@ -129,7 +143,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/Sxe0n5uaVTo"
     title="YouTube video player"
@@ -138,7 +153,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/dUTsWaT1x80"
     title="YouTube video player"
@@ -147,7 +163,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/rlnDT24KPdQ"
     title="YouTube video player"
@@ -156,7 +173,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/TkjsNnBdLdU"
     title="YouTube video player"
@@ -165,7 +183,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/Rh-_gdec6xI"
     title="YouTube video player"
@@ -174,7 +193,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/s6SMUPBu-I0"
     title="YouTube video player"
@@ -183,7 +203,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/7lmq6ixLgG8"
     title="YouTube video player"
@@ -192,7 +213,8 @@
     allowfullscreen
   ></iframe>
   <iframe
-        width="560"
+    scrolling="no"
+    width="560"
     height="315"
     src="https://www.youtube.com/embed/65ZvpFgif9U"
     title="YouTube video player"

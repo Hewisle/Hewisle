@@ -194,6 +194,7 @@
     <q-img src="../../assets/content/anna-g52.jpg" fit="contain" />
   </figure>
   <iframe
+    scrolling="no"
     width="560"
     height="315"
     src="https://www.youtube.com/embed/kVCSGsr0c0Q"
