@@ -14,10 +14,13 @@
     oplossing kunnen profiteren.
   </p>
   <figure>
-    <q-img src="../../assets/content/ruben_ne_VSCode-Welkom.png" fit="contain" />
+    <q-img
+      src="../../assets/content/ruben_ne_VSCode-Welkom.png"
+      fit="contain"
+    />
     <q-chip square>Standaard 'dashboard' van VS Code</q-chip>
   </figure>
-  <h3 class="q-my-lg">Aanpak</h3>
+  <h3>Aanpak</h3>
   <p>
     Om deze vijf weken effectief te laten verlopen heb ik een grove planning
     gemaakt met daarin wanneer ik aan welke features zal gaan werken en waar
@@ -49,8 +52,11 @@
     Uiteindelijk heb ik een werkende VS Code extensie opgeleverd welke open
     source is opgezet en daarom te vinden op GITHUB.
   </p>
+  <figure class="no-break">
+    <q-img src="../../assets/content/ruben_ne_dashboard-result.png"></q-img>
+  </figure>
   <p>
-    (Afb: Dashboard en menu) Middels
+    Middels
     <strong>drag-n-drop</strong> kunnen ingebouwde componenten naar het
     dashboard tabblad gesleept worden. Daar kan er vervolgens een titel en kleur
     aan gegeven worden. Daarnaast is het ook voor de gebruiker mogelijk om eigen
@@ -69,8 +75,11 @@
   </p>
   <p>
     Als voorbeeld heb ik een analoge klok gemaakt als React component en deze op
-    het dashboard geplaatst. (Afb: Klok)
+    het dashboard geplaatst.
   </p>
+  <figure class="no-break">
+    <q-img src="../../assets/content/ruben-ne-dashboard.png"></q-img>
+  </figure>
   <p>
     Omdat mijn project opgezet is als open source project, heb ik besloten om
     het <strong>publiek</strong> op te zoeken en aan te kondigen dat mijn
@@ -98,7 +107,7 @@
     gebruikt binnen dit project als taal. Webpack Module Federation was een
     pittige maar welkome oplossing op de wens die ik had. Het heeft even geduurd
     voordat ik begreep hoe Webpack mij kon helpen en welke voordelen het kon
-    bieden, maar achteraf ben ik enorm fan. (Afb: logo’s gebruikte technieken)
+    bieden, maar achteraf ben ik enorm fan.
   </p>
   <p>
     Ten slotte heb ik geleerd hoeveel moeite het kost om een open source project

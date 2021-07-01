@@ -200,7 +200,8 @@ $COLUMN_GAP: 100px;
     }
     h3,
     figure,
-    iframe {
+    iframe,
+    .do-break {
       &:not(.no-break) {
         break-before: column;
       }

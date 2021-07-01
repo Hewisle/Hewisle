@@ -1,11 +1,10 @@
 <template>
   <h2>Logo Animatie</h2>
-
   <p>
-    Voor deze leerdoel had ik animaties ontworpen voor verschillende bekende
-    logo’s met Adobe After Effect. Ook het programma te leren kennen, had ik een
-    masterclass op YouTube gevolgd. De reden waarom ik deze leerdoel koos is
-    omdat ik altijd wilde leren animeren. Ook lijkt mij het een goede
+    Voor dit leerdoel had ik animaties ontworpen voor verschillende bekende
+    logo’s met Adobe After Effect. Om het programma te leren kennen, had ik een
+    masterclass op YouTube gevolgd. De reden waarom ik dit leerdoel koos is
+    omdat ik altijd wilde leren animeren. Daarnaast lijkt het mij het een goede
     vaardigheid om bevatten.
   </p>
 
