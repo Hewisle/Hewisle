@@ -25,10 +25,11 @@ const CreateSpareShip = (type: string, color: string) => {
     yPercent: -50,
     xPercent: -50,
   });
-  gsap.to(spaceship,{
+  gsap.to(spaceship, {
     y: window.innerHeight * 0.75,
     duration: 1
   })
+  spaceship.classList.add('spaceship--' + type)
   return spaceship
 }
 

@@ -65,9 +65,20 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, computed, onMounted, watch, ref } from 'vue';
+import {
+  defineComponent,
+  computed,
+  onMounted,
+  watch,
+  ref,
+  onBeforeUnmount,
+} from 'vue';
 import { useRoute } from 'vue-router';
+import { useStore } from '../store';
+import { useQuasar } from 'quasar';
 import gsap from 'gsap';
+
+import createSpareShip from '../utils/CreateSpareShip';
 
 import Planet from '../components/Planet.vue';
 import { CONFIG } from '../constants/globalConfig';
@@ -91,6 +102,9 @@ export default defineComponent({
     const name = ref('');
     const names = Object.keys(globalConfig);
 
+    const store = useStore();
+    const $q = useQuasar();
+
     name.value = route.params.name as string;
 
     const toCapital = (value: string) => {
@@ -110,6 +124,9 @@ export default defineComponent({
       return toCapital(pos === names.length - 1 ? names[0] : names[pos + 1]);
     });
 
+    const spaceshipType = computed(() => store.state.spaceship.type);
+    const spaceshipColor = computed(() => store.state.spaceship.color);
+
     watch(
       () => route.params.name,
       () => {
@@ -122,6 +139,10 @@ export default defineComponent({
       const [planet] = document.getElementsByClassName('planet--main');
       const welcome = document.getElementById('welcome');
       const explainer = document.getElementById('explainer');
+      let [spaceship] = document.getElementsByClassName(
+        'spaceship-clone'
+      ) as HTMLCollectionOf<CloneElement>;
+
       gsap.set(wrapper, {
         yPercent: 100,
       });
@@ -148,6 +169,19 @@ export default defineComponent({
         repeat: -1,
         ease: 'linear',
       });
+
+      if (!spaceship) {
+        spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
+      }
+
+      spaceship.classList.add('world');
+    });
+
+    onBeforeUnmount(() => {
+      let [spaceship] = document.getElementsByClassName(
+        'spaceship-clone'
+      ) as HTMLCollectionOf<CloneElement>;
+      spaceship.classList.remove('world');
     });
 
     return {
@@ -160,6 +194,30 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss">
+.spaceship-clone {
+  &.world {
+    transition: transform 2s ease;
+    transform: translate(100px, 350px) scale(0.8) rotate(-90deg) !important;
+    transform: translate(max(100px, 12vw), 350px) scale(0.8) rotate(-90deg) !important;
+
+    @media screen and (max-width: $breakpoint-md-min) {
+      left: 50% !important;
+      top: 500px !important;
+      transform: translate(-50%, -50%) scale(0.9) rotate(-90deg) !important;
+    }
+
+    &.spaceship--its_a_trap {
+      transform: translate(0, -50%) translate(100px, 350px) scale(0.8) !important;
+      transform: translate(0, -50%) translate(max(100px, 5vw), 350px) scale(0.8) !important;
+
+      @media screen and (max-width: $breakpoint-md-min) {
+        transform: translate(-50%, -50%) scale(0.9) !important;
+      }
+    }
+  }
+}
+</style>
 <style lang="scss" scoped>
 #welcome,
 #explainer {

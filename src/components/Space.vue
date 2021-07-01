@@ -98,9 +98,11 @@ export default defineComponent({
 
       const scrollbar = Scrollbar.init(
         document.querySelector('#space') as HTMLElement,
-        {plugins: {
-          horizontalScroll: false
-        }}
+        {
+          plugins: {
+            horizontalScroll: false,
+          },
+        }
       );
       scrollbar.track.xAxis.element.remove();
       scrollbar.track.yAxis.element.remove();
@@ -117,6 +119,19 @@ export default defineComponent({
       if (!spaceship) {
         spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
         timeout = 1000;
+      } else {
+        gsap.to(spaceship, {
+          x: window.innerWidth * 0.45,
+          y: window.innerHeight * 0.75,
+          left: 0,
+          top: 0,
+
+          width: '200px',
+          height: '200px',
+          yPercent: -50,
+          xPercent: -50,
+          duration: 1,
+        });
       }
 
       nameChip.value = createNameChip(name.value, spaceshipColor.value);

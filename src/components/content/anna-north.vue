@@ -1,13 +1,13 @@
 <template>
   <h2>Giraffe Coffee</h2>
+  <figure class="no-break">
+    <q-img src="../../assets/content/anna-g1.png" fit="contain" />
+  </figure>
   <p>
     Voor de fictieve koffiebar Giraffe Coffee heb ik een corporate identity
     gemaakt. Op basis hiervan is ook een website ontworpen en is er een animatie
     gemaakt.
   </p>
-  <figure class="no-break">
-    <q-img src="../../assets/content/anna-g1.png" fit="contain" />
-  </figure>
 
   <h3>De identiteit</h3>
   <p>

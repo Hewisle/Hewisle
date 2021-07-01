@@ -120,6 +120,11 @@ p {
   }
 }
 
+.q-scrollarea .q-scrollarea__container {
+  max-width: 100vw;
+  overflow-x: clip;
+}
+
 .q-transition--ease-out-back-enter-active,
 .q-transition--ease-out-back-leave-active,
 .q-transition--ease-in-back-enter-active,
