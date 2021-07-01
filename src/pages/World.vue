@@ -12,41 +12,60 @@
 
     <div class="row planet-wrapper--relative full-width">
       <div class="row planet-wrapper full-width justify-between">
-        <div class="col-2">
-          <a
-            href="/scroll"
+        <div class="col-2 full-height">
+          <router-link
+            :to="`/space/${left.toLowerCase()}`"
             class="planet planet--side-left"
-            title="Ruben"
-            alt="Ruben"
-            @click.prevent
+            :title="left"
+            :alt="left"
+            :key="'L_' + name"
           >
-            <q-img fit="contain" :src="require('../assets/planet/ruben.svg')" />
-          </a>
+            <section>
+              <q-btn icon="chevron_left" round class="text-yellow" flat></q-btn>
+              <p>Planeet {{ left }}</p>
+            </section>
+            <q-img
+              fit="contain"
+              position="center"
+              :src="require(`../assets/planet/${left.toLocaleLowerCase()}.svg`)"
+            />
+          </router-link>
         </div>
         <div class="col col-8 column absolute full-height planet-col">
           <a class="planet planet--main" :alt="nameCaptialize" @click.prevent>
-            <planet :config="globalConfig[name]" :name="name" />
+            <planet :config="globalConfig[name]" :name="name" :key="name" />
           </a>
         </div>
-        <div class="col-2">
-          <a
-            href="/scroll"
+        <div class="col-2 full-height">
+          <router-link
+            :to="`/space/${right.toLowerCase()}`"
             class="planet planet--side-right"
-            title="Bianca"
-            alt="Bianca"
+            :title="right"
+            :alt="right"
+            :key="'R_' + name"
           >
+            <section>
+              <p>Planeet {{ right }}</p>
+              <q-btn
+                icon="chevron_right"
+                round
+                class="text-yellow"
+                flat
+              ></q-btn>
+            </section>
             <q-img
               fit="contain"
-              :src="require('../assets/planet/bianca.svg')"
+              position="center"
+              :src="require(`../assets/planet/${right.toLowerCase()}.svg`)"
             />
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, computed, onMounted } from 'vue';
+import { defineComponent, computed, onMounted, watch, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import gsap from 'gsap';
 
@@ -67,14 +86,36 @@ export default defineComponent({
     Planet,
   },
   setup() {
+    const route = useRoute();
     const globalConfig = CONFIG as GlobalConfig;
-    const name = useRoute().params.name as string;
+    const name = ref('');
+    const names = Object.keys(globalConfig);
 
-    const nameCaptialize = computed(() => {
-      if (!name) return '';
-      const value = name.toString();
+    name.value = route.params.name as string;
+
+    const toCapital = (value: string) => {
+      if (!value) return '';
+      value = value.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
+    };
+
+    const nameCaptialize = computed(() => toCapital(name.value));
+
+    const left = computed(() => {
+      const pos = names.indexOf(name.value);
+      return toCapital(pos === 0 ? names[names.length - 1] : names[pos - 1]);
     });
+    const right = computed(() => {
+      const pos = names.indexOf(name.value);
+      return toCapital(pos === names.length - 1 ? names[0] : names[pos + 1]);
+    });
+
+    watch(
+      () => route.params.name,
+      () => {
+        name.value = route.params.name as string;
+      }
+    );
 
     onMounted(() => {
       const [wrapper] = document.getElementsByClassName('planet-wrapper');
@@ -112,6 +153,8 @@ export default defineComponent({
       name,
       nameCaptialize,
       globalConfig,
+      left,
+      right,
     };
   },
 });
@@ -139,6 +182,7 @@ export default defineComponent({
   &-col {
     left: 50%;
     transform: translateX(-50%);
+    z-index: -1;
   }
 
   &-wrapper--relative {
@@ -158,19 +202,55 @@ export default defineComponent({
     align-items: flex-start;
   }
 
+  &--side-left,
+  &--side-right {
+    text-decoration: none;
+    position: relative;
+
+    section {
+      display: inline-flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      position: absolute;
+      top: 50%;
+      transform: translateY(max(-14vw, -400px));
+    }
+    p {
+      color: white;
+      margin: 0;
+    }
+  }
   &--side-left {
-    transform: translate(-50%, 50%);
+    .q-img {
+      transform: translateX(-50%);
+    }
+    section {
+      left: 0;
+      margin-left: 1rem;
+    }
+    p {
+      margin-left: 1rem;
+    }
   }
   &--side-right {
-    transform: translate(50%, 50%);
+    .q-img {
+      transform: translateX(50%);
+    }
+    section {
+      right: 0;
+      margin-right: 1rem;
+    }
+    p {
+      margin-right: 1rem;
+    }
   }
   &--main {
     &::v-deep() .planet-lottie {
       @media screen and (max-width: $breakpoint-md-max) {
-        transform: scale(1.5);
+        transform: scale(1.3);
       }
       @media screen and (max-width: $breakpoint-sm-max) {
-        transform: scale(2);
+        transform: scale(1.2);
       }
     }
   }
