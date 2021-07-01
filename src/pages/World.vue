@@ -138,6 +138,7 @@ export default defineComponent({
         duration: 1,
       });
       gsap.to(wrapper, {
+        y: 0,
         yPercent: 0,
         duration: 2.5,
       });
@@ -200,6 +201,7 @@ export default defineComponent({
     height: 100%;
     width: 100%;
     align-items: flex-start;
+    transform: translateY(100%);
   }
 
   &--side-left,

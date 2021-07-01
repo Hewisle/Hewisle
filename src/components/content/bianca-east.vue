@@ -25,28 +25,58 @@
     knie.
   </p>
   <iframe
-    src="https://youtu.be/3a9kgUy_Z0o"
-    name="Tutorial ProtoPie - verplaatsen"
+    width="560"
+    height="315"
+    src="https://www.youtube.com/embed/3a9kgUy_Z0o"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/9k63K8aEN_E"
-    name="Tutorial ProtoPie - verschillende acties"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/9k63K8aEN_E"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/GFHEF0gBYfo"
-    name="Tutorial ProtoPie - verticaal scrollen"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/GFHEF0gBYfo"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/Noobkv5KjAU"
-    name="Tutorial ProtoPie - tabbladen"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Noobkv5KjAU"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/n3W7Vu-c1AY"
-    name="Tutorial ProtoPie - variabele"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/n3W7Vu-c1AY"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/HmCvFPuod0E"
-    name="Tutorial ProtoPie - variabele"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/HmCvFPuod0E"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <p>
     Tegelijkertijd ben ik begonnen aan het <strong>herontwerp</strong> voor de
@@ -81,44 +111,94 @@
     zijn meerdere interacties te zien) die ik tijdens deze 5 weken heb gemaakt.
   </p>
   <iframe
-    src="https://youtu.be/bhY49zsUAXQ"
-    name="ProtoPie - micro interactie menu"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/bhY49zsUAXQ"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/QPNy8KG9EmE"
-    name="ProtoPie - micro interactie filter"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/QPNy8KG9EmE"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/Sxe0n5uaVTo"
-    name="ProtoPie - micro interactie lader"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Sxe0n5uaVTo"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/dUTsWaT1x80"
-    name="ProtoPie - micro interactie prullenbak"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/dUTsWaT1x80"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/rlnDT24KPdQ"
-    name="ProtoPie - micro interactie prijzen variabele"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/rlnDT24KPdQ"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/TkjsNnBdLdU"
-    name="ProtoPie - micro interactie bestelproces"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/TkjsNnBdLdU"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/Rh-_gdec6xI"
-    name="ProtoPie - micro interactie in winkelwagen"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/Rh-_gdec6xI"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/s6SMUPBu-I0"
-    name="ProtoPie - micro interactie button"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/s6SMUPBu-I0"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/7lmq6ixLgG8"
-    name="ProtoPie - micro interactie chat"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/7lmq6ixLgG8"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <iframe
-    src="https://youtu.be/65ZvpFgif9U"
-    name="ProtoPie - micro interactie zoekbalk"
+        width="560"
+    height="315"
+    src="https://www.youtube.com/embed/65ZvpFgif9U"
+    title="YouTube video player"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
   ></iframe>
   <p>
     Om ervoor te zorgen dat het herontwerp en de micro interacties er zo goed

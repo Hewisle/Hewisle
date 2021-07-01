@@ -57,7 +57,17 @@
   <p>Voor dit leerdoel had ik verschillende soorten logo's geanimeerd:</p>
 
   <figure>
-    <iframe src="https://youtu.be/iRwVGXeA5jI" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/iRwVGXeA5jI"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Star Wars intro</strong></p>
@@ -70,7 +80,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/HJn7cILQewg" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/HJn7cILQewg"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Star Wars Bumper</strong></p>
@@ -84,7 +104,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/XK9b98mfGik" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/XK9b98mfGik"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Star Wars Outro</strong></p>
@@ -96,7 +126,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/0XeiTkY6jbk" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/0XeiTkY6jbk"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Coca-cola Intro</strong></p>
@@ -110,7 +150,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/KuyKcGFhu_A" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/KuyKcGFhu_A"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Coca-cola Bumper</strong></p>
@@ -124,7 +174,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/CXTY0OUTC6c" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/CXTY0OUTC6c"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Coca-cola Outro</strong></p>
@@ -137,7 +197,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/z2GbOH3heM4" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/z2GbOH3heM4"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Batman Intro</strong></p>
@@ -154,7 +224,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/k8GnIb1Y_Vo" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/k8GnIb1Y_Vo"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Batman Bumper</strong></p>
@@ -169,7 +249,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/lzXoNnNxAKI" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/lzXoNnNxAKI"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Batman Outro</strong></p>
@@ -183,7 +273,17 @@
   </p>
 
   <figure>
-    <iframe src="https://youtu.be/v1KCtOyaS74" fit="contain"> </iframe>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/v1KCtOyaS74"
+      fit="contain"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
   </figure>
 
   <p><strong>Wereld Natuur Fonds intro</strong></p>

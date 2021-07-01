@@ -130,6 +130,7 @@ $COLUMN_GAP: 100px;
 }
 .background-helper {
   bottom: 0;
+  z-index: -1;
 
   @media screen and (max-width: $breakpoint-sm-min) {
     display: none;
