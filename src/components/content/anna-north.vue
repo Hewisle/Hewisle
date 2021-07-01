@@ -90,7 +90,20 @@
   <h3>De website</h3>
   <p>
     Op basis van de corporate identity heb ik een mobiele en desktop website
-    ontworpen.
+    ontworpen. Hiernaast kan je door de interactieve website versies klikken, of
+    bezoek de volgende linkjes.<br />
+    Mobile website:
+    <br />
+    <a
+      href="https://xd.adobe.com/view/a4977eee-d1e7-4c62-a6e1-b0017af8603c-f1c4/"
+      >https://xd.adobe.com/view/a4977eee-d1e7-4c62-a6e1-b0017af8603c-f1c4/</a
+    ><br />
+    Desktop website:
+    <br />
+    <a
+      href="https://xd.adobe.com/view/e997e455-ee52-4542-9c50-7f0b1c5089ad-bcc4/"
+      >https://xd.adobe.com/view/e997e455-ee52-4542-9c50-7f0b1c5089ad-bcc4/</a
+    >
   </p>
   <iframe
     width="414"
