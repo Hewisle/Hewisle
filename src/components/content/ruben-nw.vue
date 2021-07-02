@@ -1,6 +1,5 @@
 <template>
   <h2>Universele API Client</h2>
-
   <p>
     Omdat ik in het vorige blok erg tevreden was met het resultaat van een
     <a href="/space/ruben/north-east">dashboard in VS Code</a> wilde ik met die
