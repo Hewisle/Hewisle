@@ -75,7 +75,6 @@ import {
 } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from '../store';
-import { useQuasar } from 'quasar';
 import gsap from 'gsap';
 
 import createSpareShip from '../utils/CreateSpareShip';
@@ -97,13 +96,12 @@ export default defineComponent({
     Planet,
   },
   setup() {
+    const store = useStore();
     const route = useRoute();
+
     const globalConfig = CONFIG as GlobalConfig;
     const name = ref('');
     const names = Object.keys(globalConfig);
-
-    const store = useStore();
-    const $q = useQuasar();
 
     name.value = route.params.name as string;
 
@@ -133,6 +131,10 @@ export default defineComponent({
         name.value = route.params.name as string;
       }
     );
+
+    const goBack = () => {
+      document.location.href = '/space';
+    };
 
     onMounted(() => {
       const [wrapper] = document.getElementsByClassName('planet-wrapper');
@@ -175,12 +177,14 @@ export default defineComponent({
       }
 
       spaceship.classList.add('world');
+      spaceship.addEventListener('click', goBack);
     });
 
     onBeforeUnmount(() => {
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
       ) as HTMLCollectionOf<CloneElement>;
+      spaceship.removeEventListener('click', goBack);
       spaceship.classList.remove('world');
     });
 
@@ -200,6 +204,8 @@ export default defineComponent({
     transition: transform 2s ease;
     transform: translate(100px, 350px) scale(0.8) rotate(-90deg) !important;
     transform: translate(max(100px, 12vw), 350px) scale(0.8) rotate(-90deg) !important;
+    pointer-events: all;
+    cursor: pointer;
 
     @media screen and (max-width: $breakpoint-md-min) {
       left: 50% !important;
@@ -208,8 +214,8 @@ export default defineComponent({
     }
 
     &.spaceship--its_a_trap {
-      transform: translate(0, -50%) translate(100px, 350px) scale(0.8) !important;
-      transform: translate(0, -50%) translate(max(100px, 5vw), 350px) scale(0.8) !important;
+      transform: translate(100px, 350px) scale(0.8) !important;
+      transform: translate(max(100px, 12vw), 350px) scale(0.8) !important;
 
       @media screen and (max-width: $breakpoint-md-min) {
         transform: translate(-50%, -50%) scale(0.9) !important;

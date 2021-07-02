@@ -14,11 +14,7 @@
   <div class="custom-background--bottom" :class="`${color}-variant`"></div>
   <div class="column no-wrap">
     <header>
-      <a
-        :href="`/space/${name}`"
-        :title="nameCaptialize"
-        :alt="nameCaptialize"
-      >
+      <a :href="`/space/${name}`" :title="nameCaptialize" :alt="nameCaptialize">
         <q-img
           fit="contain"
           :src="require(`../assets/planet/${name}.svg`)"
@@ -55,8 +51,16 @@
   </div>
 </template>
 <script lang="ts">
-import { defineAsyncComponent, computed } from 'vue';
+import {
+  defineAsyncComponent,
+  computed,
+  onMounted,
+  onBeforeUnmount,
+} from 'vue';
 import { useRoute } from 'vue-router';
+import { useStore } from '../store';
+
+import createSpareShip from '../utils/CreateSpareShip';
 
 import HorizontalScroll from 'src/components/HorizontalScroll.vue';
 import Country from 'src/components/Planet.vue';
@@ -83,10 +87,18 @@ export default {
   components: { HorizontalScroll, Country, PlainCountry },
   setup() {
     const route = useRoute();
+    const store = useStore();
 
     const { name, country } = route.params;
     const countryCode: string = COUNTRIES[country as string];
     const color: string = COLORS[name as string];
+
+    const spaceshipType = computed(() => store.state.spaceship.type);
+    const spaceshipColor = computed(() => store.state.spaceship.color);
+
+    const goBack = () => {
+      document.location.href = `/space/${name as string}`;
+    };
 
     const nameCaptialize = computed(() => {
       if (!name) return '';
@@ -102,6 +114,27 @@ export default {
         ).catch(() => null)
       );
     }
+
+    onMounted(() => {
+      let [spaceship] = document.getElementsByClassName(
+        'spaceship-clone'
+      ) as HTMLCollectionOf<CloneElement>;
+
+      if (!spaceship) {
+        spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
+      }
+
+      spaceship.classList.add('country');
+      spaceship.addEventListener('click', goBack);
+    });
+
+    onBeforeUnmount(() => {
+      let [spaceship] = document.getElementsByClassName(
+        'spaceship-clone'
+      ) as HTMLCollectionOf<CloneElement>;
+      spaceship.classList.remove('country');
+      spaceship.removeEventListener('click', goBack);
+    });
 
     return { color, content, name, countryCode, nameCaptialize };
   },
@@ -219,6 +252,11 @@ $COLUMN_GAP: 100px;
       max-width: $COLUMN_WIDTH;
     }
 
+    blockquote {
+      border-left: 5px solid #1d1536;
+      padding-left: 1rem;
+    }
+
     figure,
     iframe {
       position: relative;
@@ -255,5 +293,31 @@ $COLUMN_GAP: 100px;
 .orange-variant {
   fill: $orange-transparent;
   background: $orange-transparent;
+}
+</style>
+<style lang="scss">
+.spaceship-clone {
+  &.country {
+    transition: transform 2s ease, left 2s ease, top 2s ease;
+    transform: translate(25%, 15%) scale(0.6) rotate(-90deg) !important;
+    left: 0 !important;
+    bottom: 0;
+    top: unset !important;
+    pointer-events: all;
+    cursor: pointer;
+
+    @media screen and (max-width: $breakpoint-md-min) {
+      transform: translate(-15%, 17%) scale(0.4) rotate(-90deg) !important;
+    }
+
+    &.spaceship--its_a_trap {
+      transform: translate(25%, 15%) scale(0.7) !important;
+      transform: translate(25%, 15%) scale(0.7) !important;
+
+      @media screen and (max-width: $breakpoint-md-min) {
+        transform: translate(-15%, 25%) scale(0.4) !important;
+      }
+    }
+  }
 }
 </style>

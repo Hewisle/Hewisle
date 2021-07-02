@@ -119,7 +119,7 @@ export default defineComponent({
       if (!spaceship) {
         spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
         timeout = 1000;
-      } else {
+      } else if (!spaceship.classList.contains('greetings-from-index')) {
         gsap.to(spaceship, {
           x: window.innerWidth * 0.45,
           y: window.innerHeight * 0.75,
@@ -130,8 +130,10 @@ export default defineComponent({
           height: '200px',
           yPercent: -50,
           xPercent: -50,
-          duration: 1,
+          duration: 2,
         });
+      } else {
+        spaceship.classList.remove('greetings-from-index')
       }
 
       nameChip.value = createNameChip(name.value, spaceshipColor.value);

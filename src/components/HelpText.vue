@@ -31,6 +31,7 @@
         Op elke persoonlijke planeet zijn drie verschillende projecten te
         bekijken.
       </li>
+      <li>Stap in je ruimteschip om terug te keren</li>
     </ul>
     <br />
     Veel plezier en pas op voor eventuele medereizigers.
