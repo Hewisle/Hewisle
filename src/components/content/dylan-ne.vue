@@ -6,7 +6,7 @@
     is gemaakt in de stijl van Paper Mario.
   </p>
 
-  <h3 class="q-my-lg">Aanpak</h3>
+  <h3 class="no-break">Aanpak</h3>
 
   <p>
     Om te beginnen had ik onderzoek naar verschillende sprookjes die niet heel
@@ -14,7 +14,7 @@
     maken waarin de scenes werden vastgesteld.
   </p>
 
-  <h3 class="q-my-lg">Resultaat</h3>
+  <h3 class="no-break">Resultaat</h3>
 
   <p>
     Als eerst had ik een sprookje gekozen, hiervoor koos ik een sprookje genaamd
@@ -44,30 +44,31 @@
     zijn haan om te rijden en beloofd weg te rijden.
   </p>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-scene2.png" fit="contain" />
-    <q-chip square>Achtergrond scene 2</q-chip>
-  </figure>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-5 sm-12">
+      <q-img src="../../assets/content/dylan-scene2.png" fit="contain" />
+      <q-chip square>Achtergrond scene 2</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-doedelzak.png" fit="contain" />
-    <q-chip square>Doedelzak gebruikt voor dialoog</q-chip>
-  </figure>
+    <figure class="col-5 sm-12">
+      <q-img src="../../assets/content/dylan-doedelzak.png" fit="contain" />
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-zadel.png" fit="contain" />
-    <q-chip square>Zadel gebruikt voor dialoog</q-chip>
-  </figure>
+    <figure class="col-5 sm-12">
+      <q-img src="../../assets/content/dylan-zadel.png" fit="contain" />
+    </figure>
+  </div>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-5 sm-12">
+      <q-img src="../../assets/content/dylan-hans.png" fit="contain" />
+      <q-chip square>Karakter Hans</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-hans.png" fit="contain" />
-    <q-chip square>Karakter Hans</q-chip>
-  </figure>
-
-  <figure>
-    <!-- <q-img src="../../assets/content/dylan-vader.png" fit="contain" /> -->
-    <q-chip square>Karakter vader van Hans</q-chip>
-  </figure>
+    <figure class="col-5 sm-12">
+      <q-img src="../../assets/content/dylan-vader.png" fit="contain" />
+      <q-chip square>Karakter vader van Hans</q-chip>
+    </figure>
+  </div>
 
   <p>
     Scene 3: Uit de struiken komt een koning met vlekken op zijn kleding. Hij
@@ -76,27 +77,29 @@
     koning valt in slaap.
   </p>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-scene3.png" fit="contain" />
-    <q-chip square>Achtergrond scene 3</q-chip>
-  </figure>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-scene3.png" fit="contain" />
+      <q-chip square>Achtergrond scene 3</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-appel.png" fit="contain" />
-    <q-chip square>Appel gebruikt voor dialoog</q-chip>
-  </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-appel.png" fit="contain" />
+      <q-chip square>Appel gebruikt voor dialoog</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-map.png" fit="contain" />
-    <q-chip square>Map gebruikt voor dialoog</q-chip>
-  </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-map.png" fit="contain" />
+      <q-chip square>Map gebruikt voor dialoog</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-koning.png" fit="contain" />
-    <q-chip square>Karakter koning</q-chip>
-  </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-koning.png" fit="contain" />
+      <q-chip square>Karakter koning</q-chip>
+    </figure>
+  </div>
 
-  <p>
+  <p class="do-break">
     Scene 4: Hij wordt wakker onder de boom en ziet voor hem zijn koninkrijk. De
     koning zegt dat hij alles mag vragen wat hij wil. Hans zegt dat hij het
     eerste wil krijgen wat de koning groet. De koning accepteert het.
@@ -117,41 +120,43 @@
     zijn hond ziet. Maar het eerst wie hij ontmoet is zijn dochter de prinses.
   </p>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-scene5.png" fit="contain" />
-    <q-chip square>Achtergrond scene 5</q-chip>
-  </figure>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-scene5.png" fit="contain" />
+      <q-chip square>Achtergrond scene 5</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-hond.png" fit="contain" />
-    <q-chip square>Hond gebruikt voor dialoog</q-chip>
-  </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-hond.png" fit="contain" />
+      <q-chip square>Hond gebruikt voor dialoog</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-trouwen.png" fit="contain" />
-    <q-chip square>Trouwringen gebruikt voor dialoog</q-chip>
-  </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-trouwen.png" fit="contain" />
+      <q-chip square>Trouwringen gebruikt voor dialoog</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-prinses.png" fit="contain" />
-    <q-chip square>Karakter prinses</q-chip>
-  </figure>
-
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-prinses.png" fit="contain" />
+      <q-chip square>Karakter prinses</q-chip>
+    </figure>
+  </div>
   <p>
     Scene 6: De prinses helpt Hans de vloek te verbreken. Dit doet zij door Hans
     zijn huid in het vuur te gooien.
   </p>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-scene6.png" fit="contain" />
-    <q-chip square>Achtergrond scene 6</q-chip>
-  </figure>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-scene6.png" fit="contain" />
+      <q-chip square>Achtergrond scene 6</q-chip>
+    </figure>
 
-  <figure>
-    <q-img src="../../assets/content/dylan-hansvacht.png" fit="contain" />
-    <q-chip square>Vacht dat in het vuur wordt gegooid</q-chip>
-  </figure>
-
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/dylan-hansvacht.png" fit="contain" />
+      <q-chip square>Vacht dat in het vuur wordt gegooid</q-chip>
+    </figure>
+  </div>
   <p>
     Scene 7: Hans keert terug naar zijn vader samen met de prinses. Zijn vader
     herkent hem niet meer maar na het uitleggen is de vader blij voor hem en
@@ -159,7 +164,11 @@
   </p>
 
   <figure>
-    <q-img src="../../assets/content/dylan-hansnormaal.png" fit="contain" />
+    <q-img
+      src="../../assets/content/dylan-hansnormaal.png"
+      fit="contain"
+      style="max-height: 40vh"
+    />
     <q-chip square>Karakter Hans die is terug veranderd</q-chip>
   </figure>
 
@@ -182,7 +191,7 @@
     </iframe>
   </figure>
 
-  <h3 class="q-my-lg">Leereffecten</h3>
+  <h3>Leereffecten</h3>
   <p>
     Voor dit leerdoel heb ik geen video's opgezocht over het maken van 2de
     animatie, alleen maar voor kleine dingetjes zoals loop animatie en het maken

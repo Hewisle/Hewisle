@@ -24,7 +24,7 @@
       </a>
     </header>
     <horizontal-scroll class="col col-9 content-area">
-      <div class="horizontal-row">
+      <div class="horizontal-row" @mouseenter.once="initFigureDialog">
         <component :is="content" />
         <div class="horizontal-row--end"></div>
       </div>
@@ -59,6 +59,7 @@ import {
 } from 'vue';
 import { useRoute } from 'vue-router';
 import { useStore } from '../store';
+import { useQuasar } from 'quasar';
 
 import createSpareShip from '../utils/CreateSpareShip';
 
@@ -88,6 +89,7 @@ export default {
   setup() {
     const route = useRoute();
     const store = useStore();
+    const $q = useQuasar();
 
     const { name, country } = route.params;
     const countryCode: string = COUNTRIES[country as string];
@@ -115,6 +117,30 @@ export default {
       );
     }
 
+    const openImage = (src: string) => {
+      return () =>
+        $q.dialog({
+          message: `<img src="${src}" style="height: 90%; width: 100%" />`,
+          ok: 'Sluiten',
+          html: true,
+          style:
+            'height: auto !important; width: auto !important;max-width: 100vw; max-height: 90vh',
+        });
+    };
+
+    const initFigureDialog = () => {
+      const figures = document.getElementsByTagName('figure');
+      console.warn({ figures });
+      for (const figure of figures) {
+        const img = figure.querySelector('img') as HTMLImageElement;
+        if (img) {
+          const src = img.src;
+          figure.style.cursor = 'pointer';
+          figure.addEventListener('click', openImage(src));
+        }
+      }
+    };
+
     onMounted(() => {
       let [spaceship] = document.getElementsByClassName(
         'spaceship-clone'
@@ -136,7 +162,14 @@ export default {
       spaceship.removeEventListener('click', goBack);
     });
 
-    return { color, content, name, countryCode, nameCaptialize };
+    return {
+      color,
+      content,
+      name,
+      countryCode,
+      nameCaptialize,
+      initFigureDialog,
+    };
   },
 };
 </script>
@@ -250,6 +283,10 @@ $COLUMN_GAP: 100px;
 
     figure {
       max-width: $COLUMN_WIDTH;
+
+      .q-img {
+        max-height: 50vh;
+      }
     }
 
     blockquote {

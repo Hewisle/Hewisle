@@ -13,8 +13,8 @@ const BREAKPOINT = 1023;
 class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
   static pluginName = 'horizontalScroll';
   transformDelta(delta: { x: number; y: number }, fromEvent: Event) {
-    if (!/wheel/.test(fromEvent.type) || window.innerWidth < BREAKPOINT)
-      return delta;
+    if (window.innerWidth < BREAKPOINT) return { y: delta.y, x: 0 };
+    if (!/wheel/.test(fromEvent.type)) return delta;
     const { x, y } = delta;
     return {
       y: 0,

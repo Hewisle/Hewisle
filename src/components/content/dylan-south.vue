@@ -135,7 +135,7 @@
     hun verhaal kan delen.
   </p>
 
-  <p><strong>Bouwgids</strong></p>
+  <p class="do-break"><strong>Bouwgids</strong></p>
 
   <p>
     Om ervoor te zorgen dat klussen een leuke familieactiviteit. Is er een
@@ -154,7 +154,7 @@
     <q-img src="../../assets/content/dylan-bouwgids2.png" fit="contain" />
   </figure>
 
-  <p><strong>Bouwplek</strong></p>
+  <p class="do-break"><strong>Bouwplek</strong></p>
 
   <p>
     Naast de thuisbezorging is er op locatie ook een bouwplek. Het doel van de
@@ -218,7 +218,7 @@
     <q-img src="../../assets/content/dylan-tweet.png" fit="contain" />
   </figure>
 
-  <p><strong>Beloning</strong></p>
+  <p class="do-break"><strong>Beloning</strong></p>
 
   <p>
     Als beloning krijgen de kinderen die meehielpen met bouwen een knuffel naar

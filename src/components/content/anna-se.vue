@@ -14,7 +14,7 @@
   </blockquote>
   <p>
     Bekijk het interactieve visual essay hiernaast op de website of via de
-    volgende link: <br/>
+    volgende link: <br />
     <a
       href="https://xd.adobe.com/view/4ff1d697-5449-4b2a-a95e-bb1a88d49f9f-1aa2/"
       >https://xd.adobe.com/view/4ff1d697-5449-4b2a-a95e-bb1a88d49f9f-1aa2/</a
@@ -25,9 +25,7 @@
     frameborder="1"
     allowfullscreen
   ></iframe>
-  <!-- <iframe width="1366" height="768" src="https://xd.adobe.com/embed/4ff1d697-5449-4b2a-a95e-bb1a88d49f9f-1aa2/?fullscreen" frameborder="1" allowfullscreen></iframe> -->
-
-  <h3 class="q-my-lg">Onderwerp en onderzoeksvraag</h3>
+  <h3>Onderwerp en onderzoeksvraag</h3>
   <p>
     Om te leren hoe ik het maken van een essay moest aanpakken, las ik de
     Handleiding Academische Vaardigheden van de studierichting Media- en
@@ -59,7 +57,7 @@
     en past het daarom goed binnen mijn interesse en de minor.
   </p>
 
-  <h3 class="q-my-lg">Onderzoek</h3>
+  <h3>Onderzoek</h3>
   <p>
     De tweede week ging ik onderzoek doen. Met gebruik van Google Scholar ging
     op zoek naar literatuur over dark patterns. Ik keek naar de abstracts om te
@@ -68,12 +66,14 @@
     het onderzoek gepubliceerd was, het is namelijk beter om recente bronnen te
     gebruiken.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-v11.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-v12.png" fit="contain" />
-  </figure>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-v11.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-v12.png" fit="contain" />
+    </figure>
+  </div>
   <p>
     Ik maakte een selectie van een aantal bronnen en ging ze lezen. Bij elke
     bron markeerde ik belangrijke zinnen en maakte ik notities. Door
@@ -96,7 +96,7 @@
     </li>
   </ul>
 
-  <h3 class="q-my-lg">Het essay</h3>
+  <h3>Het essay</h3>
   <p>
     In de derde week schreef ik het essay. Om te beginnen maakte ik een
     structuur. Naast de algemene onderdelen introductie, rapportage en conclusie
@@ -132,7 +132,7 @@
     inzichten in de conclusie met elkaar te verbinden.
   </p>
 
-  <h3 class="q-my-lg">Het design</h3>
+  <h3>Het design</h3>
   <p>
     Toen de tekst af was, ging ik aan het visuele deel van het essay werken. Het
     platform dat ik heb gekozen voor het visual essay is Adobe XD. Ik begon met
@@ -150,18 +150,21 @@
     zijn. Digitaal en modern wordt vaak geassocieerd met strakke en geometrische
     vormen. Zelf heb ik ook illustraties gemaakt voor in het visual essay.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-v21.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-v22.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-v23.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-v25.png" fit="contain" />
-  </figure>
+
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-v21.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-v22.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-v23.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-v25.png" fit="contain" />
+    </figure>
+  </div>
   <p>
     Als laatste heb ik interactie toegevoegd. De lezer ondervindt dark patterns
     aan het begin en het einde van het essay. Ik wilde niet te veel dark
@@ -169,7 +172,7 @@
     en het is natuurlijk niet de bedoeling dat het visual essay vervelend is om
     te lezen.
   </p>
-  <figure>
+  <figure class="no-break">
     <q-img src="../../assets/content/anna-v34.png" fit="contain" />
   </figure>
 

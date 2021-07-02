@@ -16,8 +16,12 @@
     hoe de huisstijl eruit komt te zien. Bij het bepalen van de identiteit van
     Giraffe Coffee heb ik rekening gehouden met de doelgroep van de koffiebar.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-g11.png" fit="contain" />
+  <figure class="no-break">
+    <q-img
+      src="../../assets/content/anna-g11.png"
+      fit="contain"
+      style="max-height: 25vh; margin-top: 2.5vh"
+    />
   </figure>
   <figure>
     <q-img src="../../assets/content/anna-g12.png" fit="contain" />
@@ -30,15 +34,17 @@
     tinten en kleurrijke accenten. De lettertypes zijn opvallend, modern en
     gebruikersvriendelijk.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-g13.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g14.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g15.png" fit="contain" />
-  </figure>
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g13.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g14.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g15.png" fit="contain" />
+    </figure>
+  </div>
 
   <h3>Het logo</h3>
   <p>
@@ -55,16 +61,17 @@
     verder ging uitwerken. Ik heb verschillende kleurencombinaties uitgeprobeerd
     in de logo’s en uiteindelijk het definitieve logo verder uitgewerkt.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-g23.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g24.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g26.png" fit="contain" />
-  </figure>
-
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g23.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g24.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g26.png" fit="contain" />
+    </figure>
+  </div>
   <h3>Mock-ups</h3>
   <p>
     In de mock-ups is te zien hoe de corporate identity wordt gebruikt in
@@ -74,18 +81,21 @@
     ook belangrijk, dus heb ik hier mock-ups voor gemaakt en een aantal social
     media posts ontworpen.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-g31.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g33.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g35.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g37.png" fit="contain" />
-  </figure>
+
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g31.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g33.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g35.png" fit="contain" />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img src="../../assets/content/anna-g37.png" fit="contain" />
+    </figure>
+  </div>
 
   <h3>De website</h3>
   <p>
@@ -128,10 +138,10 @@
     gebruik ik content die ik zelf heb gemaakt, ik heb de tekst voor op de
     webpagina geschreven en de illustraties getekend.
   </p>
-  <figure>
+  <figure class="no-break">
     <q-img src="../../assets/content/anna-g44.png" fit="contain" />
   </figure>
-  <p><b>Het proces</b></p>
+  <p class="do-break"><b>Het proces</b></p>
   <p>
     Bij het maken van de website voor de Giraffe Coffee koffiebar heb ik
     mobile-first gewerkt. Mobile websites worden namelijk meer gebruikt dan hun
@@ -145,12 +155,14 @@
     gedetailleerder, digitaal ontwerp van. Hierbij heb ik nog veel dingen
     uitgeprobeerd en aangepast op basis van feedback.
   </p>
-  <figure>
-    <q-img src="../../assets/content/anna-g41.png" fit="contain" />
-  </figure>
-  <figure>
-    <q-img src="../../assets/content/anna-g43.png" fit="contain" />
-  </figure>
+  <div class="q-col-gutter-md row items-start">
+    <figure class="col-6">
+      <q-img src="../../assets/content/anna-g41.png" fit="fill" />
+    </figure>
+    <figure class="col-6">
+      <q-img src="../../assets/content/anna-g43.png" fit="fill" />
+    </figure>
+  </div>
   <p><b>De mobile website</b></p>
   <p>
     De homepagina van de mobile website is full screen. Het is een soort banner
@@ -191,7 +203,11 @@
     beeld uit loopt.
   </p>
   <figure>
-    <q-img src="../../assets/content/anna-g52.jpg" fit="contain" />
+    <q-img
+      src="../../assets/content/anna-g52.jpg"
+      fit="contain"
+      style="max-height: 50vh"
+    />
   </figure>
   <iframe
     scrolling="no"

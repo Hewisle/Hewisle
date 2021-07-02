@@ -31,10 +31,7 @@
       src="../../assets/content/bianca-blok1.1-inspiratie.png"
       alt="Inspiratie"
     />
-    <q-chip
-      >Inspiratie afbeeldingen en eisen. Dit heb ik voor elke doelgroep op deze
-      manier gedaan.</q-chip
-    >
+    <q-chip>Inspiratie afbeeldingen en eisen</q-chip>
   </figure>
   <p>
     Na genoeg inspiratie en informatie te hebben vergaard, ben ik begonnen met
@@ -60,25 +57,28 @@
     geprobeerd voordat ik aan het einde van dit blok bij het resultaat ben
     gekomen.
   </p>
-  <figure>
-    <q-img
-      src="../../assets/content/bianca-blok1.3-paragrafen1.png"
-      alt="Experimenten"
-    />
-  </figure>
-  <figure>
-    <q-img
-      src="../../assets/content/bianca-blok1.4-paragrafen2.png"
-      alt="Experimenten"
-    />
-  </figure>
-  <figure>
-    <q-img
-      src="../../assets/content/bianca-blok1.5-paragrafen3.png"
-      alt="Experimenten"
-    />
-  </figure>
-  <p>
+
+  <div class="q-col-gutter-md row items-start do-break">
+    <figure class="col-6 sm-12">
+      <q-img
+        src="../../assets/content/bianca-blok1.3-paragrafen1.png"
+        alt="Experimenten"
+      />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img
+        src="../../assets/content/bianca-blok1.4-paragrafen2.png"
+        alt="Experimenten"
+      />
+    </figure>
+    <figure class="col-6 sm-12">
+      <q-img
+        src="../../assets/content/bianca-blok1.5-paragrafen3.png"
+        alt="Experimenten"
+      />
+    </figure>
+  </div>
+  <p class="do-break">
     Om ervoor te zorgen dat de verschillende lay-outs ook echt bij de
     doelgroepen pasten, heb ik naast het onderzoek, ook
     <strong>getest</strong> met een aantal personen die passen binnen 2 van de
@@ -101,6 +101,7 @@
   </p>
   <figure>
     <q-img
+      style="max-height: 40vh"
       src="../../assets/content/bianca-blok1.17-eind-kinderen.jpg"
       alt="Het eindontwerp voor de doelgroep kinderen t/m 11 jaar."
     />
@@ -114,6 +115,7 @@
   </p>
   <figure>
     <q-img
+      style="max-height: 40vh"
       src="../../assets/content/bianca-blok1.18-eind-jongeren.jpg"
       alt="Het eindontwerp voor de doelgroep jongeren 12 t/m 17 jaar."
     />
@@ -126,6 +128,7 @@
   </p>
   <figure>
     <q-img
+      style="max-height: 40vh"
       src="../../assets/content/bianca-blok1.19-eind-volwassenen.jpg"
       alt="Het eindontwerp voor de doelgroep volwassenen 18 t/m 74 jaar."
     />
@@ -140,6 +143,7 @@
   </p>
   <figure>
     <q-img
+      style="max-height: 40vh"
       src="../../assets/content/bianca-blok1.20-eind-ouderen.jpg"
       alt="Het eindontwerp voor de doelgroep ouderen 75+."
     />
