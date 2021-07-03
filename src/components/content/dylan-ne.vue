@@ -1,6 +1,5 @@
 <template>
   <h2>Animatie sprookje</h2>
-
   <p>
     Een onbekend sprookje die animeert is in via Adobe After Effect. De animatie
     is gemaakt in de stijl van Paper Mario.
@@ -218,7 +217,7 @@ import { defineComponent } from 'vue';
 
 export default defineComponent({
   setup() {
-    const doedelSrc = process.env.DOEDELZAK || '';
+    const doedelSrc = 'https://school.hrdw.nl/itsi/Doedelzak.mp4';
     let doedel = 0;
     const isDoedelzak = (e: Event) => {
       doedel += 1;
