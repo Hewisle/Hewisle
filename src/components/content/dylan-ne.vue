@@ -1,5 +1,5 @@
 <template>
-  <h2>Logo Animatie</h2>
+  <h2>Animatie sprookje</h2>
 
   <p>
     Een onbekend sprookje die animeert is in via Adobe After Effect. De animatie
@@ -51,7 +51,11 @@
     </figure>
 
     <figure class="col-5 sm-12">
-      <q-img src="../../assets/content/dylan-doedelzak.png" fit="contain" />
+      <q-img
+        src="../../assets/content/dylan-doedelzak.png"
+        fit="contain"
+        @contextmenu="isDoedelzak"
+      />
     </figure>
 
     <figure class="col-5 sm-12">
@@ -209,3 +213,27 @@
     wat wel of niet belangrijk was.
   </p>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const doedelSrc = process.env.DOEDELZAK || '';
+    let doedel = 0;
+    const isDoedelzak = (e: Event) => {
+      doedel += 1;
+      if (doedel >= 3) {
+        const target = e.target as HTMLElement;
+        const parent = target.parentNode;
+        if (parent) {
+          const doedelzak = document.createElement('iframe');
+          doedelzak.src = doedelSrc;
+          parent.removeChild(target);
+          parent.appendChild(doedelzak);
+        }
+      }
+    };
+    return { isDoedelzak };
+  },
+});
+</script>
