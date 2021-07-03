@@ -58,7 +58,7 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       env: {
-        DOEDELZAK: require('dotenv').config().parsed.DOEDELZAK
+        DOEDELZAK: (require('dotenv').config().parsed || {}).DOEDELZAK
       },
 
       // transpile: false,
