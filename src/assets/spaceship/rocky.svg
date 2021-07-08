@@ -4,9 +4,24 @@
     <path d="M32 186c8-6 21-6 31 3 8 8 11 19 7 28a15 15 0 01-3 5l-21 24s-2-7 0-10l5-11s-17 3-23 6c-7 2-11 7-11 7l3-18 9-12-7 3-10-1 18-23z" fill="#ffbe0b"/>
   </g>
   <g transform="rotate(-45 185 24)">
-    <path class="fill-primary" fill-rule="evenodd" clip-rule="evenodd" d="M185 87l65-33-65-32H15v65h170z" fill="#3a47ff"/>
-    <path class="fill-primary" fill="#3a47ff" d="M15 0h69v109H15z"/>
-    <path class="fill-primary-dark" fill="#303bce" d="M0 28h69v53H0z"/>
-    <circle class="stroke-primary-dark" cx="171.9" cy="54.7" r="16.8" fill="#fff" stroke="#343fd4" stroke-width="6"/>
+    <path fill="#3a47ff" fill-rule="evenodd" d="M185 87l65-33-65-32H15v65h170z" class="fill-primary" clip-rule="evenodd"/>
+    <path fill="#3a47ff" d="M15 0h69v109H15z" class="fill-primary"/>
+    <path fill="#303bce" d="M0 28h69v53H0z" class="fill-primary-dark"/>
+    <circle cx="171.9" cy="54.7" r="16.8" fill="#fff" stroke="#343fd4" stroke-width="6" class="stroke-primary-dark"/>
+  </g>
+  <g id="hat" display="none">
+    <path fill="#fff" stroke="#000" stroke-width=".2" d="M251 529s21-73 49-112c27 39 49 113 49 113-12 16-85 15-98-1z" transform="rotate(-45 -10 -21) scale(.27838)"/>
+    <path fill="red" d="M157 16c-1 1-1-2-2-2v3l-2-2c-1 0 0 3-1 2v-3l-2 3c-1-1 2-3 1-4l-3 1 3-2h-4l3-1c0-1-3-1-2-2h3s-3-1-2-3l3 3-1-3 1 2c2 0 1-4 2-3l1 3s0-3 1-2v3s1-3 2-2l-2 3 3-1-3 2 4 1h-3c-1 1 2 1 2 2l-3-1z" color="#000" opacity=".9"/>
+    <path fill="#0ff" d="M158 16l-3-3 1 4-2-4c-1 1 0 5-1 4l-1-3c-1 0 0 3-1 2v-3s-2 3-3 2l3-3-3 1c-2-1 3-1 2-2l-3-1h3c1-1-3-2-3-2 1-1 3 1 4 1l-1-4 1 3 1-3 1 2c2 1 1-3 2-2 1 0-2 2 0 3l2-3c0 1-2 3-1 4l3-1-3 2h3l-3 1c1 1 4 1 3 2h-3s2 1 2 3z" color="#000" opacity=".9"/>
+    <path fill="red" d="M168 35l-1 3-3-2v-4c2 0 3 1 4 3z" color="#000" opacity=".9"/>
+    <path fill="#00f" d="M174 28l5-2v4l-4 1z" color="#000" opacity=".9"/>
+    <path fill="#0f0" d="M166 17l3 3h-3l-3-1 1-2 1-2z" color="#000" opacity=".9"/>
+    <path fill="#ff0" d="M174 20l1 3-3 1c-2 0-2-1-1-3z" color="#000" opacity=".9"/>
+    <path fill="#0ff" d="M166 24h3v5h-4z" color="#000" opacity=".9"/>
+    <path fill="#f0f" d="M171 33l1-4 1 3 2 3-5 1z" color="#000" opacity=".9"/>
+    <path fill="#f60" d="M160 14c1 2 1 3-1 4l-3-1c-1-2-1-3 1-3 1-2 3-1 3 0z" color="#000" opacity=".9"/>
+    <path fill="green" d="M183 25v3l-3-3-3-2h7z" color="#000" opacity=".9"/>
+    <path fill="olive" d="M159 22l4-1v4h-3z" color="#000" opacity=".9"/>
+    <path fill="#b3b3b3" d="M159 13h-3s2 1 2 3l-3-3 1 3-2-3-1 4v-3c-1-1-1 2-2 2-2 0 1-2 1-3l-3 1 2-2h-4l3-2c0-1-3 0-2-1h3l-3-2c1-1 3 2 3 1V5l1 3 1-4v3c1 0 2-3 3-2 1-1-2 2 0 3 0 0 1-3 2-2l-2 3 3-1c1 1-2 1-2 1-1 2 3 1 3 1 0 2-3-1-4 1 1 1 4 1 3 2z" color="#000" opacity=".9"/>
   </g>
 </svg>

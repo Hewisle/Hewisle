@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="row col-6 items-center full-width spaceship-row">
-        <div class="col col-auto text-center">
+        <div class="col col-auto text-center" style="margin-right: -32px">
           <q-btn
             flat
             round
@@ -45,7 +45,7 @@
             />
           </q-carousel>
         </div>
-        <div class="col col-auto text-center">
+        <div class="col col-auto text-center" style="margin-left: -32px">
           <q-btn
             size="xl"
             flat

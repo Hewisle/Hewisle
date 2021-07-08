@@ -6,7 +6,7 @@
     @mouseenter="nameTag = true"
     @mouseleave="nameTag = false"
   >
-    <planet-chip :visible="nameTag">
+    <planet-chip :visible="nameTag" :position="chipPosition">
       <strong>{{ nameCaptialize }}</strong>
     </planet-chip>
     <div class="planet--img-wrapper" :data-planet="name">
@@ -14,7 +14,7 @@
     </div>
   </a>
 </template>
-<script>
+<script lang="ts">
 import { computed, defineComponent, ref } from 'vue';
 import Lottie from './Lottie.vue';
 import PlanetChip from './PlanetChip.vue';
@@ -33,10 +33,15 @@ export default defineComponent({
       const value = props.name.toString();
       return value.charAt(0).toUpperCase() + value.slice(1);
     });
-
+    const chipPosition: { [index: string]: string } = {
+      anna: 'right',
+      bianca: 'left',
+      dylan: 'right',
+      ruben: 'top',
+    };
     const nameTag = ref(false);
 
-    return { nameCaptialize, nameTag };
+    return { nameCaptialize, nameTag, chipPosition: chipPosition[props.name] };
   },
 });
 </script>

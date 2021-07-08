@@ -10,4 +10,19 @@
     <path class="fill-primary" d="M125 94c83 0 151-47 151-47S208 0 125 0A323 323 0 004 21c65 0 117 12 117 26S69 73 4 73H0c27 13 73 21 125 21z" fill-rule="evenodd" clip-rule="evenodd" fill="#3a47ff" />
     <circle class="stroke-primary-dark" cx="178.2" cy="48.1" r="19.2" fill="#fff" stroke="#303bce" stroke-width="6"/>
   </g>
+  <g id="hat" display="none">
+    <path fill="#fff" stroke="#000" stroke-width=".2" d="M251 529s21-73 49-112c27 39 49 113 49 113-12 16-85 15-98-1z" transform="rotate(-30 -72 -73) scale(.27838)"/>
+    <path fill="red" d="M159 19c-1 1 0-2-1-2l-1 3-1-3c-1 0-1 3-2 2-1 0 2-2 1-3l-3 2c0-1 3-2 2-3h-3l3-1-3-1h3c0-1-3-2-2-3 0-1 2 2 3 1 0 0-2-2-1-3l2 3V8l1 2c1 1 1-3 2-2v3s1-3 2-2c1 0-2 2-1 3 0 0 2-2 3-1l-3 2h3l-3 1 3 2-3-1c-1 1 2 2 2 3-1 1-2-2-3-2v3z" color="#000" opacity=".9"/>
+    <path fill="#0ff" d="M160 19l-2-3v4l-1-4c-1 0-1 4-2 3v-3c-1 0-1 3-2 2-1 0 2-2 1-3 0 0-2 2-3 1l3-2h-3c-1-1 3 0 3-1l-3-2 3 1c1-1-2-3-2-3 1-1 2 2 3 2V7l1 3 1-3 1 3c1 1 1-3 2-2 1 0-2 2-1 3 1 0 2-3 3-2 0 1-3 2-2 3h3l-3 1 3 1h-3c0 1 3 2 2 3 0 1-2-2-3-1 0 0 2 2 1 3z" color="#000" opacity=".9"/>
+    <path fill="red" d="M165 40c0 1 0 2-2 3l-2-3 1-3c2 0 3 1 3 3z" color="#000" opacity=".9"/>
+    <path fill="#00f" d="M173 35h5l-1 3h-4z" color="#000" opacity=".9"/>
+    <path fill="#0f0" d="M168 23l2 3-3-1-3-1 2-2 1-2z" color="#000" opacity=".9"/>
+    <path fill="#ff0" d="M175 28v3h-3c-2-1-2-2-1-3h4z" color="#000" opacity=".9"/>
+    <path fill="#0ff" d="M166 29l3 1-2 5-3-1z" color="#000" opacity=".9"/>
+    <path fill="#f0f" d="M168 39l2-3 1 3 1 3h-5z" color="#000" opacity=".9"/>
+    <path fill="#f60" d="M163 18c0 2 0 3-2 4l-3-2c0-2 0-3 2-3 1-1 3 0 3 1z" color="#000" opacity=".9"/>
+    <path fill="green" d="M182 35l-1 2-2-3-2-3 3 1 4 1z" color="#000" opacity=".9"/>
+    <path fill="olive" d="M160 26h4l-1 4-3-1z" color="#000" opacity=".9"/>
+    <path fill="#b3b3b3" d="M162 17c0 1-2-2-3-1 0 0 2 2 1 3l-2-3v3l-1-3-2 3c-1-1 2-3 1-3-1-1-2 2-3 2-1-1 2-2 2-3h-3l2-1-3-1 3-1c0-1-3-1-2-2 0 0 2 2 3 1s-2-2-2-3c1 0 2 3 3 2V7l1 3 1-3v3c1 0 2-3 3-2 1 0-2 2-1 3 0 0 2-2 3-1l-3 2h3c1 1-2 0-2 1-1 1 3 1 3 1-1 2-3-1-4 0 0 1 3 2 2 3z" color="#000" opacity=".9"/>
+  </g>
 </svg>

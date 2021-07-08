@@ -1,7 +1,19 @@
 <template>
   <div class="space">
+    <a class="mobile-back lt-md" href="/space">
+      <span>Terug</span>
+      <div
+        class="vector"
+        v-html="require(`!!../assets/${'back-star'}.svg?raw`)"
+      ></div>
+    </a>
     <div id="welcome" class="row justify-center q-mx-xl q-mt-xl">
-      <h2 class="col-auto">Welkom bij planeet {{ nameCaptialize }}</h2>
+      <div class="col-auto">
+        <p class="lt-md">Welkom bij</p>
+        <h2>
+          <span class="gt-sm">Welkom bij </span>planeet {{ nameCaptialize }}
+        </h2>
+      </div>
     </div>
     <div id="explainer" class="row justify-center q-mx-xl">
       <p style="max-width: 560px">
@@ -9,6 +21,7 @@
         reizen. Er is genoeg te zien.
       </p>
     </div>
+    <div ref="shipHolder" class="ship-holder"></div>
 
     <div class="row planet-wrapper--relative full-width">
       <div class="row planet-wrapper full-width justify-between">
@@ -101,6 +114,7 @@ export default defineComponent({
 
     const globalConfig = CONFIG as GlobalConfig;
     const name = ref('');
+    const shipHolder = ref<HTMLElement>();
     const names = Object.keys(globalConfig);
 
     name.value = route.params.name as string;
@@ -176,8 +190,25 @@ export default defineComponent({
         spaceship = createSpareShip(spaceshipType.value, spaceshipColor.value);
       }
 
+      if (shipHolder.value) {
+        const mobileSpaceship = spaceship.cloneNode(true) as HTMLElement;
+        mobileSpaceship.classList.remove('spaceship-clone');
+        mobileSpaceship.style.transform = '';
+        shipHolder.value.appendChild(mobileSpaceship);
+        shipHolder.value.style.pointerEvents = 'all';
+        shipHolder.value.addEventListener('click', goBack);
+      }
+
       spaceship.classList.add('world');
       spaceship.addEventListener('click', goBack);
+
+      setTimeout(() => {
+        const externalPlanet = document.querySelector(
+          'body > a.planet'
+        ) as HTMLElement;
+        if (externalPlanet && externalPlanet.parentElement)
+          externalPlanet.parentElement.removeChild(externalPlanet);
+      }, 500);
     });
 
     onBeforeUnmount(() => {
@@ -194,6 +225,7 @@ export default defineComponent({
       globalConfig,
       left,
       right,
+      shipHolder,
     };
   },
 });
@@ -208,9 +240,7 @@ export default defineComponent({
     cursor: pointer;
 
     @media screen and (max-width: $breakpoint-md-min) {
-      left: 50% !important;
-      top: 500px !important;
-      transform: translate(-50%, -50%) scale(0.9) rotate(-90deg) !important;
+      transform: scale(0.001) rotate(-90deg) !important;
     }
 
     &.spaceship--its_a_trap {
@@ -218,17 +248,62 @@ export default defineComponent({
       transform: translate(max(100px, 12vw), 350px) scale(0.8) !important;
 
       @media screen and (max-width: $breakpoint-md-min) {
-        transform: translate(-50%, -50%) scale(0.9) !important;
+        transform: scale(0.001) !important;
       }
     }
   }
 }
 </style>
 <style lang="scss" scoped>
+@keyframes zoomMobileShip {
+  to {
+    transform: scale(0.5) translateY(-200%);
+  }
+}
+a.mobile-back {
+  height: 96px;
+  padding: 16px;
+  position: absolute;
+
+  .vector,
+  .vector::v-deep() svg {
+    height: 100%;
+  }
+  .vector {
+    display: flex;
+    justify-content: flex-start;
+  }
+  span {
+    color: white;
+    position: absolute;
+    bottom: 16px;
+    left: 24px;
+  }
+}
 #welcome,
 #explainer {
   opacity: 0;
   transform: translateY(-50%);
+}
+
+@media screen and (max-width: $breakpoint-md-min) {
+  #welcome {
+    margin-top: 172px;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    p {
+      text-align: center;
+      margin: 0;
+      font-size: 1.25rem;
+    }
+    h2 {
+      margin: 0;
+    }
+  }
+
+  #explainer {
+    margin: 16px;
+  }
 }
 
 .space {
@@ -237,6 +312,31 @@ export default defineComponent({
   width: 100vw;
   left: 50%;
   transform: translate(-50%);
+}
+.ship-holder {
+  display: none;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  transform: scale(0) translateY(-200%);
+  top: 128px;
+  height: 200px;
+  margin-top: 100px;
+  margin-bottom: -200px;
+
+  @media screen and (max-width: $breakpoint-md-min) {
+    display: block;
+    animation: zoomMobileShip 2s forwards;
+    animation-delay: 2s;
+
+    &::v-deep() svg {
+      left: 50% !important;
+      transform: translateX(-50%) rotate(-90deg) !important;
+      &.spaceship--its_a_trap {
+        transform: translateX(-50%) !important;
+      }
+    }
+  }
 }
 .planet {
   display: block;
@@ -257,7 +357,9 @@ export default defineComponent({
     margin-top: 20vh;
 
     @media screen and (max-width: $breakpoint-sm-max) {
-      height: 60vh;
+      height: 50vh;
+      margin-top: -25vh;
+      transform: scale(1.2);
     }
   }
   &-wrapper {
@@ -272,6 +374,10 @@ export default defineComponent({
   &--side-right {
     text-decoration: none;
     position: relative;
+
+    @media screen and (max-width: $breakpoint-md-min) {
+      display: none;
+    }
 
     section {
       display: inline-flex;

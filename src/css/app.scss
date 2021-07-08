@@ -175,6 +175,10 @@ p {
   pointer-events: none;
 }
 
+body.birthday #hat {
+  display: block !important;
+}
+
 $colors: 'blue', 'light-blue', 'teal', 'green', 'light-green', 'amber',
   'deep-orange', 'purple', 'deep-purple';
 

@@ -50,7 +50,7 @@
   <h3 class="q-my-lg">Resultaat</h3>
   <p>
     Uiteindelijk heb ik een werkende VS Code extensie opgeleverd welke open
-    source is opgezet en daarom te vinden op GITHUB.
+    source is opgezet en daarom te vinden op <a href="https://github.com/githrdw/vsc-home" target="_blank">GitHub</a>.
   </p>
   <figure class="no-break">
     <q-img src="../../assets/content/ruben_ne_dashboard-result.png"></q-img>
@@ -83,8 +83,8 @@
   <p>
     Omdat mijn project opgezet is als open source project, heb ik besloten om
     het <strong>publiek</strong> op te zoeken en aan te kondigen dat mijn
-    extensie beschikbaar is. Zo heb ik op Dev.to een artikel geschreven en dit
-    vervolgens gedeeld op Linkedin en Reddit. Hieruit kwamen een behoorlijk
+    extensie beschikbaar is. Zo heb ik op <a href="https://dev.to/githrdw/design-your-vs-code-dashboard-3oh9" target="_blank">Dev.to</a> een artikel geschreven en dit
+    vervolgens gedeeld op Linkedin en <a href="https://www.reddit.com/r/reactjs/comments/m96zh9/design_a_vs_code_dashboard_with_your_own_react/" target="_blank">Reddit</a>. Hieruit kwamen een behoorlijk
     aantal weergaven (~1000) maar helaas bleef het daadwerkelijk aantal
     downloads rond een tiental. Ook de reacties zijn op een hand te tellen.
   </p>
@@ -98,7 +98,7 @@
   <p>
     Tijdens dit project heb ik naast het leerdoel best veel opgestoken. Zo heb
     ik ook gekeken naar voordelen van Web Components maar ondervond te veel
-    nadelen om er mee door te gaan*. Daarvan heb ik geleerd dat niet elke nieuwe
+    nadelen om er mee door te gaan. Daarvan heb ik geleerd dat niet elke nieuwe
     techniek alleen maar voordelen heeft. Daarnaast heb ik uiteraard ontzettend
     veel geleerd over de werking van VS Code onder de motorkap. Wat daar aan
     heeft bijgedragen is Typescript. Doordat veel van de broncode van VS Code

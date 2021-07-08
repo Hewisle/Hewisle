@@ -33,6 +33,12 @@ export default defineComponent({
     spaceship.value = template.innerHTML;
 
     onMounted(() => {
+      gsap.to(gsapEl.value, {
+        left: ((props.x || 0) * 100).toString() + '%',
+        top: ((props.y || 0) * 100).toString() + '%',
+        ease: Linear.easeNone,
+        duration: 1,
+      });
       watch(props, (props) => {
         gsap.to(gsapEl.value, {
           left: ((props.x || 0) * 100).toString() + '%',

@@ -344,11 +344,10 @@ $COLUMN_GAP: 100px;
     cursor: pointer;
 
     @media screen and (max-width: $breakpoint-md-min) {
-      transform: translate(-15%, 17%) scale(0.4) rotate(-90deg) !important;
+      transform: translate(-15%, 25%) scale(0.3) rotate(-90deg) !important;
     }
 
     &.spaceship--its_a_trap {
-      transform: translate(25%, 15%) scale(0.7) !important;
       transform: translate(25%, 15%) scale(0.7) !important;
 
       @media screen and (max-width: $breakpoint-md-min) {

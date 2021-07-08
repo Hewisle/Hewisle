@@ -4,9 +4,24 @@
     <path d="M32 204c8-6 21-6 31 3 8 8 11 19 7 28a15 15 0 01-3 5l-21 24s-2-7 0-10l5-11s-17 3-23 6c-7 2-11 7-11 7l3-18 9-12-7 3-10-1 18-23z" fill="#ffbe0b"/>
   </g>
   <g transform="rotate(-45 213 51)">
-    <path class="fill-primary-dark" d="M0 13s74 17 101 28c7 9 27 12 32-20 6-41-133-8-133-8z" fill="#303bce"/>
-    <ellipse class="fill-primary" cx="151.5" cy="54" rx="131.5" ry="38" fill="#3a47ff"/>
-    <path class="fill-primary-dark" d="M0 96s74-18 101-29c7-9 27-12 32 20 6 42-133 9-133 9z" fill="#303bce"/>
-    <circle class="stroke-primary-dark" cx="208.2" cy="54.4" r="19.2" fill="#fff" stroke="#303bce" stroke-width="6"/>
+    <path fill="#303bce" d="M0 13s74 17 101 28c7 9 27 12 32-20 6-41-133-8-133-8z" class="fill-primary-dark"/>
+    <ellipse cx="151.5" cy="54" fill="#3a47ff" class="fill-primary" rx="131.5" ry="38"/>
+    <path fill="#303bce" d="M0 96s74-18 101-29c7-9 27-12 32 20 6 42-133 9-133 9z" class="fill-primary-dark"/>
+    <circle cx="208.2" cy="54.4" r="19.2" fill="#fff" stroke="#303bce" stroke-width="6" class="stroke-primary-dark"/>
+  </g>
+  <g id="hat" display="none">
+    <path fill="#fff" stroke="#000" stroke-width=".2" d="M251 529s21-73 49-112c27 39 49 113 49 113-12 16-85 15-98-1z" transform="rotate(-45 1 -28) scale(.27838)"/>
+    <path fill="red" d="M165 21c-1 1-1-2-2-2v3l-2-2c-1 0 0 3-1 2v-3l-2 3c-1-1 2-3 1-4l-3 1 3-2h-4l3-1c0-1-3-1-2-2h3s-3-1-2-3l3 3-1-3 1 2c2 0 1-4 2-3l1 3s0-3 1-2v3s1-3 2-2l-2 3 3-1-3 2 4 1h-3c-1 1 2 1 2 2l-3-1z" color="#000" opacity=".9"/>
+    <path fill="#0ff" d="M166 21l-3-3 1 4-2-4c-1 1 0 5-1 4l-1-3c-1 0 0 3-1 2v-3s-2 3-3 2l3-3-3 1c-2-1 3-1 2-2l-3-1h3c1-1-3-2-3-2 1-1 3 1 4 1l-1-4 1 3 1-3 1 2c2 1 1-3 2-2 1 0-2 2 0 3l2-3c0 1-2 3-1 4l3-1-3 2h3l-3 1c1 1 4 1 3 2h-3s2 1 2 3z" color="#000" opacity=".9"/>
+    <path fill="red" d="M176 40l-1 3-3-2v-4c2 0 3 1 4 3z" color="#000" opacity=".9"/>
+    <path fill="#00f" d="M182 33l5-2v4l-4 1z" color="#000" opacity=".9"/>
+    <path fill="#0f0" d="M174 22l3 3h-3l-3-1 1-2 1-2z" color="#000" opacity=".9"/>
+    <path fill="#ff0" d="M182 25l1 3-3 1c-2 0-2-1-1-3z" color="#000" opacity=".9"/>
+    <path fill="#0ff" d="M174 29h3v5h-4z" color="#000" opacity=".9"/>
+    <path fill="#f0f" d="M179 38l1-4 1 3 2 3-5 1z" color="#000" opacity=".9"/>
+    <path fill="#f60" d="M168 19c1 2 1 3-1 4l-3-1c-1-2-1-3 1-3 1-2 3-1 3 0z" color="#000" opacity=".9"/>
+    <path fill="green" d="M191 30v3l-3-3-3-2h7z" color="#000" opacity=".9"/>
+    <path fill="olive" d="M167 27l4-1v4h-3z" color="#000" opacity=".9"/>
+    <path fill="#b3b3b3" d="M167 18h-3s2 1 2 3l-3-3 1 3-2-3-1 4v-3c-1-1-1 2-2 2-2 0 1-2 1-3l-3 1 2-2h-4l3-2c0-1-3 0-2-1h3l-3-2c1-1 3 2 3 1v-3l1 3 1-4v3c1 0 2-3 3-2 1-1-2 2 0 3 0 0 1-3 2-2l-2 3 3-1c1 1-2 1-2 1-1 2 3 1 3 1 0 2-3-1-4 1 1 1 4 1 3 2z" color="#000" opacity=".9"/>
   </g>
 </svg>

@@ -82,17 +82,20 @@ export default defineComponent({
       gsap.fromTo(
         spaceArea.value as HTMLElement,
         {
-          scale: 0.2,
-          xPercent: 50,
-          yPercent: -200,
+          scale: window.innerWidth > 1024 ? 0.2 : 5,
+          xPercent: window.innerWidth > 1024 ? 50 : -100,
+          yPercent: -25,
         },
         {
           scale: 1,
           xPercent: -50,
           yPercent: 0,
-          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-          ease: CustomEase.create('easeOutBack ', '0.34, 1.56, 0.64, 1'),
           duration: 3,
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          ease:
+            window.innerWidth > 1024
+              ? CustomEase.create('easeOutBack ', '0.34, 1.56, 0.64, 1')
+              : undefined,
         }
       );
 
@@ -133,7 +136,7 @@ export default defineComponent({
           duration: 2,
         });
       } else {
-        spaceship.classList.remove('greetings-from-index')
+        spaceship.classList.remove('greetings-from-index');
       }
 
       nameChip.value = createNameChip(name.value, spaceshipColor.value);
@@ -155,6 +158,7 @@ export default defineComponent({
       const spaceshipFire = spaceship.querySelector('#spaceship-fire');
 
       trackMouseRef.value = (time: number, deltaTime: number) => {
+        if (window.innerWidth < 1024) return;
         var delta = deltaTime * FPMS;
         var dt = 1.0 - Math.pow(1.0 - SPEED, delta);
 
@@ -224,28 +228,30 @@ export default defineComponent({
       const [stars] = document.getElementsByClassName(
         'background--stars'
       ) as HTMLCollectionOf<HTMLElement>;
-      const clone = planet.cloneNode(true);
-      const meta = getAbsolutePosition(planet);
 
-      (clone as HTMLElement).classList.remove('original');
-      gsap.set(planet, { scale: 1.05 });
-      gsap.set(clone, meta);
-      document.body.appendChild(clone);
+      if (window.innerWidth > 1024) {
+        const clone = planet.cloneNode(true);
+        const meta = getAbsolutePosition(planet);
 
-      const [wrapper] = (clone as HTMLElement).getElementsByClassName(
-        'planet--img-wrapper'
-      ) as HTMLCollectionOf<HTMLElement>;
+        (clone as HTMLElement).classList.remove('original');
+        gsap.set(planet, { scale: 1.05 });
+        gsap.set(clone, meta);
+        document.body.appendChild(clone);
+        const [wrapper] = (clone as HTMLElement).getElementsByClassName(
+          'planet--img-wrapper'
+        ) as HTMLCollectionOf<HTMLElement>;
+        rotateInfinite(wrapper);
+        gsap.to(clone, {
+          left: window.innerWidth / 2 - meta.width / 2,
+          top: window.innerHeight + meta.height / 2,
+          duration: 3,
+          delay: 0.25,
+        });
+      }
 
-      rotateInfinite(wrapper);
       planet.style.opacity = '0';
       planet.style.display = 'none';
       planet.classList.add('no-touchy');
-      gsap.to(clone, {
-        left: window.innerWidth / 2 - meta.width / 2,
-        top: window.innerHeight + meta.height / 2,
-        duration: 3,
-        delay: 0.25,
-      });
       gsap.to(stars, {
         scale: 0.9,
         rotate: 12.5,
@@ -254,12 +260,14 @@ export default defineComponent({
       });
       gsap.to(spaceArea.value as HTMLElement, {
         scale: 0.9,
+        opacity: window.innerWidth < 1024 ? 0 : 1,
       });
       gsap.to(spaceArea.value as HTMLElement, {
         xPercent: name === 'dylan' ? -100 : 25,
         yPercent: name === 'ruben' ? -100 : 200,
         duration: 4,
         rotate: 45,
+        scale: 1.5,
         delay: 0.125,
       });
       gsap.to(stars, {
@@ -373,45 +381,37 @@ export default defineComponent({
   }
 
   @media screen and (max-width: $breakpoint-sm-max) {
+    max-width: 50%;
     &--ruben {
       top: unset;
-      width: 30%;
-      left: 20%;
+      width: 50%;
+      left: 10%;
       bottom: 70%;
     }
     &--dylan {
       top: unset;
-      width: 28%;
+      width: 50%;
       right: 5%;
       bottom: 43%;
       transform: translateY(-50%) translateX(-50%) scale(0.5);
       animation: float-in-right 2s ease forwards;
-      &:hover {
-        transform: scale(1.02) translateX(50%);
-      }
     }
     &--bianca {
       top: unset;
       left: 1%;
       bottom: 10%;
       height: 30%;
-      width: 33%;
+      width: 50%;
       animation: float-in-left 5s ease forwards;
       animation-delay: 0.75s;
-      &:hover {
-        transform: scale(1.02) translateX(-50%);
-      }
     }
     &--anna {
-      left: unset;
-      width: 32%;
-      left: 69%;
+      left: 50%;
+      width: 50%;
+      height: 50%;
       bottom: -40%;
       transform: translateY(-50%) translateX(-50%) scale(0.5);
       animation: float-in-right 5s ease forwards;
-      &:hover {
-        transform: scale(1.02) translateX(50%);
-      }
     }
   }
 
