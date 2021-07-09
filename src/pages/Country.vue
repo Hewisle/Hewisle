@@ -130,7 +130,6 @@ export default {
 
     const initFigureDialog = () => {
       const figures = document.getElementsByTagName('figure');
-      console.warn({ figures });
       for (const figure of figures) {
         const img = figure.querySelector('img') as HTMLImageElement;
         if (img) {

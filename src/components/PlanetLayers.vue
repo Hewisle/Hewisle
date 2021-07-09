@@ -25,27 +25,37 @@ export default defineComponent({
     let layerIndex = layers.length;
     for (layerIndex < 0; layerIndex--; ) {
       const { nm } = layers[layerIndex];
-      layerRefs.set(nm, ref());
+      const layerName: string = nm.startsWith('land') ? nm : nm.split(' ')[0];
+      if (!layerRefs.has(layerName)) layerRefs.set(layerName, ref());
     }
 
     onMounted(() => {
       for (const [key, layerRef] of layerRefs) {
         const layer = layerRef.value as HTMLElement;
         const layerName: string = key;
-        const layerData = {
-          ...animationData.value,
-          layers: [layers.find(({ nm }) => nm === layerName)],
-        };
+        let layerData;
+        if (!layerAnims.has(layerName) && !layerName.startsWith('land')) {
+          layerData = {
+            ...animationData.value,
+            layers: layers.filter(({ nm }) => nm.startsWith(layerName)),
+          };
+        } else {
+          layerData = {
+            ...animationData.value,
+            layers: [layers.find(({ nm }) => nm === layerName)],
+          };
+        }
         layerAnims.set(
           layerName,
           Lottie.loadAnimation({
             container: layer,
-            renderer: 'svg',
+            renderer: ['Blok', 'Lichtje', 'Fabriek'].includes(layerName) ? 'canvas' : 'svg',
             animationData: layerData,
-            rendererSettings: props.rendererSettings
+            rendererSettings: props.rendererSettings,
           })
         );
       }
+      
     });
 
     return { layerRefs, layerAnims };
@@ -64,8 +74,8 @@ export default defineComponent({
       type: Number,
     },
     rendererSettings: {
-      type: Object
-    }
+      type: Object,
+    },
   },
 });
 </script>
