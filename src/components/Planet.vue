@@ -142,11 +142,11 @@ export default defineComponent({
   }
 }
 .planet-lottie {
-  &--anna-sw .planet-layer--Gras_Outlines {
+  &--anna-sw .planet-layer--Gras {
     z-index: -1;
   }
 
-  &--dylan-south .planet-layer--Layer_5_Outlines {
+  &--dylan-south .planet-layer--Layer {
     svg {
       transform: scaleX(2) translateX(0%) !important;
 
@@ -156,16 +156,16 @@ export default defineComponent({
     }
   }
 
-  &--ruben-ne .planet-layer--grond_Outlines,
-  &--ruben-nw .planet-layer--grond_Outlines,
-  &--ruben-south .planet-layer--grond_Outlines,
-  &--dylan-nw .planet-layer--Layer_2_Outlines,
-  &--dylan-ne .planet-layer--lekker_rekken,
-  &--bianca-north .planet-layer--Layer_4_Outlines,
-  &--bianca-sw .planet-layer--Layer_2_Outlines,
-  &--anna-north .planet-layer--Zand_Outlines,
-  &--anna-sw .planet-layer--Gras_Outlines,
-  &--anna-se .planet-layer--Layer_2_Outlines {
+  &--ruben-ne .planet-layer--grond,
+  &--ruben-nw .planet-layer--grond,
+  &--ruben-south .planet-layer--grond,
+  &--dylan-nw .planet-layer--Layer,
+  &--dylan-ne .planet-layer--lekker,
+  &--bianca-north .planet-layer--Bottom,
+  &--bianca-sw .planet-layer--Layer,
+  &--anna-north .planet-layer--Zand,
+  &--anna-sw .planet-layer--Gras,
+  &--anna-se .planet-layer--Layer {
     svg {
       transform: scaleX(10) translateX(5%) !important;
     }
